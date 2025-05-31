@@ -1,0 +1,119 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package dao;
+
+import dal.DBContext;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import model.Account;
+
+/**
+ *
+ * @author Long0
+ */
+public class AccountDAO {
+
+    public static ArrayList<Account> getAccounts() {
+        DBContext db = DBContext.getInstance();
+        ArrayList<Account> accounts = new ArrayList<>();
+        try {
+            String sql = """
+                     Select 
+                         UserID,
+                         RoleID,
+                         FullName,
+                         Gender,
+                         Email,
+                         PhoneNumber,
+                         Password,
+                         URLAvatar,
+                         Status,
+                         Address,
+                         Birthday
+                         FROM Account
+                         """;
+            PreparedStatement statement = db.getConnection().prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Account account = new Account(
+                        rs.getInt("UserID"),
+                        rs.getInt("RoleID"),
+                        rs.getString("Fullname"),
+                        rs.getString("Gender"),
+                        rs.getString("Email"),
+                        rs.getString("PhoneNumber"),
+                        rs.getString("Password"),
+                        rs.getString("URLAvatar"),
+                        rs.getString("Status"),
+                        rs.getString("Address"),
+                        rs.getString("Birthday")
+                );
+                accounts.add(account);
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return accounts;
+    }
+
+    public static boolean changePassword(String password, int userID) {
+        DBContext db = DBContext.getInstance();
+        int n = 0;
+        String sql = """
+                    Update Account
+                    set Password = ?
+                    where UserID = ?
+                     """;
+        try {
+            PreparedStatement stmt = db.getConnection().prepareStatement(sql);
+            stmt.setString(1, password);
+            stmt.setInt(2, userID);
+            n = stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace(); // In ra lỗi để dễ debug
+            return false;
+        }
+        return n > 0;
+    }
+    
+    public static Account getAccountByID(int ID) {
+        DBContext db = DBContext.getInstance();
+        Account account = null;
+        try {
+            String sql = """
+                        select * from Account where AccountID = ?""";
+            PreparedStatement statement = db.getConnection().prepareStatement(sql);
+            statement.setInt(1, ID);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                account = new Account(
+                        rs.getInt("UserID"),
+                        rs.getInt("RoleID"),
+                        rs.getString("Fullname"),
+                        rs.getString("Gender"),
+                        rs.getString("Email"),
+                        rs.getString("PhoneNumber"),
+                        rs.getString("Password"),
+                        rs.getString("URLAvatar"),
+                        rs.getString("Status"),
+                        rs.getString("Address"),
+                        rs.getString("Birthday")
+                );
+            }
+
+        } catch (Exception e) {
+            return null;
+        }
+        return account;
+    }
+
+//    public static void main(String[] args) {
+//        ArrayList<Account> accounts = AccountDAO.getAccounts();
+//        for (Account account : accounts) {
+//            System.out.println(account);
+//        }
+//    }
+}
