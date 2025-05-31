@@ -9,33 +9,33 @@ package model;
  * @author Admin
  */
 public class PostCategory {
-    private int CategoryID;
-    private String CategoryName;
+    private int categoryID;
+    private String categoryName;
     private String URL;
 
     public PostCategory() {
     }
 
-    public PostCategory(int CategoryID, String CategoryName, String URL) {
-        this.CategoryID = CategoryID;
-        this.CategoryName = CategoryName;
+    public PostCategory(int categoryID, String categoryName, String URL) {
+        this.categoryID = categoryID;
+        this.categoryName = categoryName;
         this.URL = URL;
     }
 
     public int getCategoryID() {
-        return CategoryID;
+        return categoryID;
     }
 
-    public void setCategoryID(int CategoryID) {
-        this.CategoryID = CategoryID;
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
     }
 
     public String getCategoryName() {
-        return CategoryName;
+        return categoryName;
     }
 
-    public void setCategoryName(String CategoryName) {
-        this.CategoryName = CategoryName;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getURL() {
@@ -45,5 +45,6 @@ public class PostCategory {
     public void setURL(String URL) {
         this.URL = URL;
     }
+
     
 }
