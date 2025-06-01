@@ -97,5 +97,11 @@ public class Post {
         this.thumbnailURL = thumbnailURL;
     }
 
+    @Override
+    public String toString() {
+        return "Post{" + "postID=" + postID + ", userID=" + userID + ", categoryID=" + categoryID + ", blogTitle=" + blogTitle + ", postDetails=" + postDetails + ", status=" + status + ", updatedDate=" + updatedDate + ", thumbnailURL=" + thumbnailURL + '}';
+    }
+
+    
     
 }

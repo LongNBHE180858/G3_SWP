@@ -13,7 +13,7 @@ import java.sql.DriverManager;
  */
 public class DBContext {
     private static DBContext instance = new DBContext();//singleton pattern
-    Connection connection;
+    protected Connection connection;
     String err;
 
     public static DBContext getInstance() {
@@ -24,7 +24,7 @@ public class DBContext {
         return connection;
     }
 
-    private DBContext() {
+    public DBContext() {
         try {
             if (connection == null || connection.isClosed()) {
                 String user = "sa";
