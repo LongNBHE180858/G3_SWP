@@ -17,7 +17,7 @@
     </head>
     <body>
         <div class="login-container">
-            <form action="Login" method="post">
+            <form action="${pageContext.request.contextPath}/Login" method="post">
                 <input type="email" class="input-field" name="email" placeholder="Enter Your Email">
                 <input type="password" class="input-field" name="password" placeholder="Enter Your Password">
                 <c:if test="${not empty err}">
