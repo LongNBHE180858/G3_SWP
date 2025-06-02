@@ -20,10 +20,9 @@
                 <input type="email" class="input-field" name="userEmail" placeholder="Enter Your Email">
                 <input type="password" class="input-field" name="userPassword" placeholder="Enter Your Password">
                 <div class="links">
-                    <a href="${pageContext.request.contextPath}/userPages/forgotPassword.jsp">Forgot Password ?</a>
-                    <a href="signUp.jsp">Sign up</a>
+                    <a href="${pageContext.request.contextPath}/userPages/login.jsp">Sign in</a>
                 </div>
-                <button type="submit" class="button">Sign in</button>
+                <button type="submit" class="button">Sign up</button>
             </form>
         </div>
     </body>
