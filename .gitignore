@@ -1,17 +1,24 @@
-# Ignore build outputs
+nbproject/private/
+# Ignore build outputs globally
 /build/
+/dist/
 **/build/
 **/dist/
 *.class
 *.jar
 *.war
 
+# OLIT-specific build outputs (có thể bỏ thêm nếu muốn)
+OLIT/build/
+OLIT/dist/
+OLIT/web/WEB-INF/classes/
+
 # NetBeans-specific files
 nbproject/private/
 nbproject/Makefile-*
 nbproject/configs/
 
-# IDEs and OS-specific
+# IDEs and OS-specific files
 *.iml
 *.log
 *.tmp
@@ -19,19 +26,11 @@ nbproject/configs/
 .DS_Store
 Thumbs.db
 
-# Java-specific
+# Java-specific crash/error logs
 hs_err_pid*
+
+# Eclipse/Recommenders
 .recommenders/
-
-# Ignore generated files
-*.class
-*.jar
-*.war
-
-# OLIT-specific (the structure bạn đang dùng)
-OLIT/build/
-OLIT/dist/
-OLIT/web/WEB-INF/classes/
 
 # User-specific config files
 *.ipr

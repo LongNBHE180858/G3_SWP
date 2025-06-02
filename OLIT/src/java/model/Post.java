@@ -18,6 +18,8 @@ public class Post {
     private int status;
     private String updatedDate;
     private String thumbnailURL;
+    private Account account;
+    private PostCategory postCategory;
 
     public Post() {
     }
@@ -96,6 +98,26 @@ public class Post {
     public void setThumbnailURL(String thumbnailURL) {
         this.thumbnailURL = thumbnailURL;
     }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public PostCategory getPostCategory() {
+        return postCategory;
+    }
+
+    public void setPostCategory(PostCategory postCategory) {
+        this.postCategory = postCategory;
+    }
+    
+    
+    
+    
 
     @Override
     public String toString() {
