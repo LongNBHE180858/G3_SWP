@@ -78,6 +78,7 @@
   </header>
 
   <div class="container">
+      
     <!-- Phần hiển thị danh sách blog -->
     <div class="left" id="blog-list">
       <div class="blog-card">
@@ -118,7 +119,12 @@
   </div>
 
   <footer>
-    <p>&copy; 2025 BlogApp - Thiết kế bởi bạn</p>
+    <p>
+        Contact:
+        Phone:
+        
+        
+    </p>
   </footer>
 
 </body>

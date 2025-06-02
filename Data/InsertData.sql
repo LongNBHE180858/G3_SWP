@@ -10,16 +10,16 @@ INSERT INTO Role (RoleID, RoleName) VALUES
 -- Thêm dữ liệu vào bảng Account
 INSERT INTO Account (UserID, RoleID, FullName, Gender, Email, PhoneNumber, Password, URLAvatar, Status, Address, Birthday) VALUES
 -- 1 Admin
-(1, 1, N'Nguyễn Bá Long', 'Male', 'longnbhe180858@fpt.edu.vn', '0123456789', '12345678@L', 'https://example.com/avatar1.jpg', 'active', N'Hà Nội, Việt Nam', '1995-05-15'),
+(1, 1, N'Nguyễn Bá Long', 'Male', 'longnbhe180858@fpt.edu.vn', '0123456789', '12345678@L', 'https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/482744KVW/anh-mo-ta.png', 'active', N'Hà Nội, Việt Nam', '1995-05-15'),
 
 -- 2 Expert
-(2, 2, N'Trần Thị Minh', 'Female', 'minhtthe170234@fpt.edu.vn', '0987654321', '12345678@L', 'https://example.com/avatar2.jpg', 'active', N'Hồ Chí Minh, Việt Nam', '1988-08-20'),
-(3, 2, N'Lê Văn Hùng', 'Male', 'hunglvhe160567@fpt.edu.vn', '0369852147', '12345678@L', 'https://example.com/avatar3.jpg', 'active', N'Đà Nẵng, Việt Nam', '1990-12-03'),
+(2, 2, N'Trần Thị Minh', 'Female', 'minhtthe170234@fpt.edu.vn', '0987654321', '12345678@L', 'https://bareskin.vn/wp-content/uploads/2025/05/hinh-avatar-dep-nhat-the-gioi-15.jpg', 'active', N'Hồ Chí Minh, Việt Nam', '1988-08-20'),
+(3, 2, N'Lê Văn Hùng', 'Male', 'hunglvhe160567@fpt.edu.vn', '0369852147', '12345678@L', 'https://cellphones.com.vn/sforum/wp-content/uploads/2024/02/anh-avatar-ngau-2.jpg', 'active', N'Đà Nẵng, Việt Nam', '1990-12-03'),
 
 -- 3 Student
-(4, 3, N'Phạm Thị Lan', 'Female', 'lanpthe190123@fpt.edu.vn', '0456789123', '12345678@L', 'https://example.com/avatar4.jpg', 'active', N'Hải Phòng, Việt Nam', '2001-03-10'),
-(5, 3, N'Vũ Minh Tuấn', 'Male', 'tuanvmhe190456@fpt.edu.vn', '0789123456', '12345678@L', 'https://example.com/avatar5.jpg', 'active', N'Cần Thơ, Việt Nam', '2000-11-25'),
-(6, 3, N'Hoàng Thị Thu', 'Female', 'thuhtse190789@fpt.edu.vn', '0321654987', '12345678@L', 'https://example.com/avatar6.jpg', 'active', N'Huế, Việt Nam', '2002-07-18');
+(4, 3, N'Phạm Thị Lan', 'Female', 'lanpthe190123@fpt.edu.vn', '0456789123', '12345678@L', 'https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau.jpeg', 'active', N'Hải Phòng, Việt Nam', '2001-03-10'),
+(5, 3, N'Vũ Minh Tuấn', 'Male', 'tuanvmhe190456@fpt.edu.vn', '0789123456', '12345678@L', 'https://toigingiuvedep.vn/wp-content/uploads/2021/01/avatar-dep-cute.jpg', 'active', N'Cần Thơ, Việt Nam', '2000-11-25'),
+(6, 3, N'Hoàng Thị Thu', 'Female', 'thuhtse190789@fpt.edu.vn', '0321654987', '12345678@L', 'https://chiemtaimobile.vn/images/companies/1/%E1%BA%A2nh%20Blog/avatar-facebook-dep/top-36-anh-dai-dien-dep-cho-nu/hinh-anh-hut-thuoc-ngau-anime-nu-facebook.jpg?1708402451277', 'active', N'Huế, Việt Nam', '2002-07-18');
 
 -- Thêm dữ liệu vào bảng PostCategory
 INSERT INTO PostCategory (CategoryID, CategoryName, URL) VALUES
@@ -31,11 +31,11 @@ INSERT INTO PostCategory (CategoryID, CategoryName, URL) VALUES
 
 -- Thêm dữ liệu vào bảng Post
 INSERT INTO Post (PostID, UserID, CategoryID, BlogTitle, PostDetails, Status, UpdatedDate, ThumbnailURL) VALUES
-(1, 1, 1, N'Xu hướng giáo dục trực tuyến 2024', N'Bài viết về những xu hướng mới trong giáo dục điện tử...', 1, '2024-05-15 10:30:00', 'https://example.com/thumb1.jpg'),
-(2, 2, 2, N'5 mẹo học hiệu quả', N'Những phương pháp học tập được chứng minh hiệu quả...', 1, '2024-05-10 14:20:00', 'https://example.com/thumb2.jpg'),
-(3, 3, 3, N'AI trong giáo dục', N'Ứng dụng trí tuệ nhân tạo trong việc học và dạy...', 1, '2024-05-08 09:15:00', 'https://example.com/thumb3.jpg'),
-(4, 2, 4, N'Kinh nghiệm thi chứng chỉ IT', N'Chia sẻ kinh nghiệm chuẩn bị và thi các chứng chỉ IT...', 1, '2024-05-05 16:45:00', 'https://example.com/thumb4.jpg'),
-(5, 1, 5, N'Sự kiện EdTech Vietnam 2024', N'Thông tin về hội thảo công nghệ giáo dục lớn nhất năm...', 1, '2024-05-01 11:00:00', 'https://example.com/thumb5.jpg');
+(1, 1, 1, N'Xu hướng giáo dục trực tuyến 2024', N'Bài viết về những xu hướng mới trong giáo dục điện tử...', 1, '2024-05-15 10:30:00', 'https://gitiho.com/caches/p_medium_large//uploads/315313/images/image_xu-huong-elearning-1.jpg'),
+(2, 2, 2, N'5 mẹo học hiệu quả', N'Những phương pháp học tập được chứng minh hiệu quả...', 1, '2024-05-10 14:20:00', 'https://edubit.vn/data/blog/photo_1631782135.jpg?v=1631782136'),
+(3, 3, 3, N'AI trong giáo dục', N'Ứng dụng trí tuệ nhân tạo trong việc học và dạy...', 1, '2024-05-08 09:15:00', 'https://askany.com/_next/image?url=https%3A%2F%2Fd2czqxs5dso3qv.cloudfront.net%2Fimages%2Fb16fce83-f812-4b32-802d-7aac6fb27101.png&w=1920&q=75'),
+(4, 2, 4, N'Kinh nghiệm thi chứng chỉ IT', N'Chia sẻ kinh nghiệm chuẩn bị và thi các chứng chỉ IT...', 1, '2024-05-05 16:45:00', 'https://edusa.vn/wp-content/uploads/2023/11/cac-loai-chung-chi-tin-hoc-cho-sinh-vien-1.webp'),
+(5, 1, 5, N'Sự kiện EdTech Vietnam 2024', N'Thông tin về hội thảo công nghệ giáo dục lớn nhất năm...', 1, '2024-05-01 11:00:00', 'https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_1620,h_1080/https://vku.udn.vn/wp-content/uploads/2024/07/VKU-37-3.jpg');
 
 -- Thêm dữ liệu vào bảng Subject
 INSERT INTO Subject (SubjectID, SubjectName, Category, OwnerID, NumOfLessons, Status) VALUES
@@ -128,9 +128,9 @@ INSERT INTO UserAnswer (AnswerID, QuestionID, AttemptID, UserAnswerContent, IsCo
 
 -- Thêm dữ liệu vào bảng Slider
 INSERT INTO Slider (SliderID, UserID, Title, ImageURL, Backlink, Status, Notes, DisplayOrder, ValidFrom) VALUES
-(1, 1, N'Khóa học Java mới', 'https://example.com/slider1.jpg', '/course/java-basic', 1, N'Slider quảng cáo khóa Java', 1, '2024-05-01'),
-(2, 1, N'Ưu đãi 50% khóa Database', 'https://example.com/slider2.jpg', '/course/database-design', 1, N'Slider khuyến mãi', 2, '2024-05-05'),
-(3, 1, N'Khai giảng React Course', 'https://example.com/slider3.jpg', '/course/react-beginners', 1, N'Thông báo khai giảng', 3, '2024-05-10');
+(1, 1, N'Khóa học Java mới', 'https://aptech.fpt.edu.vn/wp-content/uploads/2022/06/java-la-ngon-ngu-lap-trinh-rat-da-dung.jpg', '/course/java-basic', 1, N'Slider quảng cáo khóa Java', 1, '2024-05-01'),
+(2, 1, N'Ưu đãi 50% khóa Database', 'https://vtiacademy.edu.vn/upload/images/data-analyst-26.png', '/course/database-design', 1, N'Slider khuyến mãi', 2, '2024-05-05'),
+(3, 1, N'Khai giảng React Course', 'https://vtiacademy.edu.vn/upload/images/artboard-1-copy-16-100.jpg', '/course/react-beginners', 1, N'Thông báo khai giảng', 3, '2024-05-10');
 
 -- Thêm dữ liệu vào bảng Setting
 INSERT INTO Setting (SettingID, UserID, SettingType, SettingValue, SettingOrder, SettingDecription, SettingStatus) VALUES
