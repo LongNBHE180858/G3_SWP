@@ -21,8 +21,8 @@
             }
         %>
 
-    </head>
-    <body>
-        <h1>This is home</h1>
-    </body>
+</head>
+<body>
+    <h1>This is home</h1>
+</body>
 </html>
