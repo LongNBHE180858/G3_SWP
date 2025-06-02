@@ -16,7 +16,7 @@
     </head>
     <body>
         <div class="login-container">
-            <form action="Login" method="post">
+            <form action="/OLIT/SendVerificationServlet" method="post">
                 <h2>Reset your password</h2>
                 <p>Please enter the email address you’d like your password reset information sent to</p>
                 <input type="email" class="input-field" name="email" placeholder="Enter Your Email">

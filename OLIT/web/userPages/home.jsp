@@ -20,7 +20,10 @@
                 out.println("<p>Email: " + session.getAttribute("userEmail") + "</p>");
             }
         %>
-
+        
+        <a href="${pageContext.request.contextPath}/UserProfile">
+            <img src="${pageContext.request.contextPath}/images/avatar.png" alt="Avatar" style="width:40px; height:40px; border-radius:50%;">
+        </a>
     </head>
     <body>
         <h1>This is home</h1>
