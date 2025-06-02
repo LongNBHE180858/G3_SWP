@@ -1,0 +1,47 @@
+# Ignore build outputs
+/build/
+**/build/
+**/dist/
+*.class
+*.jar
+*.war
+
+# NetBeans-specific files
+nbproject/private/
+nbproject/Makefile-*
+nbproject/configs/
+
+# IDEs and OS-specific
+*.iml
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# Java-specific
+hs_err_pid*
+.recommenders/
+
+# Ignore generated files
+*.class
+*.jar
+*.war
+
+# OLIT-specific (the structure bạn đang dùng)
+OLIT/build/
+OLIT/dist/
+OLIT/web/WEB-INF/classes/
+
+# User-specific config files
+*.ipr
+*.iws
+*.idea/
+
+# Environment files
+.env
+*.env
+
+# Backup files
+*~
+*.bak
