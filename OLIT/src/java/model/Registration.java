@@ -9,5 +9,81 @@ package model;
  * @author Nam
  */
 public class Registration {
+    private int RegistrationID;
+    private int UserID;
+    private int CourseID;
+    private int PackageID;
+    private int ApprovedBy;
+    private String Status;
+    private String ValidFrom;
+    private String ValidTo;
+
+    public Registration() {
+    }
+
+    public int getRegistrationID() {
+        return RegistrationID;
+    }
+
+    public void setRegistrationID(int RegistrationID) {
+        this.RegistrationID = RegistrationID;
+    }
+
+    public int getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(int UserID) {
+        this.UserID = UserID;
+    }
+
+    public int getCourseID() {
+        return CourseID;
+    }
+
+    public void setCourseID(int CourseID) {
+        this.CourseID = CourseID;
+    }
+
+    public int getPackageID() {
+        return PackageID;
+    }
+
+    public void setPackageID(int PackageID) {
+        this.PackageID = PackageID;
+    }
+
+    public int getApprovedBy() {
+        return ApprovedBy;
+    }
+
+    public void setApprovedBy(int ApprovedBy) {
+        this.ApprovedBy = ApprovedBy;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
+
+    public String getValidFrom() {
+        return ValidFrom;
+    }
+
+    public void setValidFrom(String ValidFrom) {
+        this.ValidFrom = ValidFrom;
+    }
+
+    public String getValidTo() {
+        return ValidTo;
+    }
+
+    public void setValidTo(String ValidTo) {
+        this.ValidTo = ValidTo;
+    }
+    
     
 }
