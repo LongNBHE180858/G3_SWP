@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
 package controller;
 
 import jakarta.servlet.ServletException;
@@ -23,9 +18,10 @@ public class ResetPasswordServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String newPassword = request.getParameter("newPassword");
+        String confirmPassword = request.getParameter("confirmPassword");
 
-        if (AccountDAO.changePasswordByEmail(newPassword, email))   
-            response.sendRedirect("userPages/ResetPassword.jsp?status=success");
+        if (newPassword.equals(confirmPassword) && AccountDAO.changePasswordByEmail(newPassword, email))   
+            response.sendRedirect("userPages/login.jsp");
         else {
             response.sendRedirect("userPages/ResetPassword.jsp?status=fail");
         }

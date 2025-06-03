@@ -104,7 +104,7 @@ public class AccountDAO {
         Account account = null;
         try {
             String sql = """
-                        select * from Account where AccountID = ?""";
+                        select * from Account where UserID = ?""";
             PreparedStatement statement = db.getConnection().prepareStatement(sql);
             statement.setInt(1, ID);
             ResultSet rs = statement.executeQuery();
@@ -191,10 +191,39 @@ public class AccountDAO {
     }
 }
 
+    public static boolean editUserProfile(int userID, String fullName, String gender, String phoneNumber, String birthday) {
+    DBContext db = DBContext.getInstance();
+    int n = 0;
+    String sql = """
+        UPDATE Account
+        SET FullName = ?,
+            Gender = ?,
+            PhoneNumber = ?,
+            Birthday = ?
+        WHERE UserID = ?
+    """;
+    try {
+        PreparedStatement stmt = db.getConnection().prepareStatement(sql);
+        stmt.setString(1, fullName);
+        stmt.setString(2, gender);
+        stmt.setString(3, phoneNumber);
+        stmt.setString(4, birthday);
+        //stmt.setString(5, address);
+        stmt.setInt(5, userID);
+        n = stmt.executeUpdate();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+    return n > 0;
+}
+
 //    public static void main(String[] args) {
-//        ArrayList<Account> accounts = AccountDAO.getAccounts();
-//        for (Account account : accounts) {
-//            System.out.println(account);
-//        }
+////        ArrayList<Account> accounts = AccountDAO.getAccounts();
+////        for (Account account : accounts) {
+////            System.out.println(account);
+////        }
+//
+//        //boolean a = AccountDAO.editUserProfile(1, "NAM", "Male", "0112", "13/05/2004");
 //    }
 }

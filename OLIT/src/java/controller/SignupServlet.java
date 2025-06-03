@@ -37,7 +37,7 @@ public class SignupServlet extends HttpServlet {
         String birthday = request.getParameter("birthday");
 
         if (AccountDAO.getAccountByMail(email) != null) {
-            response.sendRedirect("userPages/signup.jsp?status=fail");
+            response.sendRedirect("userPages/signUp.jsp?status=fail");
             return;
         }
 
@@ -55,9 +55,10 @@ public class SignupServlet extends HttpServlet {
 
         boolean created = AccountDAO.insertAccount(newAccount);
         if (created) {
-            response.sendRedirect("userPages/signup.jsp?status=success");
+            response.sendRedirect("userPages/signUp.jsp?status=success");
         } else {
-            response.sendRedirect("userPages/signup.jsp?status=fail");
+            System.out.println("1");
+            response.sendRedirect("userPages/signUp.jsp?status=fail");
         }
     }
 }

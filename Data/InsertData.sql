@@ -8,18 +8,18 @@ INSERT INTO Role (RoleID, RoleName) VALUES
 (3, 'Student');
 
 -- Thêm dữ liệu vào bảng Account
-INSERT INTO Account (UserID, RoleID, FullName, Gender, Email, PhoneNumber, Password, URLAvatar, Status, Address, Birthday) VALUES
+INSERT INTO Account (RoleID, FullName, Gender, Email, PhoneNumber, Password, URLAvatar, Status, Address, Birthday) VALUES
 -- 1 Admin
-(1, 1, N'Nguyễn Bá Long', 'Male', 'longnbhe180858@fpt.edu.vn', '0123456789', '12345678@L', 'https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/482744KVW/anh-mo-ta.png', 'active', N'Hà Nội, Việt Nam', '1995-05-15'),
+(1, N'Nguyễn Bá Long', 'Male', 'longnbhe180858@fpt.edu.vn', '0123456789', '12345678@L', 'https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/482744KVW/anh-mo-ta.png', 'active', N'Hà Nội, Việt Nam', '1995-05-15'),
 
 -- 2 Expert
-(2, 2, N'Trần Thị Minh', 'Female', 'minhtthe170234@fpt.edu.vn', '0987654321', '12345678@L', 'https://bareskin.vn/wp-content/uploads/2025/05/hinh-avatar-dep-nhat-the-gioi-15.jpg', 'active', N'Hồ Chí Minh, Việt Nam', '1988-08-20'),
-(3, 2, N'Lê Văn Hùng', 'Male', 'hunglvhe160567@fpt.edu.vn', '0369852147', '12345678@L', 'https://cellphones.com.vn/sforum/wp-content/uploads/2024/02/anh-avatar-ngau-2.jpg', 'active', N'Đà Nẵng, Việt Nam', '1990-12-03'),
+(2, N'Trần Thị Minh', 'Female', 'minhtthe170234@fpt.edu.vn', '0987654321', '12345678@L', 'https://bareskin.vn/wp-content/uploads/2025/05/hinh-avatar-dep-nhat-the-gioi-15.jpg', 'active', N'Hồ Chí Minh, Việt Nam', '1988-08-20'),
+(2, N'Lê Văn Hùng', 'Male', 'hunglvhe160567@fpt.edu.vn', '0369852147', '12345678@L', 'https://cellphones.com.vn/sforum/wp-content/uploads/2024/02/anh-avatar-ngau-2.jpg', 'active', N'Đà Nẵng, Việt Nam', '1990-12-03'),
 
 -- 3 Student
-(4, 3, N'Phạm Thị Lan', 'Female', 'lanpthe190123@fpt.edu.vn', '0456789123', '12345678@L', 'https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau.jpeg', 'active', N'Hải Phòng, Việt Nam', '2001-03-10'),
-(5, 3, N'Vũ Minh Tuấn', 'Male', 'tuanvmhe190456@fpt.edu.vn', '0789123456', '12345678@L', 'https://toigingiuvedep.vn/wp-content/uploads/2021/01/avatar-dep-cute.jpg', 'active', N'Cần Thơ, Việt Nam', '2000-11-25'),
-(6, 3, N'Hoàng Thị Thu', 'Female', 'thuhtse190789@fpt.edu.vn', '0321654987', '12345678@L', 'https://chiemtaimobile.vn/images/companies/1/%E1%BA%A2nh%20Blog/avatar-facebook-dep/top-36-anh-dai-dien-dep-cho-nu/hinh-anh-hut-thuoc-ngau-anime-nu-facebook.jpg?1708402451277', 'active', N'Huế, Việt Nam', '2002-07-18');
+(3, N'Phạm Thị Lan', 'Female', 'lanpthe190123@fpt.edu.vn', '0456789123', '12345678@L', 'https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau.jpeg', 'active', N'Hải Phòng, Việt Nam', '2001-03-10'),
+(3, N'Vũ Minh Tuấn', 'Male', 'tuanvmhe190456@fpt.edu.vn', '0789123456', '12345678@L', 'https://toigingiuvedep.vn/wp-content/uploads/2021/01/avatar-dep-cute.jpg', 'active', N'Cần Thơ, Việt Nam', '2000-11-25'),
+(3, N'Hoàng Thị Thu', 'Female', 'thuhtse190789@fpt.edu.vn', '0321654987', '12345678@L', 'https://chiemtaimobile.vn/images/companies/1/%E1%BA%A2nh%20Blog/avatar-facebook-dep/top-36-anh-dai-dien-dep-cho-nu/hinh-anh-hut-thuoc-ngau-anime-nu-facebook.jpg?1708402451277', 'active', N'Huế, Việt Nam', '2002-07-18');
 
 -- Thêm dữ liệu vào bảng PostCategory
 INSERT INTO PostCategory (CategoryID, CategoryName, URL) VALUES
@@ -45,22 +45,6 @@ INSERT INTO Subject (SubjectID, SubjectName, Category, OwnerID, NumOfLessons, St
 (4, N'Marketing số', N'Marketing', 3, 12, 1),
 (5, N'Quản lý dự án IT', N'Management', 2, 18, 1);
 
--- Thêm dữ liệu vào bảng PricePackage
-INSERT INTO PricePackage (PackageID, SubjectID, Name, AccessDuration, ListPrice, SalePrice, Status, Description) VALUES
-(1, 1, N'Gói cơ bản', 30, 500000.00, 400000.00, 1, N'Truy cập khóa học trong 30 ngày'),
-(2, 1, N'Gói mở rộng', 90, 1200000.00, 1000000.00, 1, N'Truy cập khóa học trong 90 ngày + tài liệu'),
-(3, 2, N'Gói tiêu chuẩn', 60, 800000.00, 650000.00, 1, N'Truy cập khóa học trong 60 ngày'),
-(4, 3, N'Gói cơ bản', 45, 700000.00, 600000.00, 1, N'Truy cập khóa học trong 45 ngày'),
-(5, 4, N'Gói premium', 120, 1500000.00, 1200000.00, 1, N'Truy cập không giới hạn + mentor support');
-
--- Thêm dữ liệu vào bảng Registration
-INSERT INTO Registration (RegistrationID, UserID, SubjectID, PackageID, ApprovedBy, Status, ValidFrom, ValidTo) VALUES
-(1, 4, 1, 1, 1, 'Approved', '2024-05-01', '2024-05-31'),
-(2, 5, 2, 3, 1, 'Approved', '2024-05-05', '2024-07-04'),
-(3, 6, 3, 4, 1, 'Approved', '2024-05-10', '2024-06-24'),
-(4, 4, 4, 5, 1, 'Pending', '2024-05-15', '2024-09-12'),
-(5, 5, 1, 2, 1, 'Approved', '2024-05-12', '2024-08-10');
-
 -- Thêm dữ liệu vào bảng Course
 INSERT INTO Course (CourseID, SubjectID, CourseTitle, CourseTag, URLCourse, CourseDetail, CourseLevel, FeatureFlag, Status, CourseraDuration) VALUES
 (1, 1, N'Nhập môn Java Programming', N'java,programming,beginner', 'intro-java-programming', N'Khóa học cơ bản về lập trình Java', N'Beginner', N'featured', 1, 40),
@@ -69,8 +53,25 @@ INSERT INTO Course (CourseID, SubjectID, CourseTitle, CourseTag, URLCourse, Cour
 (4, 4, N'Digital Marketing Strategy', N'marketing,digital,strategy', 'digital-marketing-strategy', N'Chiến lược marketing số hiệu quả', N'Intermediate', N'trending', 1, 35),
 (5, 5, N'Agile Project Management', N'agile,project,management', 'agile-project-management', N'Quản lý dự án theo phương pháp Agile', N'Advanced', N'featured', 1, 25);
 
+-- Thêm dữ liệu vào bảng PricePackage
+INSERT INTO PricePackage (PackageID, CourseID, Name, AccessDuration, ListPrice, SalePrice, Status, Description) VALUES
+(1, 1, N'Gói cơ bản', 30, 500000.00, 400000.00, 1, N'Truy cập khóa học trong 30 ngày'),
+(2, 1, N'Gói mở rộng', 90, 1200000.00, 1000000.00, 1, N'Truy cập khóa học trong 90 ngày + tài liệu'),
+(3, 2, N'Gói tiêu chuẩn', 60, 800000.00, 650000.00, 1, N'Truy cập khóa học trong 60 ngày'),
+(4, 3, N'Gói cơ bản', 45, 700000.00, 600000.00, 1, N'Truy cập khóa học trong 45 ngày'),
+(5, 4, N'Gói premium', 120, 1500000.00, 1200000.00, 1, N'Truy cập không giới hạn + mentor support');
+
+-- Thêm dữ liệu vào bảng Registration
+INSERT INTO Registration (RegistrationID, UserID, CourseID, PackageID, ApprovedBy, Status, ValidFrom, ValidTo) VALUES
+(1, 4, 1, 1, 1, 'Approved', '2024-05-01', '2024-05-31'),
+(2, 5, 2, 3, 1, 'Approved', '2024-05-05', '2024-07-04'),
+(3, 6, 3, 4, 1, 'Approved', '2024-05-10', '2024-06-24'),
+(4, 4, 4, 5, 1, 'Pending', '2024-05-15', '2024-09-12'),
+(5, 5, 1, 2, 1, 'Approved', '2024-05-12', '2024-08-10');
+
+
 -- Thêm dữ liệu vào bảng Lesson
-INSERT INTO Lesson (LessonID, SubjectID, LessonTitle, LessonDetails, Status, [Order]) VALUES
+INSERT INTO Lesson (LessonID, CourseID, LessonTitle, LessonDetails, Status, [Order]) VALUES
 (1, 1, N'Giới thiệu về Java', N'Tổng quan về ngôn ngữ lập trình Java và môi trường phát triển', 1, 1),
 (2, 1, N'Biến và kiểu dữ liệu', N'Học về các kiểu dữ liệu cơ bản trong Java', 1, 2),
 (3, 1, N'Cấu trúc điều khiển', N'If-else, switch-case, loops trong Java', 1, 3),
@@ -81,7 +82,7 @@ INSERT INTO Lesson (LessonID, SubjectID, LessonTitle, LessonDetails, Status, [Or
 (8, 4, N'SEO cơ bản', N'Tối ưu hóa công cụ tìm kiếm cho website', 1, 1);
 
 -- Thêm dữ liệu vào bảng Quiz
-INSERT INTO Quiz (QuizID, SubjectID, QuizName, PassRate, QuizType, QuizDuration, QuizLevel, Status) VALUES
+INSERT INTO Quiz (QuizID, CourseID, QuizName, PassRate, QuizType, QuizDuration, QuizLevel, Status) VALUES
 (1, 1, N'Kiểm tra Java cơ bản', 70.00, N'Multiple Choice', 30, N'Beginner', 1),
 (2, 2, N'Quiz thiết kế Database', 75.00, N'Mixed', 45, N'Intermediate', 1),
 (3, 3, N'React Fundamentals Test', 65.00, N'Multiple Choice', 25, N'Beginner', 1),

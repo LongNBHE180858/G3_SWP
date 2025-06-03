@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
 package controller;
 
 import jakarta.servlet.ServletException;
@@ -33,6 +28,12 @@ public class SendVerificationServlet extends HttpServlet {
             String resetLink = "http://localhost:8080/OLIT/userPages/ResetPassword.jsp?email=" + email;
 
             sendVerificationEmail(email, resetLink); 
+            String message = "Thông tin thay đổi mật khẩu của bạn đã được gửi tới email: " + email;
+
+            request.setAttribute("message", message);
+            request.setAttribute("email", email);
+
+            request.getRequestDispatcher("userPages//forgotPassword.jsp").forward(request, response);    
         }
         else 
             response.sendRedirect("userPages/forgotPassword.jsp");
@@ -65,7 +66,6 @@ public class SendVerificationServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-
     /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description

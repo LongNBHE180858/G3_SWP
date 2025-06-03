@@ -32,7 +32,7 @@ CREATE TABLE Role (
 );
 
 CREATE TABLE Account (
-    UserID INT PRIMARY KEY,
+    UserID INT IDENTITY(1,1) PRIMARY KEY,
     RoleID INT FOREIGN KEY REFERENCES Role(RoleID),
     FullName NVARCHAR(100) NOT NULL,
     Gender NVARCHAR(10) CHECK (Gender IN ('Male', 'Female', 'Other')) DEFAULT 'Other',
@@ -92,29 +92,6 @@ CREATE TABLE Subject (
     NumOfLessons INT,
     Status BIT NOT NULL DEFAULT 0
 );
-
-CREATE TABLE PricePackage (
-    PackageID INT PRIMARY KEY,
-    SubjectID INT FOREIGN KEY REFERENCES Subject(SubjectID),
-    Name NVARCHAR(100) NOT NULL,
-    AccessDuration INT,
-    ListPrice DECIMAL(18,2),
-    SalePrice DECIMAL(18,2),
-    Status BIT NOT NULL DEFAULT 0,
-    Description NVARCHAR(MAX)
-);
-
-CREATE TABLE Registration (
-    RegistrationID INT PRIMARY KEY,
-    UserID INT FOREIGN KEY REFERENCES Account(UserID),
-    SubjectID INT FOREIGN KEY REFERENCES Subject(SubjectID),
-    PackageID INT FOREIGN KEY REFERENCES PricePackage(PackageID),
-    ApprovedBy INT FOREIGN KEY REFERENCES Account(UserID),
-    Status NVARCHAR(20) NOT NULL CHECK (Status IN ('Pending', 'Approved', 'NotApprove')) DEFAULT 'Pending',
-    ValidTo DATE,
-    ValidFrom DATE
-);
-
 CREATE TABLE Course (
     CourseID INT PRIMARY KEY,
     SubjectID INT FOREIGN KEY REFERENCES Subject(SubjectID),
@@ -128,9 +105,33 @@ CREATE TABLE Course (
     CourseraDuration INT
 );
 
+CREATE TABLE PricePackage (
+    PackageID INT PRIMARY KEY,
+    CourseID INT FOREIGN KEY REFERENCES Course(CourseID),
+    Name NVARCHAR(100) NOT NULL,
+    AccessDuration INT,
+    ListPrice DECIMAL(18,2),
+    SalePrice DECIMAL(18,2),
+    Status BIT NOT NULL DEFAULT 0,
+    Description NVARCHAR(MAX)
+);
+
+CREATE TABLE Registration (
+    RegistrationID INT PRIMARY KEY,
+    UserID INT FOREIGN KEY REFERENCES Account(UserID),
+    CourseID INT FOREIGN KEY REFERENCES Course(CourseID),
+    PackageID INT FOREIGN KEY REFERENCES PricePackage(PackageID),
+    ApprovedBy INT FOREIGN KEY REFERENCES Account(UserID),
+    Status NVARCHAR(20) NOT NULL CHECK (Status IN ('Pending', 'Approved', 'NotApprove')) DEFAULT 'Pending',
+    ValidTo DATE,
+    ValidFrom DATE
+);
+
+
+
 CREATE TABLE Lesson (
     LessonID INT PRIMARY KEY,
-    SubjectID INT FOREIGN KEY REFERENCES Subject(SubjectID),
+     CourseID INT FOREIGN KEY REFERENCES Course(CourseID),
     LessonTitle NVARCHAR(255) NOT NULL,
     LessonDetails NVARCHAR(MAX),
     Status BIT NOT NULL DEFAULT 0,
@@ -139,7 +140,7 @@ CREATE TABLE Lesson (
 
 CREATE TABLE Quiz (
     QuizID INT PRIMARY KEY,
-    SubjectID INT FOREIGN KEY REFERENCES Subject(SubjectID),
+    CourseID INT FOREIGN KEY REFERENCES Course(CourseID),
     QuizName NVARCHAR(100) NOT NULL,
     PassRate DECIMAL(5,2),
     QuizType NVARCHAR(50),
