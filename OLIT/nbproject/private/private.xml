@@ -3,35 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/dao/AccountDAO.java</file>
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/controller/Login.java</file>
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/web/userPages/home.jsp</file>
+            <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/model/PostCategory.java</file>
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/dao/PostDAO.java</file>
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/web/userPages/signUp.jsp</file>
-            <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/controller/SignupServlet.java</file>
+            <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/dao/RegistrationDAO.java</file>
+            <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/model/Registration.java</file>
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/web/userPages/login.jsp</file>
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/controller/BlogListServlet.java</file>
+            <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/controller/MyRegistration.java</file>
+            <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/model/PricePackage.java</file>
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/model/Course.java</file>
+            <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/web/userPages/userProfile.jsp</file>
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/web/userPages/ResetPassword.jsp</file>
+            <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/web/userPages/myRegistration.jsp</file>
+            <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/controller/UserProfile.java</file>
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/web/userPages/forgotPassword.jsp</file>
-            <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/controller/SendVerificationServlet.java</file>
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/controller/ResetPasswordServlet.java</file>
+            <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/controller/SendVerificationServlet.java</file>
             <file>file:/Users/macbook/Documents/FPT/G3_SWP/OLIT/src/java/model/Account.java</file>
-=======
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/web/userPages/login.jsp</file>
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/web/index.html</file>
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/web/userPages/forgotPassword.jsp</file>
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/src/java/model/Account.java</file>
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/web/userPages/home.jsp</file>
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/src/java/controller/SendVerificationServlet.java</file>
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/src/java/controller/ResetPasswordServlet.java</file>
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/src/java/dao/CourseDAO.java</file>
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/src/java/dao/AccountDAO.java</file>
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/src/java/dao/RoleDAO.java</file>
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/web/WEB-INF/web.xml</file>
-            <file>file:/Users/macbook/Documents/Freelance%20Project/G3_SWP/OLIT/src/java/controller/Login.java</file>
->>>>>>> acd39e95187b29e8a8c30f75b1a4fd88cb8235b2
         </group>
     </open-files>
 </project-private>

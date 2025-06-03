@@ -17,6 +17,8 @@ public class Registration {
     private String Status;
     private String ValidFrom;
     private String ValidTo;
+    private Course Course;
+    private PricePackage PricePackage;
 
     public Registration() {
     }
@@ -83,6 +85,22 @@ public class Registration {
 
     public void setValidTo(String ValidTo) {
         this.ValidTo = ValidTo;
+    }
+
+    public Course getCourse() {
+        return Course;
+    }
+
+    public void setCourse(Course Course) {
+        this.Course = Course;
+    }
+
+    public PricePackage getPricePackage() {
+        return PricePackage;
+    }
+
+    public void setPricePackage(PricePackage PricePackage) {
+        this.PricePackage = PricePackage;
     }
     
     

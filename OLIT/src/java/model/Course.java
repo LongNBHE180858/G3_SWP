@@ -12,7 +12,7 @@ public class Course {
 
     private int courseID;
     private int subjectID;
-    private String courseTile;
+    private String courseTitle;
     private String courseTag;
     private String urlCourse;
     private String courseDetail;
@@ -27,7 +27,7 @@ public class Course {
     public Course(int courseID, int subjectID, String courseTile, String courseTag, String urlCourse, String courseDetail, String courseLevel, String featureFlag, int status, int courseraDuration) {
         this.courseID = courseID;
         this.subjectID = subjectID;
-        this.courseTile = courseTile;
+        this.courseTitle = courseTile;
         this.courseTag = courseTag;
         this.urlCourse = urlCourse;
         this.courseDetail = courseDetail;
@@ -53,13 +53,15 @@ public class Course {
         this.subjectID = subjectID;
     }
 
-    public String getCourseTile() {
-        return courseTile;
+    public String getCourseTitle() {
+        return courseTitle;
     }
 
-    public void setCourseTile(String courseTile) {
-        this.courseTile = courseTile;
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle;
     }
+    
+    
 
     public String getCourseTag() {
         return courseTag;

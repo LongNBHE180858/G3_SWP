@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="model.Registration" %>
+<%@ page import="model.Course" %>
+<%@ page import="model.PricePackage" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -215,19 +219,32 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <%
+                                List<Registration> registrations = (List<Registration>) request.getAttribute("registrations");
+                                if (registrations != null) {
+                                    for (Registration r : registrations) {
+                            %>
                                 <tr>
-                                    <td>101</td>
-                                    <td>Java Web</td>
-                                    <td>2025-05-20 14:30</td>
-                                    <td>Premium</td>
-                                    <td>$199</td>
-                                    <td><span class="badge bg-success">Active</span></td>
-                                    <td>2025-05-21</td>
-                                    <td>2025-08-21</td>
+                                    <td><%= r.getRegistrationID() %></td>
+                                    <td><%= r.getCourse().getCourseTitle() %></td>
+                                    <td><%= r.getValidFrom() %></td>
+                                    <td><%= r.getPricePackage().getName() %></td>
+                                    <td>$<%= r.getPricePackage().getSalePrice() %></td>
+                                    <td>
+                                        <span class="badge bg-<%= "Active".equals(r.getStatus()) ? "success" : "secondary" %>">
+                                            <%= r.getStatus() %>
+                                        </span>
+                                    </td>
+                                    <td><%= r.getValidFrom() %></td>
+                                    <td><%= r.getValidTo() %></td>
                                     <td><button class="btn btn-danger btn-sm cancel-btn">Cancel</button></td>
                                 </tr>
-
+                            <%
+                                    }
+                                }
+                            %>
                             </tbody>
+
                         </table>
                     </div>
 

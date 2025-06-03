@@ -24,6 +24,7 @@
         <a href="${pageContext.request.contextPath}/UserProfile">
             <img src="${pageContext.request.contextPath}/images/avatar.png" alt="Avatar" style="width:40px; height:40px; border-radius:50%;">
         </a>
+    <a href="${pageContext.request.contextPath}/MyRegistration">Registration</a>
     </head>
     <body>
         <h1>This is home</h1>
