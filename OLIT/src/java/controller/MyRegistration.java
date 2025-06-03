@@ -34,10 +34,10 @@ public class MyRegistration extends HttpServlet {
         }
 
         int userID = (int) session.getAttribute("userID");
+        System.out.println(userID);
 
             RegistrationDAO dao = new RegistrationDAO();
             List<Registration> registrations = dao.getRegistrationsByUserID(userID);
-
             request.setAttribute("registrations", registrations);
             request.getRequestDispatcher("userPages/myRegistration.jsp").forward(request, response);
     }

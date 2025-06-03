@@ -237,7 +237,11 @@
                                     </td>
                                     <td><%= r.getValidFrom() %></td>
                                     <td><%= r.getValidTo() %></td>
-                                    <td><button class="btn btn-danger btn-sm cancel-btn">Cancel</button></td>
+                                    <td>
+<% if ("Pending".equals(r.getStatus())) { %>
+    <button class="btn btn-danger btn-sm cancel-btn">Cancel</button>
+<% } %>
+</td>
                                 </tr>
                             <%
                                     }
@@ -278,7 +282,33 @@
             <p>📞 Contact: contact@onlinelearn.vn | ☎ 0123 456 789</p>
         </footer>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('search');
+        const subjectFilter = document.getElementById('subjectFilter');
+        const tableRows = document.querySelectorAll('tbody tr');
 
+        function filterTable() {
+            const searchText = searchInput.value.toLowerCase().trim();
+            const selectedSubject = subjectFilter.value;
+
+            tableRows.forEach(row => {
+                const subject = row.cells[1].textContent.trim();
+                const matchSearch = subject.toLowerCase().includes(searchText);
+                const matchFilter = !selectedSubject || subject === selectedSubject;
+
+                if (matchSearch && matchFilter) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', filterTable);
+        subjectFilter.addEventListener('change', filterTable);
+    });
+</script>
     </body>
 
 </html>
