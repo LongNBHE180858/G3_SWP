@@ -106,8 +106,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         session.setAttribute("roleID", loggedInAccount.getRoleID());
         session.setAttribute("userEmail", loggedInAccount.getEmail());
         session.setAttribute("fullAccount", loggedInAccount);
+response.sendRedirect(request.getContextPath() + "/HomeServlet");
 
-        response.sendRedirect(request.getContextPath() + "/userPages/home.jsp");
     } else {
         err = "Wrong email or password";
         request.setAttribute("err", err);
