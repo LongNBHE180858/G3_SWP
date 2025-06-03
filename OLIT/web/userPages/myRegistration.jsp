@@ -190,9 +190,9 @@
         <header>
             <div class="logo">Online Learn</div>
             <div class="nav-links">
-                <a href="#">Home</a>
-                <a href="#">Course List</a>
-                <a href="#">Blog List</a>
+                <a href="${pageContext.request.contextPath}/HomeServlet">Home</a>
+                <a href="${pageContext.request.contextPath}/MyCourseServlet">Course List</a>
+                <a href="${pageContext.request.contextPath}/BlogListServlet">Blog List</a>
                 <a href="#">Quiz List</a>
                 <a href="#">Log out</a>
             </div>

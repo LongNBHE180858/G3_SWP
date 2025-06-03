@@ -4,6 +4,7 @@
  */
 package dao;
 
+import com.sun.jdi.connect.spi.Connection;
 import dal.DBContext;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -56,4 +57,26 @@ public class CourseDAO {
         }
         return courses;
     }
+    
+    public Course getCourseById(int id) {
+        DBContext db = DBContext.getInstance();
+    String sql = "SELECT * FROM Course WHERE CourseID = ?";
+    
+            try {
+                
+     PreparedStatement ps = db.getConnection().prepareStatement(sql); 
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            Course course = new Course();
+            course.setCourseID(rs.getInt("CourseID"));
+            course.setCourseTitle(rs.getString("CourseTitle"));
+            course.setCourseDetail(rs.getString("CourseDetail"));
+            return course;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return null;
+}
 }

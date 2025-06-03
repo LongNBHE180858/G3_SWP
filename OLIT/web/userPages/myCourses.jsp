@@ -167,9 +167,9 @@
         <div class="header">
             <div class="logo">ONLINE LEARN</div>
             <div class="nav">
-                <a href="#">Home</a>
-                <a href="#">Courses</a>
-                <a href="#">Blog</a>
+                <a href="${pageContext.request.contextPath}/HomeServlet">Home</a>
+                <a href="${pageContext.request.contextPath}/MyRegistration">Courses</a>
+                <a href="${pageContext.request.contextPath}/BlogListServlet">Blog</a>
             </div>
         </div>
 
@@ -181,12 +181,10 @@
                     <c:when test="${not empty myCourses}">
                         <c:forEach var="course" items="${myCourses}">
                             <div class="course-card">
-                                <img src="${course.thumbnailUrl}" alt="${course.title}">
                                 <div class="content">
-                                    <h3>${course.title}</h3>
-                                    <p>${course.description}</p>
-                                    <div class="instructor">Instructor: ${course.instructor}</div>
-                                    <a href="${pageContext.request.contextPath}/CourseDetail?id=${course.courseId}">View Course</a>
+                                    <h3>${course.getCourseTitle()}</h3>
+                                    <p>${course.getCourseDetail()}</p>
+                                    <a href="${pageContext.request.contextPath}/CourseDetail?id=${course.getCourseID()}">View Course</a>
                                 </div>
                             </div>
                         </c:forEach>
