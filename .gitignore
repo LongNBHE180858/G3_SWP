@@ -14,9 +14,10 @@ OLIT/dist/
 OLIT/web/WEB-INF/classes/
 
 # NetBeans-specific files
-nbproject/private/
-nbproject/Makefile-*
-nbproject/configs/
+**/nbproject/private/
+**/nbproject/Makefile-*
+**/nbproject/configs/
+**/nbproject/build-impl.xml
 
 # IDEs and OS-specific files
 *.iml
