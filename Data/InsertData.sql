@@ -27,7 +27,22 @@ INSERT INTO PostCategory (CategoryID, CategoryName, URL) VALUES
 (2, N'Hướng dẫn học tập', 'study-guide'),
 (3, N'Công nghệ', 'technology'),
 (4, N'Kinh nghiệm học tập', 'learning-experience'),
-(5, N'Sự kiện', 'events');
+(5, N'Sự kiện', 'events'),
+(6, N'Lập trình', 'programming'),
+(7, N'Thiết kế web', 'web-design'),
+(8, N'Khởi nghiệp', 'startup'),
+(9, N'Tài chính cá nhân', 'personal-finance'),
+(10, N'Phát triển kỹ năng', 'skill-development'),
+(11, N'Nghề nghiệp', 'career'),
+(12, N'Đánh giá khóa học', 'course-review'),
+(13, N'Thủ thuật học tập', 'study-tips'),
+(14, N'Công cụ học tập', 'learning-tools'),
+(15, N'Xu hướng IT', 'it-trends'),
+(16, N'Phỏng vấn xin việc', 'job-interview'),
+(17, N'Freelance', 'freelance'),
+(18, N'Chứng chỉ IT', 'it-certification'),
+(19, N'Học bổng', 'scholarship'),
+(20, N'Kỹ năng mềm', 'soft-skills');
 
 -- Thêm dữ liệu vào bảng Post
 INSERT INTO Post (PostID, UserID, CategoryID, BlogTitle, PostDetails, Status, UpdatedDate, ThumbnailURL) VALUES
@@ -71,33 +86,192 @@ INSERT INTO Registration (RegistrationID, UserID, CourseID, PackageID, ApprovedB
 
 
 -- Thêm dữ liệu vào bảng Lesson
-INSERT INTO Lesson (LessonID, CourseID, LessonTitle, LessonDetails, Status, [Order]) VALUES
-(1, 1, N'Giới thiệu về Java', N'Tổng quan về ngôn ngữ lập trình Java và môi trường phát triển', 1, 1),
-(2, 1, N'Biến và kiểu dữ liệu', N'Học về các kiểu dữ liệu cơ bản trong Java', 1, 2),
-(3, 1, N'Cấu trúc điều khiển', N'If-else, switch-case, loops trong Java', 1, 3),
-(4, 2, N'Mô hình quan hệ', N'Hiểu về mô hình cơ sở dữ liệu quan hệ', 1, 1),
-(5, 2, N'Thiết kế bảng', N'Nguyên tắc thiết kế bảng và quan hệ', 1, 2),
-(6, 3, N'JSX và Components', N'Cú pháp JSX và tạo components trong React', 1, 1),
-(7, 3, N'State và Props', N'Quản lý state và truyền props trong React', 1, 2),
-(8, 4, N'SEO cơ bản', N'Tối ưu hóa công cụ tìm kiếm cho website', 1, 1);
+INSERT INTO Lesson (LessonID, CourseID, LessonTitle, LessonDetails, Status, URLLesson, [Order]) VALUES
+(1, 1, N'Giới thiệu về Java', N'Tổng quan về ngôn ngữ lập trình Java và môi trường phát triển', 1, '', 1),
+(2, 1, N'Biến và kiểu dữ liệu', N'Học về các kiểu dữ liệu cơ bản trong Java', 1, '', 2),
+(3, 1, N'Cấu trúc điều khiển', N'If-else, switch-case, loops trong Java', 1, '', 3),
+(4, 2, N'Mô hình quan hệ', N'Hiểu về mô hình cơ sở dữ liệu quan hệ', 1, '', 1),
+(5, 2, N'Thiết kế bảng', N'Nguyên tắc thiết kế bảng và quan hệ', 1, '', 2),
+(6, 3, N'JSX và Components', N'Cú pháp JSX và tạo components trong React', 1, '', 1),
+(7, 3, N'State và Props', N'Quản lý state và truyền props trong React', 1, '', 2),
+(8, 4, N'SEO cơ bản', N'Tối ưu hóa công cụ tìm kiếm cho website', 1, '', 1);
 
--- Thêm dữ liệu vào bảng Quiz
 INSERT INTO Quiz (QuizID, CourseID, QuizName, PassRate, QuizType, QuizDuration, QuizLevel, Status) VALUES
 (1, 1, N'Kiểm tra Java cơ bản', 70.00, N'Multiple Choice', 30, N'Beginner', 1),
 (2, 2, N'Quiz thiết kế Database', 75.00, N'Mixed', 45, N'Intermediate', 1),
 (3, 3, N'React Fundamentals Test', 65.00, N'Multiple Choice', 25, N'Beginner', 1),
 (4, 4, N'Digital Marketing Quiz', 80.00, N'True/False', 20, N'Intermediate', 1),
-(5, 5, N'Agile Methodology Test', 85.00, N'Mixed', 40, N'Advanced', 1);
+(5, 5, N'Agile Methodology Test', 85.00, N'Mixed', 40, N'Advanced', 1),
+(6, 1, N'Python Data Science Quiz', 75.00, N'Multiple Choice', 35, N'Intermediate', 1),
+(7, 2, N'Node.js API Test', 70.00, N'Mixed', 40, N'Intermediate', 1),
+(8, 3, N'Flutter Basics Quiz', 65.00, N'Multiple Choice', 25, N'Beginner', 1),
+(9, 4, N'DevOps Tools Test', 80.00, N'Mixed', 45, N'Advanced', 1),
+(10, 5, N'UI/UX Design Quiz', 60.00, N'Multiple Choice', 20, N'Beginner', 1),
+(11, 5, N'Cybersecurity Test', 85.00, N'Mixed', 50, N'Intermediate', 1),
+(12, 4, N'Machine Learning Quiz', 90.00, N'Multiple Choice', 60, N'Advanced', 1),
+(13, 3, N'WordPress Dev Test', 65.00, N'Multiple Choice', 25, N'Beginner', 1),
+(14, 2, N'Unity Game Dev Quiz', 75.00, N'Mixed', 40, N'Intermediate', 1),
+(15, 1, N'Blockchain Fundamentals', 80.00, N'Multiple Choice', 35, N'Advanced', 1),
+(16, 5, N'Excel Business Quiz', 60.00, N'Multiple Choice', 20, N'Beginner', 1),
+(17, 4, N'Social Marketing Test', 70.00, N'Mixed', 30, N'Beginner', 1),
+(18, 3, N'E-commerce Quiz', 65.00, N'Multiple Choice', 25, N'Beginner', 1),
+(19, 2, N'Video Editing Test', 75.00, N'Mixed', 35, N'Intermediate', 1),
+(20, 1, N'Photography Quiz', 60.00, N'Multiple Choice', 20, N'Beginner', 1);
 
 -- Thêm dữ liệu vào bảng Question
-INSERT INTO Question (QuestionID, QuestionContent, Solution, QuestionType, Status, QuestionLevel, MediaURL) VALUES
-(1, N'Java là ngôn ngữ lập trình thuộc loại nào?', N'Java là ngôn ngữ lập trình hướng đối tượng', N'Multiple Choice', 1, N'Beginner', NULL),
-(2, N'Khóa chính (Primary Key) trong database có tác dụng gì?', N'Định danh duy nhất cho mỗi bản ghi trong bảng', N'Multiple Choice', 1, N'Beginner', NULL),
-(3, N'JSX là gì trong React?', N'JavaScript XML - cú pháp mở rộng cho JavaScript', N'Multiple Choice', 1, N'Beginner', NULL),
-(4, N'SEO viết tắt của từ nào?', N'Search Engine Optimization', N'Multiple Choice', 1, N'Beginner', NULL),
-(5, N'Scrum là một framework của phương pháp nào?', N'Agile methodology', N'Multiple Choice', 1, N'Intermediate', NULL),
-(6, N'Trong Java, từ khóa "static" có ý nghĩa gì?', N'Thuộc về lớp chứ không thuộc về đối tượng cụ thể', N'Short Answer', 1, N'Intermediate', NULL),
-(7, N'Chuẩn hóa database (Database Normalization) là gì?', N'Quá trình tổ chức dữ liệu để giảm thiểu redundancy', N'Short Answer', 1, N'Intermediate', NULL);
+INSERT INTO Question (QuestionID, QuestionContent, Answer1, Answer2, Answer3, Answer4, Solution, QuestionType, Status, QuestionLevel, MediaURL) VALUES
+(1, N'Java là ngôn ngữ lập trình thuộc loại nào?', 
+   N'Ngôn ngữ lập trình hướng đối tượng', 
+   N'Ngôn ngữ lập trình thủ tục', 
+   N'Ngôn ngữ lập trình hàm', 
+   N'Ngôn ngữ assembly', 
+   N'Ngôn ngữ lập trình hướng đối tượng', N'Multiple Choice', 1, N'Beginner', NULL),
+
+(2, N'Khóa chính (Primary Key) trong database có tác dụng gì?', 
+   N'Định danh duy nhất cho mỗi bản ghi trong bảng', 
+   N'Tăng tốc độ truy vấn dữ liệu', 
+   N'Mã hóa dữ liệu trong bảng', 
+   N'Sao lưu dữ liệu tự động', 
+   N'Định danh duy nhất cho mỗi bản ghi trong bảng', N'Multiple Choice', 1, N'Beginner', NULL),
+
+(3, N'JSX là gì trong React?', 
+   N'JavaScript XML - cú pháp mở rộng cho JavaScript', 
+   N'Java Syntax Extension', 
+   N'JSON eXtended', 
+   N'JavaScript eXecutable', 
+   N'JavaScript XML - cú pháp mở rộng cho JavaScript', N'Multiple Choice', 1, N'Beginner', NULL),
+
+(4, N'SEO viết tắt của từ nào?', 
+   N'Search Engine Optimization', 
+   N'System Engineering Operations', 
+   N'Software Engineering Organization', 
+   N'Security Enhancement Options', 
+   N'Search Engine Optimization', N'Multiple Choice', 1, N'Beginner', NULL),
+
+(5, N'Scrum là một framework của phương pháp nào?', 
+   N'Agile methodology', 
+   N'Waterfall methodology', 
+   N'DevOps methodology', 
+   N'Lean methodology', 
+   N'Agile methodology', N'Multiple Choice', 1, N'Intermediate', NULL),
+
+(6, N'Trong Java, từ khóa "static" có ý nghĩa gì?', 
+   N'Thuộc về lớp chứ không thuộc về đối tượng cụ thể', 
+   N'Biến không thể thay đổi giá trị', 
+   N'Phương thức chỉ có thể gọi một lần', 
+   N'Biến được khởi tạo tự động', 
+   N'Thuộc về lớp chứ không thuộc về đối tượng cụ thể', N'Multiple Choice', 1, N'Intermediate', NULL),
+
+(7, N'Chuẩn hóa database (Database Normalization) là gì?', 
+   N'Quá trình tổ chức dữ liệu để giảm thiểu redundancy', 
+   N'Quá trình tăng tốc độ truy vấn database', 
+   N'Quá trình mã hóa dữ liệu trong database', 
+   N'Quá trình sao lưu database định kỳ', 
+   N'Quá trình tổ chức dữ liệu để giảm thiểu redundancy', N'Multiple Choice', 1, N'Intermediate', NULL),
+(8, N'Pandas là gì trong Python?', 
+   N'Thư viện xử lý và phân tích dữ liệu', 
+   N'Framework web development', 
+   N'Database management system', 
+   N'Game development engine', 
+   N'Thư viện xử lý và phân tích dữ liệu', N'Multiple Choice', 1, N'Intermediate', NULL),
+
+(9, N'RESTful API sử dụng phương thức HTTP nào để tạo dữ liệu mới?', 
+   N'POST', 
+   N'GET', 
+   N'PUT', 
+   N'DELETE', 
+   N'POST', N'Multiple Choice', 1, N'Intermediate', NULL),
+
+(10, N'Flutter sử dụng ngôn ngữ lập trình nào?', 
+   N'Dart', 
+   N'JavaScript', 
+   N'Java', 
+   N'Swift', 
+   N'Dart', N'Multiple Choice', 1, N'Beginner', NULL),
+
+(11, N'Docker container khác gì với virtual machine?', 
+   N'Container chia sẻ kernel của host OS', 
+   N'Container nặng hơn VM', 
+   N'Container chậm hơn VM', 
+   N'Container cần OS riêng', 
+   N'Container chia sẻ kernel của host OS', N'Multiple Choice', 1, N'Advanced', NULL),
+
+(12, N'UX là viết tắt của từ nào?', 
+   N'User Experience', 
+   N'User Extension', 
+   N'Universal Exchange', 
+   N'Unified eXecution', 
+   N'User Experience', N'Multiple Choice', 1, N'Beginner', NULL),
+
+(13, N'Firewall hoạt động ở tầng nào trong mô hình OSI?', 
+   N'Network Layer', 
+   N'Physical Layer', 
+   N'Session Layer', 
+   N'Presentation Layer', 
+   N'Network Layer', N'Multiple Choice', 1, N'Intermediate', NULL),
+
+(14, N'TensorFlow được phát triển bởi công ty nào?', 
+   N'Google', 
+   N'Facebook', 
+   N'Microsoft', 
+   N'Amazon', 
+   N'Google', N'Multiple Choice', 1, N'Advanced', NULL),
+
+(15, N'WordPress được viết bằng ngôn ngữ lập trình nào?', 
+   N'PHP', 
+   N'Python', 
+   N'Ruby', 
+   N'Java', 
+   N'PHP', N'Multiple Choice', 1, N'Beginner', NULL),
+
+(16, N'Unity Engine hỗ trợ ngôn ngữ lập trình nào chính?', 
+   N'C#', 
+   N'C++', 
+   N'Java', 
+   N'Python', 
+   N'C#', N'Multiple Choice', 1, N'Intermediate', NULL),
+
+(17, N'Blockchain lưu trữ dữ liệu như thế nào?', 
+   N'Chuỗi các block liên kết với nhau', 
+   N'Database truyền thống', 
+   N'File system phân tán', 
+   N'Cloud storage', 
+   N'Chuỗi các block liên kết với nhau', N'Multiple Choice', 1, N'Advanced', NULL),
+
+(18, N'Hàm VLOOKUP trong Excel có tác dụng gì?', 
+   N'Tìm kiếm dữ liệu theo chiều dọc', 
+   N'Tính tổng các ô', 
+   N'Tạo biểu đồ', 
+   N'Định dạng ô', 
+   N'Tìm kiếm dữ liệu theo chiều dọc', N'Multiple Choice', 1, N'Beginner', NULL),
+
+(19, N'CTR trong digital marketing là gì?', 
+   N'Click-Through Rate', 
+   N'Cost-To-Revenue', 
+   N'Customer-Target-Reach', 
+   N'Content-Traffic-Rate', 
+   N'Click-Through Rate', N'Multiple Choice', 1, N'Beginner', NULL),
+
+(20, N'Shopify là gì?', 
+   N'Nền tảng thương mại điện tử', 
+   N'Phần mềm kế toán', 
+   N'Hệ quản trị nội dung', 
+   N'Công cụ thiết kế', 
+   N'Nền tảng thương mại điện tử', N'Multiple Choice', 1, N'Beginner', NULL),
+
+(21, N'Frame rate trong video được đo bằng đơn vị nào?', 
+   N'FPS (Frames Per Second)', 
+   N'BPS (Bits Per Second)', 
+   N'Hz (Hertz)', 
+   N'Mbps (Megabits per second)', 
+   N'FPS (Frames Per Second)', N'Multiple Choice', 1, N'Intermediate', NULL),
+
+(22, N'Tỷ lệ vàng (Golden Ratio) trong nhiếp ảnh là?', 
+   N'1:1.618', 
+   N'1:2', 
+   N'3:4', 
+   N'16:9', 
+   N'1:1.618', N'Multiple Choice', 1, N'Beginner', NULL);
 
 -- Thêm dữ liệu vào bảng QuizQuestion
 INSERT INTO QuizQuestion (QuizQuestionID, QuizID, QuestionID, QuestionOrder, Points) VALUES
@@ -107,7 +281,22 @@ INSERT INTO QuizQuestion (QuizQuestionID, QuizID, QuestionID, QuestionOrder, Poi
 (4, 2, 7, 2, 3.5),
 (5, 3, 3, 1, 2.0),
 (6, 4, 4, 1, 2.0),
-(7, 5, 5, 1, 4.0);
+(7, 5, 5, 1, 4.0),
+(8, 6, 8, 1, 2.5),
+(9, 6, 9, 2, 3.0),
+(10, 7, 9, 1, 2.0),
+(11, 8, 10, 1, 2.0),
+(12, 9, 11, 1, 3.5),
+(13, 10, 12, 1, 2.0),
+(14, 11, 13, 1, 3.0),
+(15, 12, 14, 1, 4.0),
+(16, 13, 15, 1, 2.0),
+(17, 14, 16, 1, 2.5),
+(18, 15, 17, 1, 3.5),
+(19, 16, 18, 1, 2.0),
+(20, 17, 19, 1, 2.0),
+(21, 18, 20, 1, 2.0),
+(22, 19, 21, 1, 2.5);
 
 -- Thêm dữ liệu vào bảng QuizAttempt
 INSERT INTO QuizAttempt (AttemptID, UserID, QuizID, StartTime, EndTime, TotalScore) VALUES
@@ -115,7 +304,22 @@ INSERT INTO QuizAttempt (AttemptID, UserID, QuizID, StartTime, EndTime, TotalSco
 (2, 5, 2, '2024-05-16 14:30:00', '2024-05-16 15:10:00', 5.5),
 (3, 6, 3, '2024-05-17 09:00:00', '2024-05-17 09:20:00', 2.0),
 (4, 4, 4, '2024-05-18 16:00:00', '2024-05-18 16:15:00', 2.0),
-(5, 5, 1, '2024-05-19 11:30:00', '2024-05-19 11:55:00', 3.5);
+(5, 5, 1, '2024-05-19 11:30:00', '2024-05-19 11:55:00', 3.5),
+(6, 4, 2, '2024-05-20 08:00:00', '2024-05-20 08:30:00', 6.0),
+(7, 5, 3, '2024-05-21 13:15:00', '2024-05-21 13:45:00', 3.5),
+(8, 4, 5, '2024-05-22 10:30:00', '2024-05-22 11:00:00', 4.5),
+(9, 5, 4, '2024-05-23 15:00:00', '2024-05-23 15:20:00', 2.5),
+(10, 6, 1, '2024-05-24 09:30:00', '2024-05-24 10:00:00', 5.0),
+(11, 4, 5, '2024-05-25 14:00:00', '2024-05-25 14:25:00', 3.0),
+(12, 5, 2, '2024-05-26 11:00:00', '2024-05-26 11:30:00', 4.0),
+(13, 4, 3, '2024-05-27 16:30:00', '2024-05-27 17:00:00', 5.5),
+(14, 5, 1, '2024-05-28 08:45:00', '2024-05-28 09:15:00', 6.5),
+(15, 6, 4, '2024-05-29 12:00:00', '2024-05-29 12:20:00', 3.5),
+(16, 4, 3, '2024-05-30 10:15:00', '2024-05-30 10:45:00', 4.0),
+(17, 5, 5, '2024-05-31 14:30:00', '2024-05-31 15:00:00', 5.0),
+(18, 4, 2, '2024-06-01 09:00:00', '2024-06-01 09:30:00', 2.0),
+(19, 5, 3, '2024-06-02 11:30:00', '2024-06-02 12:00:00', 4.5),
+(20, 6, 1, '2024-06-03 15:00:00', '2024-06-03 15:30:00', 6.0);
 
 -- Thêm dữ liệu vào bảng UserAnswer
 INSERT INTO UserAnswer (AnswerID, QuestionID, AttemptID, UserAnswerContent, IsCorrect) VALUES
@@ -125,8 +329,22 @@ INSERT INTO UserAnswer (AnswerID, QuestionID, AttemptID, UserAnswerContent, IsCo
 (4, 7, 2, N'Tổ chức dữ liệu giảm trùng lặp', 1),
 (5, 3, 3, N'JavaScript XML', 1),
 (6, 4, 4, N'Search Engine Optimization', 1),
-(7, 5, 5, N'Agile', 1);
-
+(7, 5, 5, N'Agile', 1),
+(8, 8, 6, N'Encapsulation', 1),
+(9, 9, 6, N'Polymorphism', 0),
+(10, 10, 7, N'Primary Key', 1),
+(11, 11, 7, N'Foreign Key', 1),
+(12, 12, 8, N'HTML5', 1),
+(13, 13, 9, N'CSS Grid', 1),
+(14, 14, 10, N'Scrum', 1),
+(15, 15, 11, N'Kanban', 0),
+(16, 16, 12, N'Normalization', 1),
+(17, 17, 13, N'Denormalization', 0),
+(18, 18, 14, N'JSON', 1),
+(19, 19, 15, N'XML', 1),
+(20, 20, 16, N'React Hooks', 1),
+(21, 21, 17, N'API RESTful', 1),
+(22, 22, 18, N'SQL Injection', 0);
 -- Thêm dữ liệu vào bảng Slider
 INSERT INTO Slider (SliderID, UserID, Title, ImageURL, Backlink, Status, Notes, DisplayOrder, ValidFrom) VALUES
 (1, 1, N'Khóa học Java mới', 'https://aptech.fpt.edu.vn/wp-content/uploads/2022/06/java-la-ngon-ngu-lap-trinh-rat-da-dung.jpg', '/course/java-basic', 1, N'Slider quảng cáo khóa Java', 1, '2024-05-01'),
@@ -140,3 +358,4 @@ INSERT INTO Setting (SettingID, UserID, SettingType, SettingValue, SettingOrder,
 (3, 1, N'Theme', N'Blue', 3, N'Màu chủ đạo giao diện', 1),
 (4, 1, N'Language', N'Vietnamese', 4, N'Ngôn ngữ mặc định', 1),
 (5, 1, N'Timezone', N'Asia/Ho_Chi_Minh', 5, N'Múi giờ hệ thống', 1);
+

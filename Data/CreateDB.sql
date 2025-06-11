@@ -135,6 +135,7 @@ CREATE TABLE Lesson (
     LessonTitle NVARCHAR(255) NOT NULL,
     LessonDetails NVARCHAR(MAX),
     Status BIT NOT NULL DEFAULT 0,
+    URLLesson NVARCHAR(255) NOT NULL,
     [Order] INT
 );
 
@@ -165,6 +166,10 @@ CREATE TABLE QuizAttempt (
 CREATE TABLE Question (
     QuestionID INT PRIMARY KEY,
     QuestionContent NVARCHAR(MAX) NOT NULL,
+    Answer1 NVARCHAR(MAX),
+    Answer2 NVARCHAR(MAX),
+    Answer3 NVARCHAR(MAX),
+    Answer4 NVARCHAR(MAX),
     Solution NVARCHAR(MAX),
     QuestionType NVARCHAR(50),
     Status BIT NOT NULL DEFAULT 0,
