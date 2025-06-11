@@ -67,24 +67,20 @@
             font-size: 14px;
         }
     </style>
+    <%
+    String email = request.getParameter("email");
+%>
 </head>
 <body>
     <div class="login-container">
 
         <form action="/OLIT/ResetPasswordServlet" method="post">
-        <h2>Đổi mật khẩu</h2>
-            <input name="email" value="${param.email}" class="input-field" />
-            <input type="password" name="newPassword" class="input-field" placeholder="Nhập mật khẩu mới">
-            <input type="password" name="confirmPassword" class="input-field" placeholder="Xác minh mật khẩu">
-            <button type="submit" class="button">Đổi mật khẩu</button>
-            
-        <c:if test="${param.status == 'success'}">
-            <p style="color: green;">Đổi mật khẩu thành công! Bạn có thể đăng nhập lại.</p>
-        </c:if>
-        <c:if test="${param.status == 'fail'}">
-            <p style="color: red;">Đã xảy ra lỗi. Vui lòng thử lại.</p>
-        </c:if>
-
+            <h2>Set Your Password</h2>
+            <input type="hidden" name="email" value="<%= email %>">
+            <input type="password" name="password" placeholder="New Password" required>
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+            <button type="submit">Set Password</button>
+            <p style="color:red">${error}</p>
         </form>
     </div>
 </body>

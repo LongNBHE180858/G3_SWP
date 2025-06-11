@@ -17,27 +17,27 @@
     <div class="login-container">
         <form action="/OLIT/SignupServlet" method="post">
             <input type="text" class="input-field" name="fullName" placeholder="Full Name" required>
+
+            <label for="gender">Gender</label>
             <select name="gender" class="input-field" required>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other" selected>Other</option>
             </select>
+
             <input type="email" class="input-field" name="email" placeholder="Email" required>
-            <input type="tel" class="input-field" name="phone" placeholder="Phone Number">
-            <input type="password" class="input-field" name="password" placeholder="Password" required>
-            <input type="text" class="input-field" name="avatar" placeholder="Avatar URL">
-            <input type="text" class="input-field" name="address" placeholder="Address">
-            <input type="date" class="input-field" name="birthday" placeholder="Birthday">
-            <div class="links">
-                <a href="login.jsp">Sign in</a>
-            </div>
+            <input type="tel" class="input-field" name="phone" placeholder="Phone Number" required>
+
             <button type="submit" class="button">Sign up</button>
 
-            <c:if test="${param.status == 'success'}">
-                <p style="color: green;">Đăng ký thành công!</p>
+            <c:if test="${param.status == 'emailExists'}">
+                <p style="color: red;">Email đã tồn tại hoặc không hợp lệ!</p>
             </c:if>
-            <c:if test="${param.status == 'fail'}">
-                <p style="color: red;">Email đã tồn tại!</p>
+            <c:if test="${param.status == 'phoneExists'}">
+                <p style="color: red;">Số điện thoại đã tồn tại!</p>
+            </c:if>
+            <c:if test="${param.status == 'success'}">
+                <p style="color: green;">Hệ thống đã gửi link xác nhận qua email!</p>
             </c:if>
         </form>
     </div>

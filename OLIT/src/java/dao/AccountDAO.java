@@ -217,6 +217,38 @@ public class AccountDAO {
     }
     return n > 0;
 }
+    public static boolean updatePasswordAndActivate(String email, String password) {
+    DBContext db = DBContext.getInstance();
+    try {
+        String sql = "UPDATE Account SET Password=?, Status='active' WHERE Email=?";
+        PreparedStatement stmt = db.getConnection().prepareStatement(sql);
+        stmt.setString(1, password);
+        stmt.setString(2, email);
+        return stmt.executeUpdate() > 0;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+public static Account getAccountByPhone(String phone) {
+    DBContext db = DBContext.getInstance();
+    try {
+        String sql = "SELECT * FROM Account WHERE PhoneNumber = ?";
+        PreparedStatement stmt = db.getConnection().prepareStatement(sql);
+        stmt.setString(1, phone);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            Account acc = new Account();
+            acc.setEmail(rs.getString("Email"));
+            return acc;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return null;
+}
+
 
 //    public static void main(String[] args) {
 ////        ArrayList<Account> accounts = AccountDAO.getAccounts();
