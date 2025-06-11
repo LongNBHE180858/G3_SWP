@@ -10,52 +10,61 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f0f2f5;
+            background: linear-gradient(to right, #dfe9f3, #ffffff);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         .login-container {
-            background-color: #fff;
-            padding: 30px 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            padding: 35px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 420px;
             text-align: center;
         }
 
         .login-container h2 {
-            margin-bottom: 20px;
-            color: #333;
+            margin-bottom: 25px;
+            color: #222;
+            font-size: 22px;
         }
 
         .input-field {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
+            padding: 14px 12px;
+            margin: 12px 0;
             border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #54b7e7;
+            box-shadow: 0 0 5px rgba(84, 183, 231, 0.4);
         }
 
         .button {
             width: 100%;
-            padding: 12px;
+            padding: 13px;
             background-color: #54b7e7;
             color: white;
-            font-size: 15px;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: 600;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
         }
 
         .button:hover {
@@ -63,9 +72,11 @@
         }
 
         p {
-            margin-bottom: 15px;
+            margin-top: 15px;
             font-size: 14px;
+            color: red;
         }
+
     </style>
     <%
     String email = request.getParameter("email");
@@ -77,9 +88,9 @@
         <form action="/OLIT/ResetPasswordServlet" method="post">
             <h2>Set Your Password</h2>
             <input type="hidden" name="email" value="<%= email %>">
-            <input type="password" name="password" placeholder="New Password" required>
-            <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
-            <button type="submit">Set Password</button>
+            <input type="password" name="password" class="input-field" placeholder="New Password" required>
+            <input type="password" name="confirmPassword" class="input-field" placeholder="Confirm Password" required>
+            <button type="submit" class="button">Set Password</button>
             <p style="color:red">${error}</p>
         </form>
     </div>
