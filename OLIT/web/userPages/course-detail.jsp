@@ -125,6 +125,42 @@
         a:hover {
             text-decoration: underline;
         }
+        
+        .featured {
+            margin-top: 30px;
+        }
+
+        .featured ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .featured li {
+            padding: 10px;
+            background-color: #f5f7fa;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .featured li:hover {
+            background-color: #e8f0fe;
+            transform: translateX(3px);
+        }
+
+        .featured a {
+            font-weight: 500;
+            font-size: 15px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .featured a:hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
