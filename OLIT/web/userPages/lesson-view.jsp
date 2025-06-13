@@ -8,6 +8,7 @@
     <title>Online Learning Platform - Course Viewer</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #4361ee;
@@ -713,6 +714,16 @@
                 width: 100%;
             }
         }
+        .section-content,
+.module-content {
+  display: none;
+}
+
+.section-content.open,
+.module-content.open {
+  display: block;
+}
+
     </style>
 </head>
 <body>
@@ -814,78 +825,98 @@ const courseData = [
     ]
   }
 ];
+function selectLesson(lessonTitle) {
+  const lessonDisplay = document.querySelector('.lesson-content');
+  if (lessonDisplay) {
+    lessonDisplay.innerHTML = `
+      <div class="selected-lesson">
+        <h3>${lessonTitle}</h3>
+        <video controls width="100%" style="margin-top: 10px;">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+          Your browser does not support HTML video.
+        </video>
+      </div>
+    `;
+  }
+}
 
 function renderListLayout(data) {
   const container = document.querySelector('.course-list-container');
   container.innerHTML = '';
-  data.forEach(section => {
+  data.forEach((section, sIndex) => {
     const sectionEl = document.createElement('div');
     sectionEl.className = 'section';
 
-    sectionEl.innerHTML = `
-      <div class="section-header" onclick="toggleSection(this)">
-        <h3>${section.title}</h3>
-        <span class="section-info">(${section.duration})</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="section-content"></div>
+    const sectionHeader = document.createElement('div');
+    sectionHeader.className = 'section-header';
+    sectionHeader.innerHTML = `
+      <h3>${section.title}</h3>
+      <span class="section-info">(${section.duration})</span>
+      <i class="fas fa-chevron-down"></i>
     `;
 
-    const sectionContent = sectionEl.querySelector('.section-content');
-    section.modules.forEach(module => {
+    const sectionContent = document.createElement('div');
+    sectionContent.className = 'section-content';
+    sectionContent.style.display = 'none'; // hidden by default
+
+    // Append modules into sectionContent
+    section.modules.forEach((module, mIndex) => {
       const moduleEl = document.createElement('div');
       moduleEl.className = 'module';
-      moduleEl.innerHTML = `
-        <div class="module-header" onclick="toggleModule(this)">
-          <h4>${module.title}</h4>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="module-content"></div>
+
+      const moduleHeader = document.createElement('div');
+      moduleHeader.className = 'module-header';
+      moduleHeader.innerHTML = `
+        <h4>${module.title}</h4>
+        <i class="fas fa-chevron-down"></i>
       `;
 
-      const moduleContent = moduleEl.querySelector('.module-content');
-      module.lessons.forEach((lesson, idx) => {
+      const moduleContent = document.createElement('div');
+      moduleContent.className = 'module-content';
+      moduleContent.style.display = 'none'; // hidden by default
+
+      // Append lessons
+      module.lessons.forEach((lesson, lIndex) => {
         const lessonEl = document.createElement('div');
         lessonEl.className = 'lesson';
-        lessonEl.innerHTML = `<div class="lesson-icon"><i class="fas fa-play-circle"></i></div><span>${lesson}</span>`;
-        lessonEl.onclick = () => selectLesson(lesson);
+        lessonEl.innerHTML = `
+          <div class="lesson-icon"><i class="fas fa-play-circle"></i></div>
+          <span>${lesson}</span>
+        `;
+        lessonEl.onclick = () => {
+          document.querySelectorAll('.lesson').forEach(l => l.classList.remove('active'));
+          lessonEl.classList.add('active');
+          selectLesson(lesson);
+        };
+
         moduleContent.appendChild(lessonEl);
       });
 
+      moduleHeader.onclick = () => {
+        moduleHeader.classList.toggle('open');
+        moduleContent.classList.toggle('open');
+      };
+
+
+      moduleEl.appendChild(moduleHeader);
+      moduleEl.appendChild(moduleContent);
       sectionContent.appendChild(moduleEl);
     });
 
+    sectionHeader.onclick = () => {
+        sectionHeader.classList.toggle('open');
+        sectionContent.classList.toggle('open');
+        console.log("đã in");
+      };
+
+
+    sectionEl.appendChild(sectionHeader);
+    sectionEl.appendChild(sectionContent);
     container.appendChild(sectionEl);
   });
 }
 
-function toggleSection(el) {
-  const section = el.parentElement;
-  section.classList.toggle('open');
-}
 
-function toggleModule(el) {
-  const module = el.parentElement;
-  module.classList.toggle('open');
-}
-
-function selectLesson(lessonTitle) {
-  document.querySelectorAll('.lesson').forEach(l => l.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-  const videoContainer = document.querySelector('.main-content video');
-  videoContainer.style.display = 'block';
-  const lessonTitle = document.querySelector('.lesson-title')?.innerText?.trim() || 'default';
-   videoContainer.src = `https://example.com/video?title=${lessonTitle}`;
-}
-
-function toggleLayout(mode) {
-  document.querySelectorAll('.layout-toggle button').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`.layout-toggle button[data-mode="${mode}"]`).classList.add('active');
-  document.querySelector('.course-list-container').style.display = mode === 'list' ? 'block' : 'none';
-  document.querySelector('.grid-layout').style.display = mode === 'grid' ? 'grid' : 'none';
-}
-
-// Render on load
 document.addEventListener('DOMContentLoaded', () => {
   renderListLayout(courseData);
 });
