@@ -4,27 +4,126 @@
 <head>
     <title>Course Detail</title>
     <style>
-        body { font-family: Arial; margin: 0; padding: 0; }
-        .container { display: flex; padding: 20px; }
-        .main { flex: 3; padding-right: 20px; }
-        .sidebar { flex: 1; background: #f9f9f9; padding: 20px; border-left: 1px solid #ccc; }
-        .title { font-size: 24px; font-weight: bold; }
-        .price { color: red; font-weight: bold; }
-        .featured, .subjects { margin-top: 20px; }
-        .course-image, .course-video {
-            width: 100%; height: 200px; object-fit: cover; background: #eee;
-            display: flex; justify-content: center; align-items: center;
-            margin-top: 15px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
         }
-        input[type="text"] {
-            width: 100%; padding: 8px;
+
+        .container {
+            display: flex;
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+            gap: 30px;
+        }
+
+        .main {
+            flex: 3;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar {
+            flex: 1;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
             margin-bottom: 10px;
+        }
+
+        .price {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .media-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .media-row > div {
+            flex: 1;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .media-row img, .media-row video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             box-sizing: border-box;
         }
-        .subject-item { margin: 5px 0; }
-        .btn {
-            background: #007bff; color: white; border: none; padding: 10px 20px;
-            text-decoration: none; display: inline-block; margin-top: 15px;
+
+        .subject-item {
+            margin: 5px 0;
+            list-style: none;
+        }
+
+        .subject-item:hover {
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .featured, .subjects {
+            margin-top: 30px;
+        }
+
+        h3, h4 {
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -44,14 +143,16 @@
                 It is perfect for beginners and provides a strong foundation to explore any programming language.</p>
         </div>
 
-        <div class="course-image">
-            <img src="https://via.placeholder.com/400x200?text=Course+Image" alt="Course Image">
-        </div>
-        <div class="course-video">
-            <video width="100%" height="200" controls>
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                Your browser does not support HTML video.
-            </video>
+        <div class="media-row">
+            <div class="course-image">
+                <img src="https://vtiacademy.edu.vn/upload/images/artboard-1-copy-7-100.jpg" alt="Course Image">
+            </div>
+            <div class="course-video">
+                <video controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Your browser does not support HTML video.
+                </video>
+            </div>
         </div>
 
         <a class="btn" href="#">Register Now</a>
@@ -77,7 +178,7 @@
             <h4>Featured Courses</h4>
             <ul>
                 <c:forEach var="c" items="${featuredCourses}">
-                    <li><a href="CourseDetail?id=${c.courseID}">${c.courseTitle}</a></li>
+                    <li><a href="course-detail?id=${c.courseID}">${c.courseTitle}</a></li>
                 </c:forEach>
             </ul>
         </div>
