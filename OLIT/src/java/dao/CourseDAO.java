@@ -9,6 +9,7 @@ import dal.DBContext;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 import model.Course;
 
 /**
@@ -79,4 +80,23 @@ public class CourseDAO {
     }
     return null;
 }
+    public List<Course> getTopCourses(int count) {
+    List<Course> list = new ArrayList<>();
+    String sql = "SELECT TOP (?) * FROM Course WHERE status = 1";
+    try {
+        PreparedStatement ps = DBContext.getInstance().getConnection().prepareStatement(sql);
+        ps.setInt(1, count);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Course c = new Course();
+            c.setCourseID(rs.getInt("CourseID"));
+            c.setCourseTitle(rs.getString("CourseTitle"));
+            list.add(c);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return list;
+}
+
 }
