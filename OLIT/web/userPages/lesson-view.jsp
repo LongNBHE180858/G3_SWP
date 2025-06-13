@@ -715,6 +715,7 @@
             }
         }
         .section-content,
+.section-content,
 .module-content {
   display: none;
 }
@@ -724,6 +725,7 @@
   display: block;
 }
 
+
     </style>
 </head>
 <body>
@@ -731,7 +733,7 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h1 class="logo"><i class="fas fa-graduation-cap"></i>EduPro</h1>
+                <h1 class="logo"><i class="fas fa-graduation-cap"></i>OLIT</h1>
             </div>
             <nav class="sidebar-nav">
                 <ul>
@@ -857,7 +859,6 @@ function renderListLayout(data) {
 
     const sectionContent = document.createElement('div');
     sectionContent.className = 'section-content';
-    sectionContent.style.display = 'none'; // hidden by default
 
     // Append modules into sectionContent
     section.modules.forEach((module, mIndex) => {
@@ -873,7 +874,6 @@ function renderListLayout(data) {
 
       const moduleContent = document.createElement('div');
       moduleContent.className = 'module-content';
-      moduleContent.style.display = 'none'; // hidden by default
 
       // Append lessons
       module.lessons.forEach((lesson, lIndex) => {
@@ -906,7 +906,7 @@ function renderListLayout(data) {
     sectionHeader.onclick = () => {
         sectionHeader.classList.toggle('open');
         sectionContent.classList.toggle('open');
-        console.log("đã in");
+        console.log(sectionContent);
       };
 
 
