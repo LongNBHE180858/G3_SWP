@@ -250,16 +250,6 @@
             transition: var(--transition);
         }
 
-        .section.open .section-header i {
-            transform: rotate(180deg);
-        }
-
-        .section-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
         .section.open .section-content {
             max-height: 2000px;
         }
@@ -294,12 +284,6 @@
 
         .module.open .module-header i {
             transform: rotate(180deg);
-        }
-
-        .module-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
         }
 
         .module.open .module-content {
@@ -715,17 +699,15 @@
             }
         }
         .section-content,
-.section-content,
-.module-content {
-  display: none;
-}
+        .section-content,
+        .module-content {
+          display: none;
+        }
 
-.section-content.open,
-.module-content.open {
-  display: block;
-}
-
-
+        .section-content.open,
+        .module-content.open {
+          display: block;
+        }
     </style>
 </head>
 <body>
@@ -792,134 +774,153 @@
         </main>
     </div>
     <script>
-const courseData = [
-  {
-    title: "Section 1: Tổng quan dự án",
-    duration: "2h 20p",
-    modules: [
-      {
-        title: "Module 1: Giới thiệu & Mở đầu",
-        lessons: [
-          "Bài 1: Giới thiệu khóa học",
-          "Bài 2: Cách học hiệu quả"
-        ]
-      },
-      {
-        title: "Module 2: Nền tảng dự án",
-        lessons: [
-          "Bài 3: Project là gì?",
-          "Bài 4: Portfolio vs Program"
-        ]
-      }
-    ]
-  },
-  {
-    title: "Section 2: Lập kế hoạch",
-    duration: "1h 45p",
-    modules: [
-      {
-        title: "Module 1: Xác định mục tiêu",
-        lessons: [
-          "Bài 1: Mục tiêu SMART",
-          "Bài 2: Timeline sơ bộ"
-        ]
-      }
-    ]
-  }
-];
-function selectLesson(lessonTitle) {
-  const lessonDisplay = document.querySelector('.lesson-content');
-  if (lessonDisplay) {
-    lessonDisplay.innerHTML = `
-      <div class="selected-lesson">
-        <h3>${lessonTitle}</h3>
-        <video controls width="100%" style="margin-top: 10px;">
-          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-          Your browser does not support HTML video.
-        </video>
-      </div>
-    `;
-  }
-}
+        const courseData = [
+          {
+            title: "Section 1: Tổng quan dự án",
+            duration: "2h 20p",
+            modules: [
+              {
+                title: "Module 1: Giới thiệu & Mở đầu",
+                lessons: [
+                  "Bài 1: Giới thiệu khóa học",
+                  "Bài 2: Cách học hiệu quả"
+                ]
+              },
+              {
+                title: "Module 2: Nền tảng dự án",
+                lessons: [
+                  "Bài 3: Project là gì?",
+                  "Bài 4: Portfolio vs Program"
+                ]
+              }
+            ]
+          },
+          {
+            title: "Section 2: Lập kế hoạch",
+            duration: "1h 45p",
+            modules: [
+              {
+                title: "Module 1: Xác định mục tiêu",
+                lessons: [
+                  "Bài 1: Mục tiêu SMART",
+                  "Bài 2: Timeline sơ bộ"
+                ]
+              }
+            ]
+          }
+        ];
+        function selectLesson(lessonTitle) {
+          const lessonDisplay = document.querySelector('.lesson-content');
+          if (lessonDisplay) {
+            lessonDisplay.innerHTML = `
+              <div class="selected-lesson">
+                <h3>${lessonTitle}</h3>
+                <video controls width="100%" style="margin-top: 10px;">
+                  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+                  Your browser does not support HTML video.
+                </video>
+              </div>
+            `;
+          }
+        }
 
-function renderListLayout(data) {
-  const container = document.querySelector('.course-list-container');
-  container.innerHTML = '';
-  data.forEach((section, sIndex) => {
-    const sectionEl = document.createElement('div');
-    sectionEl.className = 'section';
+        function renderListLayout(data) {
+          const container = document.querySelector('.course-list-container');
+          container.innerHTML = '';
+          data.forEach((section, sIndex) => {
+            const sectionEl = document.createElement('div');
+            sectionEl.className = 'section';
 
-    const sectionHeader = document.createElement('div');
-    sectionHeader.className = 'section-header';
-    sectionHeader.innerHTML = `
-      <h3>${section.title}</h3>
-      <span class="section-info">(${section.duration})</span>
-      <i class="fas fa-chevron-down"></i>
-    `;
+            const sectionHeader = document.createElement('div');
+            sectionHeader.className = 'section-header';
 
-    const sectionContent = document.createElement('div');
-    sectionContent.className = 'section-content';
+            const h3 = document.createElement('h3');
+            h3.textContent = section.title;
 
-    // Append modules into sectionContent
-    section.modules.forEach((module, mIndex) => {
-      const moduleEl = document.createElement('div');
-      moduleEl.className = 'module';
+            const span = document.createElement('span');
+            span.className = 'section-info';
 
-      const moduleHeader = document.createElement('div');
-      moduleHeader.className = 'module-header';
-      moduleHeader.innerHTML = `
-        <h4>${module.title}</h4>
-        <i class="fas fa-chevron-down"></i>
-      `;
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-chevron-down';
 
-      const moduleContent = document.createElement('div');
-      moduleContent.className = 'module-content';
+            sectionHeader.appendChild(h3);
+            sectionHeader.appendChild(span);
+            sectionHeader.appendChild(icon);
 
-      // Append lessons
-      module.lessons.forEach((lesson, lIndex) => {
-        const lessonEl = document.createElement('div');
+            const sectionContent = document.createElement('div');
+            sectionContent.className = 'section-content';
+
+            section.modules.forEach((module, mIndex) => {
+            const moduleEl = document.createElement('div');
+            moduleEl.className = 'module';
+            
+            const moduleHeader = document.createElement('div');
+            moduleHeader.className = 'module-header';
+
+            const h4 = document.createElement('h4');
+            h4.textContent = module.title;
+
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-chevron-down';
+
+            moduleHeader.appendChild(h4);
+            moduleHeader.appendChild(icon);
+
+            const moduleContent = document.createElement('div');
+            moduleContent.className = 'module-content';
+
+              // Append lessons
+              module.lessons.forEach((lesson, lIndex) => {
+                const lessonEl = document.createElement('div');
         lessonEl.className = 'lesson';
-        lessonEl.innerHTML = `
-          <div class="lesson-icon"><i class="fas fa-play-circle"></i></div>
-          <span>${lesson}</span>
-        `;
-        lessonEl.onclick = () => {
-          document.querySelectorAll('.lesson').forEach(l => l.classList.remove('active'));
-          lessonEl.classList.add('active');
-          selectLesson(lesson);
-        };
 
-        moduleContent.appendChild(lessonEl);
-      });
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'lesson-icon';
+        iconDiv.innerHTML = '<i class="fas fa-play-circle"></i>'; 
 
-      moduleHeader.onclick = () => {
-        moduleHeader.classList.toggle('open');
-        moduleContent.classList.toggle('open');
-      };
+        const span = document.createElement('span');
+        span.textContent = lesson;
 
+        lessonEl.appendChild(iconDiv);
+        lessonEl.appendChild(span);
 
-      moduleEl.appendChild(moduleHeader);
-      moduleEl.appendChild(moduleContent);
-      sectionContent.appendChild(moduleEl);
-    });
+                lessonEl.onclick = () => {
+                  document.querySelectorAll('.lesson').forEach(l => l.classList.remove('active'));
+                  lessonEl.classList.add('active');
+                  selectLesson(lesson);
+                };
 
-    sectionHeader.onclick = () => {
-        sectionHeader.classList.toggle('open');
-        sectionContent.classList.toggle('open');
-        console.log(sectionContent);
-      };
+                moduleContent.appendChild(lessonEl);
+              });
+
+              moduleHeader.onclick = () => {
+                moduleHeader.classList.toggle('open');
+                moduleContent.classList.toggle('open');
+              };
 
 
-    sectionEl.appendChild(sectionHeader);
-    sectionEl.appendChild(sectionContent);
-    container.appendChild(sectionEl);
-  });
-}
+              moduleEl.appendChild(moduleHeader);
+              moduleEl.appendChild(moduleContent);
+              sectionContent.appendChild(moduleEl);
+            });
+
+            sectionHeader.onclick = () => {
+                sectionHeader.classList.toggle('open');
+                sectionContent.classList.toggle('open');
+                console.log(sectionContent);
+              };
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderListLayout(courseData);
-});
-</script>
+            sectionEl.appendChild(sectionHeader);
+            sectionEl.appendChild(sectionContent);
+            container.appendChild(sectionEl);
+          });
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+          renderListLayout(courseData);
+        });
+        </script>
 </body>
 </html>

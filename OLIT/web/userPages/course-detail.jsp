@@ -214,7 +214,7 @@
             <h4>Featured Courses</h4>
             <ul>
                 <c:forEach var="c" items="${featuredCourses}">
-                    <li><a href="course-detail?id=${c.courseID}">${c.courseTitle}</a></li>
+                    <li><a href="CourseDetail?id=${c.courseID}">${c.courseTitle}</a></li>
                 </c:forEach>
             </ul>
         </div>
