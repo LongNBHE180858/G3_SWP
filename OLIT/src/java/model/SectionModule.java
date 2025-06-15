@@ -4,11 +4,21 @@
  */
 package model;
 
+import java.util.List;
+
 public class SectionModule {
     private int moduleID;
     private int sectionID;
     private String moduleTitle;
+    private List<Lesson> lessons;
 
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
+    }
+    
     public SectionModule() {
     }
 

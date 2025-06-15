@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import model.Course;
+import model.*;
 
 /**
  *
@@ -80,6 +80,7 @@ public class CourseDAO {
     }
     return null;
 }
+    
     public List<Course> getTopCourses(int count) {
     List<Course> list = new ArrayList<>();
     String sql = "SELECT TOP (?) * FROM Course WHERE status = 1";

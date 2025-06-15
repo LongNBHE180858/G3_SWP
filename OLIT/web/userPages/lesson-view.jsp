@@ -754,8 +754,38 @@
             <div class="course-content-area">
                 <!-- Vertical List View (Default) -->
                 <div id="list-container" class="course-list-container">
-                    <!-- Sections will be populated by JavaScript -->
-                </div>
+                <c:forEach var="section" items="${sectionList}">
+                  <div class="section">
+                    <div class="section-header">
+                      <h3>${section.sectionTitle}</h3>
+                      <span class="section-info"></span>
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+
+                    <div class="section-content">
+                      <c:forEach var="module" items="${section.modules}">
+                        <div class="module">
+                          <div class="module-header">
+                            <h4>${module.moduleTitle}</h4>
+                            <i class="fas fa-chevron-down"></i>
+                          </div>
+
+                          <div class="module-content">
+                            <c:forEach var="lesson" items="${module.lessons}">
+                              <div class="lesson" onclick="selectLesson('${lesson.lessonTitle}', '${lesson.URLLesson}')">
+                                <div class="lesson-icon">
+                                  <i class="fas fa-play-circle"></i>
+                                </div>
+                                <span>${lesson.lessonTitle}</span>
+                              </div>
+                            </c:forEach>
+                          </div>
+                        </div>
+                      </c:forEach>
+                    </div>
+                  </div>
+                </c:forEach>
+              </div>
 
                 <!-- Grid View (Hidden by default) -->
                 <div id="grid-container" class="course-grid-container" style="display: none;">
@@ -774,55 +804,39 @@
         </main>
     </div>
     <script>
-        const courseData = [
-          {
-            title: "Section 1: Tổng quan dự án",
-            duration: "2h 20p",
-            modules: [
-              {
-                title: "Module 1: Giới thiệu & Mở đầu",
-                lessons: [
-                  "Bài 1: Giới thiệu khóa học",
-                  "Bài 2: Cách học hiệu quả"
-                ]
-              },
-              {
-                title: "Module 2: Nền tảng dự án",
-                lessons: [
-                  "Bài 3: Project là gì?",
-                  "Bài 4: Portfolio vs Program"
-                ]
-              }
-            ]
-          },
-          {
-            title: "Section 2: Lập kế hoạch",
-            duration: "1h 45p",
-            modules: [
-              {
-                title: "Module 1: Xác định mục tiêu",
-                lessons: [
-                  "Bài 1: Mục tiêu SMART",
-                  "Bài 2: Timeline sơ bộ"
-                ]
-              }
-            ]
-          }
-        ];
-        function selectLesson(lessonTitle) {
-          const lessonDisplay = document.querySelector('.lesson-content');
-          if (lessonDisplay) {
-            lessonDisplay.innerHTML = `
-              <div class="selected-lesson">
-                <h3>${lessonTitle}</h3>
-                <video controls width="100%" style="margin-top: 10px;">
-                  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-                  Your browser does not support HTML video.
-                </video>
-              </div>
-            `;
-          }
+        function selectLesson(title, url) {
+        const lessonDisplay = document.querySelector('.lesson-content');
+        if (lessonDisplay) {
+          lessonDisplay.innerHTML = `
+            <div class="selected-lesson">
+              <h3>${title}</h3>
+              <video controls width="100%" style="margin-top: 10px;">
+                <source src="${url}" type="video/mp4" />
+                Your browser does not support HTML video.
+              </video>
+            </div>
+          `;
         }
+
+        document.querySelectorAll('.lesson').forEach(el => el.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.section-header').forEach(header => {
+          header.addEventListener('click', () => {
+            header.classList.toggle('open');
+            header.nextElementSibling.classList.toggle('open');
+          });
+        });
+
+        document.querySelectorAll('.module-header').forEach(header => {
+          header.addEventListener('click', () => {
+            header.classList.toggle('open');
+            header.nextElementSibling.classList.toggle('open');
+          });
+        });
+      });
 
         function renderListLayout(data) {
           const container = document.querySelector('.course-list-container');
