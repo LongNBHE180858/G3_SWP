@@ -7,12 +7,12 @@ package model;
 public class CourseSection {
     private int sectionID;
     private int courseID;
-    private int sectionTitle;
+    private String sectionTitle;
 
     public CourseSection() {
     }
 
-    public CourseSection(int sectionID, int courseID, int sectionTitle) {
+    public CourseSection(int sectionID, int courseID, String sectionTitle) {
         this.sectionID = sectionID;
         this.courseID = courseID;
         this.sectionTitle = sectionTitle;
@@ -34,11 +34,11 @@ public class CourseSection {
         this.courseID = courseID;
     }
 
-    public int getSectionTitle() {
+    public String getSectionTitle() {
         return sectionTitle;
     }
 
-    public void setSectionTitle(int sectionTitle) {
+    public void setSectionTitle(String sectionTitle) {
         this.sectionTitle = sectionTitle;
     }
     
