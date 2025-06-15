@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Đổi mật khẩu</title>
+    <title>Forgot password</title>
     <link href="${pageContext.request.contextPath}/userPages/assets/css/main.css" rel="stylesheet">
     <style>
         * {

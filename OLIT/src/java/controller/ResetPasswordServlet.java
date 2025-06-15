@@ -24,7 +24,13 @@ public class ResetPasswordServlet extends HttpServlet {
         String confirm = request.getParameter("confirmPassword");
 
         if (!pass.equals(confirm)) {
-            request.setAttribute("error", "Mật khẩu không khớp.");
+            request.setAttribute("error", "Passwords do not match.");
+            request.getRequestDispatcher("userPages/ResetPassword.jsp?email=" + email).forward(request, response);
+            return;
+        }
+
+        if (!isStrongPassword(pass)) {
+            request.setAttribute("error", "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.");
             request.getRequestDispatcher("userPages/ResetPassword.jsp?email=" + email).forward(request, response);
             return;
         }
@@ -33,8 +39,14 @@ public class ResetPasswordServlet extends HttpServlet {
         if (success) {
             response.sendRedirect("userPages/login.jsp");
         } else {
-            request.setAttribute("error", "Đổi mật khẩu thất bại!");
+            request.setAttribute("error", "Failed to reset the password.");
             request.getRequestDispatcher("userPages/ResetPassword.jsp?email=" + email).forward(request, response);
         }
+
+    }
+    
+    private boolean isStrongPassword(String password) {
+        String pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        return password != null && password.matches(pattern);
     }
 }

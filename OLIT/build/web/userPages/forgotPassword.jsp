@@ -1,98 +1,98 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Forgot Password</title>
+    <title>Change password</title>
+    <link href="${pageContext.request.contextPath}/userPages/assets/css/main.css" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            padding: 0;
+            background: linear-gradient(to right, #dfe9f3, #ffffff);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
-        .container {
+        .login-container {
+            background-color: #ffffff;
+            padding: 35px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 420px;
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            margin-top: 0;
-            margin-bottom: 10px;
             text-align: center;
-            color: #333;
         }
 
-        p {
-            font-size: 14px;
-            text-align: center;
-            color: #666;
-            margin-bottom: 20px;
+        .login-container h2 {
+            margin-bottom: 25px;
+            color: #222;
+            font-size: 22px;
         }
 
-        input[type="email"] {
+        .input-field {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
+            padding: 14px 12px;
+            margin: 12px 0;
             border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border 0.3s ease;
         }
 
-        button {
+        .input-field:focus {
+            outline: none;
+            border-color: #54b7e7;
+            box-shadow: 0 0 5px rgba(84, 183, 231, 0.4);
+        }
+
+        .button {
             width: 100%;
-            padding: 12px;
+            padding: 13px;
             background-color: #54b7e7;
             color: white;
-            font-size: 15px;
-            font-weight: bold;
+            font-size: 16px;
+            font-weight: 600;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
         }
 
-        button:hover {
+        .button:hover {
             background-color: #409fd1;
         }
 
-        .msg {
-            color: red;
+        p {
             margin-top: 15px;
-            text-align: center;
+            font-size: 14px;
+            color: red;
         }
+
     </style>
+    <%
+    String email = request.getParameter("email");
+%>
 </head>
 <body>
-    <div class="container">
-        <c:choose>
-            <c:when test="${not empty message}">
-                <h2>Reset Requested</h2>
-                <p class="success-msg">${message}</p>
-            </c:when>
-            <c:otherwise>
-                <form action="/OLIT/SendVerificationServlet" method="post">
-                    <h2>Reset your password</h2>
-                    <p>Please enter the email address you’d like your password reset information sent to</p>
-                    <input type="email" name="email" placeholder="Enter Your Email" required>
-                    <button type="submit">Request reset link</button>
-                    <div class="msg">${message}</div>
-                </form>
-            </c:otherwise>
-        </c:choose>
+    <div class="login-container">
+
+        <form action="/OLIT/ForgotPassword" method="post">
+            <h2>Set Your Password</h2>
+            <input type="text" name="email" class="input-field" placeholder="Email" required>
+            <input type="password" name="password" class="input-field" placeholder="New Password" required>
+            <input type="password" name="confirmPassword" class="input-field" placeholder="Confirm Password" required>
+            <button type="submit" class="button">Set Password</button>
+            <p style="color:red">${error}</p>
+        </form>
     </div>
 </body>
 </html>
