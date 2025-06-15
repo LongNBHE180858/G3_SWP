@@ -40,6 +40,11 @@ public class SignupServlet extends HttpServlet {
             response.sendRedirect("userPages/signUp.jsp?status=emailExists");
             return;
         }
+        
+        if (phone.length() != 10) {
+            response.sendRedirect("userPages/signUp.jsp?status=lengthPhone");
+            return;
+        }
 
         if (AccountDAO.getAccountByPhone(phone) != null) {
             response.sendRedirect("userPages/signUp.jsp?status=phoneExists");
