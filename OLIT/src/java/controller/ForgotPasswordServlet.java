@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.*;
 
 /**
  *
@@ -86,12 +87,25 @@ public class ForgotPasswordServlet extends HttpServlet {
             request.getRequestDispatcher("userPages/forgotPassword.jsp?email=" + email).forward(request, response);
             return;
         }
+        
+        Account account = AccountDAO.getAccountByMail(email);
+        if (account == null) {
+            request.setAttribute("error", "Email does not exist.");
+            request.getRequestDispatcher("userPages/forgotPassword.jsp?email=" + email).forward(request, response);
+            return;
+        }
+        
+        if (account.getPassword().equals(pass)) {
+            request.setAttribute("error", "New password must different from old password.");
+            request.getRequestDispatcher("userPages/forgotPassword.jsp?email=" + email).forward(request, response);
+            return;
+        }
 
         boolean success = AccountDAO.updatePasswordAndActivate(email, pass);
         if (success) {
             response.sendRedirect("userPages/login.jsp");
         } else {
-            request.setAttribute("error", "Email does not exist.");
+            request.setAttribute("error", "Change password fail.");
             request.getRequestDispatcher("userPages/forgotPassword.jsp?email=" + email).forward(request, response);
         }
 
