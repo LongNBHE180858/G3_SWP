@@ -212,8 +212,9 @@
             width: 350px;
             background-color: white;
             border-right: 1px solid #e9ecef;
-            overflow-y: auto;
+            overflow-y: scroll;
             transition: var(--transition);
+            max-height:90vh;
         }
 
         .section {
@@ -732,22 +733,12 @@
         <!-- Main Content -->
         <main class="main-content">
             <div class="content-header">
-                <h2>${course.title}</h2>
+                <h2>${course.courseTitle}</h2>
                 <div class="course-actions">
                     <div class="layout-toggle">
                         <button id="list-view" class="active"><i class="fas fa-list"></i> List</button>
                         <button id="grid-view"><i class="fas fa-th-large"></i> Grid</button>
                     </div>
-                </div>
-            </div>
-
-            <div class="course-progress">
-                <div class="progress-info">
-                    <span>Course Progress</span>
-                    <span>${course.progress}% completed</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress" style="width: ${course.progress}%"></div>
                 </div>
             </div>
 

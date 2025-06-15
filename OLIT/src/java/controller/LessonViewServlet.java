@@ -62,6 +62,7 @@ public class LessonViewServlet extends HttpServlet {
         CourseSectionDAO sectionDAO = new CourseSectionDAO();
         SectionModelDAO moduleDAO = new SectionModelDAO();
         LessonDAO lessonDAO = new LessonDAO();
+        CourseDAO courseDAO = new CourseDAO();
 
         List<CourseSection> sectionList = sectionDAO.getSectionsByCourseId(courseId);
         for (CourseSection section : sectionList) {
@@ -72,7 +73,10 @@ public class LessonViewServlet extends HttpServlet {
             }
             section.setModules(modules);
         }
+        
+        Course course = courseDAO.getCourseById(courseId);
 
+        request.setAttribute("course", course);
         request.setAttribute("sectionList", sectionList);
         request.getRequestDispatcher("/userPages/lesson-view.jsp").forward(request, response);
     }
