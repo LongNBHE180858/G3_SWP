@@ -191,7 +191,8 @@
             </div>
         </div>
 
-        <a class="btn" href="#">Register Now</a>
+        <a class="btn" href="CourseRegisterServlet?courseID=${course.courseID}">Register Now</a>
+
     </div>
 
     <!-- SIDEBAR -->
