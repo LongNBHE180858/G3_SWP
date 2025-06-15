@@ -62,11 +62,11 @@ INSERT INTO Subject (SubjectID, SubjectName, Category, OwnerID, NumOfLessons, St
 
 -- Thêm dữ liệu vào bảng Course
 INSERT INTO Course (CourseID, SubjectID, CourseTitle, CourseTag, URLCourse, CourseDetail, CourseLevel, FeatureFlag, Status, CourseraDuration) VALUES
-(1, 1, N'Nhập môn Java Programming', N'java,programming,beginner', 'intro-java-programming', N'Khóa học cơ bản về lập trình Java', N'Beginner', N'featured', 1, 40),
-(2, 2, N'Thiết kế Database với MySQL', N'database,mysql,design', 'database-design-mysql', N'Học cách thiết kế và tối ưu database', N'Intermediate', N'popular', 1, 30),
-(3, 3, N'React.js cho người mới bắt đầu', N'react,javascript,frontend', 'react-for-beginners', N'Xây dựng ứng dụng web với React', N'Beginner', N'new', 1, 50),
-(4, 4, N'Digital Marketing Strategy', N'marketing,digital,strategy', 'digital-marketing-strategy', N'Chiến lược marketing số hiệu quả', N'Intermediate', N'trending', 1, 35),
-(5, 5, N'Agile Project Management', N'agile,project,management', 'agile-project-management', N'Quản lý dự án theo phương pháp Agile', N'Advanced', N'featured', 1, 25);
+(1, 1, N'Nhập môn Java Programming', N'java,programming,beginner', 'https://i.ytimg.com/vi/ptOjDnsLOCc/mqdefault.jpg', N'Khóa học cơ bản về lập trình Java', N'Beginner', N'featured', 1, 40),
+(2, 2, N'Thiết kế Database với MySQL', N'database,mysql,design', 'https://image.vietnix.vn/wp-content/uploads/2023/11/thiet-lap-co-so-du-lieu-tu-xa-voi-mysql-tren-ubuntu-20-04.png', N'Học cách thiết kế và tối ưu database', N'Intermediate', N'popular', 1, 30),
+(3, 3, N'React.js cho người mới bắt đầu', N'react,javascript,frontend', 'https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/2023_12_28_638393296838948284_reactjs.jpg', N'Xây dựng ứng dụng web với React', N'Beginner', N'new', 1, 50),
+(4, 4, N'Digital Marketing Strategy', N'marketing,digital,strategy', 'https://www.creationinfoways.com/blog/uploading/687193083.jpg', N'Chiến lược marketing số hiệu quả', N'Intermediate', N'trending', 1, 35),
+(5, 5, N'Agile Project Management', N'agile,project,management', 'https://miro.medium.com/v2/resize:fit:1024/0*jlUybkZYz6yxWtdk.jpg', N'Quản lý dự án theo phương pháp Agile', N'Advanced', N'featured', 1, 25);
 
 -- Thêm dữ liệu vào bảng PricePackage
 INSERT INTO PricePackage (PackageID, CourseID, Name, AccessDuration, ListPrice, SalePrice, Status, Description) VALUES
@@ -85,16 +85,176 @@ INSERT INTO Registration (RegistrationID, UserID, CourseID, PackageID, ApprovedB
 (5, 5, 1, 2, 1, 'Approved', '2024-05-12', '2024-08-10');
 
 
--- Thêm dữ liệu vào bảng Lesson
-INSERT INTO Lesson (LessonID, CourseID, LessonTitle, LessonDetails, Status, URLLesson, [Order]) VALUES
-(1, 1, N'Giới thiệu về Java', N'Tổng quan về ngôn ngữ lập trình Java và môi trường phát triển', 1, '', 1),
-(2, 1, N'Biến và kiểu dữ liệu', N'Học về các kiểu dữ liệu cơ bản trong Java', 1, '', 2),
-(3, 1, N'Cấu trúc điều khiển', N'If-else, switch-case, loops trong Java', 1, '', 3),
-(4, 2, N'Mô hình quan hệ', N'Hiểu về mô hình cơ sở dữ liệu quan hệ', 1, '', 1),
-(5, 2, N'Thiết kế bảng', N'Nguyên tắc thiết kế bảng và quan hệ', 1, '', 2),
-(6, 3, N'JSX và Components', N'Cú pháp JSX và tạo components trong React', 1, '', 1),
-(7, 3, N'State và Props', N'Quản lý state và truyền props trong React', 1, '', 2),
-(8, 4, N'SEO cơ bản', N'Tối ưu hóa công cụ tìm kiếm cho website', 1, '', 1);
+-- Insert CourseSection
+INSERT INTO CourseSection (SectionID, CourseID, SectionTitle) VALUES
+(1, 1, N'Section 1: Tổng quan dự án'),
+(2, 1, N'Section 2: Cơ bản về Java'),
+(3, 1, N'Section 3: Ứng dụng thực tế'),
+
+(4, 2, N'Section 1: Thiết kế cơ bản'),
+(5, 2, N'Section 2: Quan hệ và chuẩn hóa'),
+(6, 2, N'Section 3: Thực hành nâng cao'),
+
+(7, 3, N'Section 1: Làm quen với React'),
+(8, 3, N'Section 2: Component và Props'),
+(9, 3, N'Section 3: State và vòng đời'),
+
+(10, 4, N'Section 1: Tổng quan Digital Marketing'),
+(11, 4, N'Section 2: Các kênh phổ biến'),
+(12, 4, N'Section 3: Phân tích chiến dịch'),
+
+(13, 5, N'Section 1: Tổng quan Agile'),
+(14, 5, N'Section 2: Scrum Framework'),
+(15, 5, N'Section 3: Agile trong thực tiễn');
+
+-- Insert SectionModule
+INSERT INTO SectionModule (ModuleID, SectionID, ModuleTitle) VALUES
+-- Course 1
+(1, 1, N'Module 1: Giới thiệu & Mở đầu'),
+(2, 1, N'Module 2: Mục tiêu học tập'),
+
+(3, 2, N'Module 1: Cấu trúc chương trình Java'),
+(4, 2, N'Module 2: Biến và kiểu dữ liệu'),
+(5, 2, N'Module 3: Câu lệnh điều kiện'),
+
+(6, 3, N'Module 1: Viết ứng dụng Console'),
+(7, 3, N'Module 2: Đọc ghi file'),
+
+-- Course 2
+(8, 4, N'Module 1: Giới thiệu về MySQL'),
+(9, 4, N'Module 2: Cài đặt và cấu hình'),
+
+(10, 5, N'Module 1: Thiết kế bảng'),
+(11, 5, N'Module 2: Mối quan hệ giữa bảng'),
+
+(12, 6, N'Module 1: Truy vấn nâng cao'),
+
+-- Course 3
+(13, 7, N'Module 1: React là gì?'),
+(14, 7, N'Module 2: Cài đặt môi trường'),
+
+(15, 8, N'Module 1: Component cơ bản'),
+(16, 8, N'Module 2: Props và Event'),
+
+(17, 9, N'Module 1: State và useState'),
+(18, 9, N'Module 2: Vòng đời component'),
+
+-- Course 4
+(19, 10, N'Module 1: Marketing truyền thống vs số'),
+(20, 10, N'Module 2: Xu hướng hiện tại'),
+
+(21, 11, N'Module 1: SEO và SEM'),
+(22, 11, N'Module 2: Social Media Marketing'),
+
+(23, 12, N'Module 1: Đánh giá hiệu quả'),
+
+-- Course 5
+(24, 13, N'Module 1: Nguyên lý Agile'),
+(25, 13, N'Module 2: Agile Manifesto'),
+
+(26, 14, N'Module 1: Scrum Roles'),
+(27, 14, N'Module 2: Scrum Events'),
+
+(28, 15, N'Module 1: Triển khai Agile'),
+(29, 15, N'Module 2: Công cụ hỗ trợ');
+
+INSERT INTO Lesson (LessonID, ModuleID, LessonTitle, LessonDetails, Status, URLLesson, [Order]) VALUES
+-- Module 1: Giới thiệu & Mở đầu (Course 1)
+(1, 1, N'Bài 1: Giới thiệu khóa học', N'Giới thiệu tổng quan về khóa học Java', 1, 'https://lesson.com/java/1', 1),
+(2, 1, N'Bài 2: Mục tiêu học tập', N'Những điều bạn sẽ học được sau khóa học', 1, 'https://lesson.com/java/2', 2),
+
+-- Module 2: Mục tiêu học tập (Course 1)
+(3, 2, N'Bài 1: Hướng dẫn học hiệu quả', N'Cách tận dụng khóa học tối đa', 1, 'https://lesson.com/java/3', 1),
+
+-- Module 3: Cấu trúc chương trình Java
+(4, 3, N'Bài 1: Hàm main và cú pháp cơ bản', N'Giới thiệu hàm main()', 1, 'https://lesson.com/java/4', 1),
+(5, 3, N'Bài 2: Tệp .java và .class', N'Cách chương trình Java được biên dịch', 1, 'https://lesson.com/java/5', 2),
+
+-- Module 4: Biến và kiểu dữ liệu
+(6, 4, N'Bài 1: Kiểu dữ liệu cơ bản', N'int, float, String...', 1, 'https://lesson.com/java/6', 1),
+(7, 4, N'Bài 2: Khai báo và gán giá trị', N'Kỹ thuật khai báo biến', 1, 'https://lesson.com/java/7', 2),
+(8, 4, N'Bài 3: Biến hằng số', N'Sử dụng final trong Java', 1, 'https://lesson.com/java/8', 3),
+
+-- Module 5: Câu lệnh điều kiện
+(9, 5, N'Bài 1: if/else', N'Cấu trúc điều kiện trong Java', 1, 'https://lesson.com/java/9', 1),
+(10, 5, N'Bài 2: switch/case', N'Sử dụng switch để tối ưu code', 1, 'https://lesson.com/java/10', 2),
+
+-- Module 6: Viết ứng dụng Console
+(11, 6, N'Bài 1: In ra màn hình', N'Dùng System.out.print()', 1, 'https://lesson.com/java/11', 1),
+(12, 6, N'Bài 2: Nhập từ bàn phím', N'Scanner class', 1, 'https://lesson.com/java/12', 2),
+
+-- Module 7: Đọc ghi file
+(13, 7, N'Bài 1: FileWriter và FileReader', N'Đọc ghi file văn bản đơn giản', 1, 'https://lesson.com/java/13', 1),
+
+-- Module 8: Giới thiệu về MySQL
+(14, 8, N'Bài 1: Lịch sử và ứng dụng của MySQL', N'Tại sao MySQL phổ biến', 1, 'https://lesson.com/mysql/1', 1),
+
+-- Module 9: Cài đặt và cấu hình
+(15, 9, N'Bài 1: Cài đặt trên Windows', N'Tải về và cài đặt MySQL', 1, 'https://lesson.com/mysql/2', 1),
+(16, 9, N'Bài 2: Cấu hình ban đầu', N'Tạo user, cấp quyền', 1, 'https://lesson.com/mysql/3', 2),
+
+-- Module 10: Thiết kế bảng
+(17, 10, N'Bài 1: Các kiểu dữ liệu phổ biến', N'VARCHAR, INT, DATE...', 1, 'https://lesson.com/mysql/4', 1),
+
+-- Module 11: Mối quan hệ giữa bảng
+(18, 11, N'Bài 1: Primary Key & Foreign Key', N'Tạo mối quan hệ giữa bảng', 1, 'https://lesson.com/mysql/5', 1),
+
+-- Module 12: Truy vấn nâng cao
+(19, 12, N'Bài 1: JOIN các bảng', N'LEFT JOIN, INNER JOIN...', 1, 'https://lesson.com/mysql/6', 1),
+(20, 12, N'Bài 2: Subquery', N'Sử dụng lồng câu truy vấn', 1, 'https://lesson.com/mysql/7', 2),
+
+-- Module 13: React là gì?
+(21, 13, N'Bài 1: Giới thiệu ReactJS', N'Lịch sử và ưu điểm của React', 1, 'https://lesson.com/react/1', 1),
+
+-- Module 14: Cài đặt môi trường
+(22, 14, N'Bài 1: Cài đặt NodeJS & npm', N'Thiết lập môi trường cho React', 1, 'https://lesson.com/react/2', 1),
+
+-- Module 15: Component cơ bản
+(23, 15, N'Bài 1: Tạo component đầu tiên', N'Dùng function component', 1, 'https://lesson.com/react/3', 1),
+(24, 15, N'Bài 2: Props là gì?', N'Truyền dữ liệu giữa component', 1, 'https://lesson.com/react/4', 2),
+
+-- Module 16: Props và Event
+(25, 16, N'Bài 1: Xử lý sự kiện', N'onClick, onChange...', 1, 'https://lesson.com/react/5', 1),
+
+-- Module 17: State và useState
+(26, 17, N'Bài 1: useState Hook', N'Tạo state trong function component', 1, 'https://lesson.com/react/6', 1),
+
+-- Module 18: Vòng đời component
+(27, 18, N'Bài 1: useEffect Hook', N'Thực hiện hành động khi render', 1, 'https://lesson.com/react/7', 1),
+
+-- Module 19: Marketing truyền thống vs số
+(28, 19, N'Bài 1: So sánh mô hình cũ và mới', N'Phân biệt hai phương pháp', 1, 'https://lesson.com/mkt/1', 1),
+
+-- Module 20: Xu hướng hiện tại
+(29, 20, N'Bài 1: Marketing trên TikTok', N'Chiến lược nội dung video ngắn', 1, 'https://lesson.com/mkt/2', 1),
+
+-- Module 21: SEO và SEM
+(30, 21, N'Bài 1: Tối ưu hóa từ khóa', N'Cách SEO giúp tăng traffic', 1, 'https://lesson.com/mkt/3', 1),
+
+-- Module 22: Social Media Marketing
+(31, 22, N'Bài 1: Facebook Ads cơ bản', N'Chạy quảng cáo trên Facebook', 1, 'https://lesson.com/mkt/4', 1),
+
+-- Module 23: Đánh giá hiệu quả
+(32, 23, N'Bài 1: Chỉ số đo lường ROI', N'Cách xác định hiệu quả chiến dịch', 1, 'https://lesson.com/mkt/5', 1),
+
+-- Module 24: Nguyên lý Agile
+(33, 24, N'Bài 1: Agile Manifesto', N'4 giá trị cốt lõi của Agile', 1, 'https://lesson.com/agile/1', 1),
+
+-- Module 25: Agile Manifesto
+(34, 25, N'Bài 1: Các nguyên lý Agile', N'12 nguyên lý trong Agile Manifesto', 1, 'https://lesson.com/agile/2', 1),
+
+-- Module 26: Scrum Roles
+(35, 26, N'Bài 1: Product Owner', N'Trách nhiệm và vai trò', 1, 'https://lesson.com/agile/3', 1),
+(36, 26, N'Bài 2: Scrum Master', N'Đảm bảo quy trình Scrum vận hành tốt', 1, 'https://lesson.com/agile/4', 2),
+
+-- Module 27: Scrum Events
+(37, 27, N'Bài 1: Sprint Planning', N'Lên kế hoạch cho Sprint', 1, 'https://lesson.com/agile/5', 1),
+
+-- Module 28: Triển khai Agile
+(38, 28, N'Bài 1: Agile tại doanh nghiệp', N'Ví dụ triển khai thực tế', 1, 'https://lesson.com/agile/6', 1),
+
+-- Module 29: Công cụ hỗ trợ
+(39, 29, N'Bài 1: Sử dụng Jira', N'Theo dõi tiến độ trong Agile', 1, 'https://lesson.com/agile/7', 1);
 
 INSERT INTO Quiz (QuizID, CourseID, QuizName, PassRate, QuizType, QuizDuration, QuizLevel, Status) VALUES
 (1, 1, N'Kiểm tra Java cơ bản', 70.00, N'Multiple Choice', 30, N'Beginner', 1),

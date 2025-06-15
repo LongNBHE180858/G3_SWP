@@ -105,6 +105,18 @@ CREATE TABLE Course (
     CourseraDuration INT
 );
 
+CREATE TABLE CourseSection (
+    SectionID INT PRIMARY KEY,
+    CourseID INT FOREIGN KEY REFERENCES Course(CourseID),
+    SectionTitle NVARCHAR(255) NOT NULL,
+);
+
+CREATE TABLE SectionModule (
+    ModuleID INT PRIMARY KEY,
+    SectionID INT FOREIGN KEY REFERENCES CourseSection(SectionID),
+    ModuleTitle NVARCHAR(255) NOT NULL,
+);
+
 CREATE TABLE PricePackage (
     PackageID INT PRIMARY KEY,
     CourseID INT FOREIGN KEY REFERENCES Course(CourseID),
@@ -127,11 +139,9 @@ CREATE TABLE Registration (
     ValidFrom DATE
 );
 
-
-
 CREATE TABLE Lesson (
     LessonID INT PRIMARY KEY,
-     CourseID INT FOREIGN KEY REFERENCES Course(CourseID),
+    ModuleID INT FOREIGN KEY REFERENCES SectionModule(ModuleID),
     LessonTitle NVARCHAR(255) NOT NULL,
     LessonDetails NVARCHAR(MAX),
     Status BIT NOT NULL DEFAULT 0,
