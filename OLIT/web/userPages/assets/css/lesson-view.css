@@ -785,3 +785,58 @@
   margin-bottom: 10px;
 }
 
+.grid-card {
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.grid-card:hover {
+  transform: scale(1.02);
+  background-color: #f9f9f9;
+}
+
+.grid-section,
+.grid-module {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+.grid-title {
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.grid-meta {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 4px;
+  text-align: center;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* overlay tối mờ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  max-height: 90vh; /* Giới hạn chiều cao */
+  overflow-y: auto; /* Cuộn dọc khi tràn */
+  width: 80%;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+

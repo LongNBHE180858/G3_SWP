@@ -20,11 +20,9 @@
             </div>
             <nav class="sidebar-nav">
                 <ul>
-                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/HomeServlet"><i class="fas fa-home"></i> Home</a></li>
                     <li class="active"><a href="#"><i class="fas fa-book-open"></i> My Courses</a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i> Progress</a></li>
-                    <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="${pageContext.request.contextPath}/UserProfile"><i class="fas fa-user"></i> Profile</a></li>
                     <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </nav>
@@ -102,25 +100,6 @@
   </div>
 </div>
     <script>
-        const courseData = [
-    <c:forEach var="section" items="${sectionList}" varStatus="s">
-      {
-        title: "${section.sectionTitle}",
-        modules: [
-          <c:forEach var="module" items="${section.modules}" varStatus="m">
-            {
-              title: "${module.moduleTitle}",
-              lessons: [
-                <c:forEach var="lesson" items="${module.lessons}" varStatus="l">
-                  "${lesson.lessonTitle}"<c:if test="${!l.last}">,</c:if>
-                </c:forEach>
-              ]
-            }<c:if test="${!m.last}">,</c:if>
-          </c:forEach>
-        ]
-      }<c:if test="${!s.last}">,</c:if>
-    </c:forEach>
-  ];
         function selectLesson(title, url) {
         const lessonDisplay = document.querySelector('.lesson-content');
         if (lessonDisplay) {
@@ -306,24 +285,52 @@
         },
       </c:forEach>
     ];
+    
+  courseData.forEach(section => {
+  section.modules.forEach(module => {
+    module.lessons.forEach(lesson => {
+      const card = document.createElement('div');
+      card.className = 'grid-card';
 
-    courseData.forEach(section => {
-      section.modules.forEach(module => {
-        module.lessons.forEach(lesson => {
-          const card = document.createElement('div');
-          card.className = 'grid-card';
-          card.innerHTML = `
-            <div class="grid-icon"><i class="fas fa-play-circle"></i></div>
-            <h4 class="grid-title">${lesson.title}</h4>
-          `;
-          card.onclick = () => {
-            selectLesson(lesson.title, lesson.url);
-            modal.style.display = 'none';
-          };
-          modalGrid.appendChild(card);
-        });
-      });
+      // Icon
+      const iconDiv = document.createElement('div');
+      iconDiv.className = 'grid-icon';
+
+      const lessonTitleEl = document.createElement('h4');
+      lessonTitleEl.className = 'grid-title';
+      lessonTitleEl.textContent = lesson.title;
+
+      const infoEl = document.createElement('div');
+        infoEl.className = 'grid-meta';
+
+        const sectionSpan = document.createElement('span');
+        sectionSpan.textContent = section.title;
+
+        const separator = document.createElement('span');
+        separator.textContent = ' • ';
+
+        const moduleSpan = document.createElement('span');
+        moduleSpan.textContent = module.title;
+
+        infoEl.appendChild(sectionSpan);
+        infoEl.appendChild(separator);
+        infoEl.appendChild(moduleSpan);
+
+
+      card.appendChild(iconDiv);
+      card.appendChild(lessonTitleEl);
+      card.appendChild(infoEl);
+
+      card.onclick = () => {
+        selectLesson(lesson.title, lesson.url);
+        modal.style.display = 'none';
+      };
+
+      modalGrid.appendChild(card);
     });
+  });
+});
+
   }
 });
 
