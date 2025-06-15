@@ -150,7 +150,7 @@
     <div class="overlay">
         <div class="popup">
             <h2>Register Course</h2>
-            <form action="registerCourse" method="post">
+            <form action="RegisterCourse" method="post">
                 <input type="hidden" name="courseID" value="${param.courseID}" />
 
                 <div class="form-group">

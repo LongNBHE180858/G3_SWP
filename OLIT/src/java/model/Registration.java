@@ -23,6 +23,14 @@ public class Registration {
     public Registration() {
     }
 
+    public Registration(int RegistrationID, int UserID, int CourseID, int PackageID, String Status) {
+        this.RegistrationID = RegistrationID;
+        this.UserID = UserID;
+        this.CourseID = CourseID;
+        this.PackageID = PackageID;
+        this.Status = Status;
+    }
+
     public int getRegistrationID() {
         return RegistrationID;
     }
