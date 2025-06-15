@@ -83,7 +83,7 @@
                             <tr>
                                 <td>${q.questionID}</td>
                                 <td>${q.questionContent}</td>
-                                <td>${q.questionType}</td> <!-- thay vì subjectName -->
+                                <td>${q.questionType}</td>
                                 <td>${q.questionLevel}</td>
                                 <td>
                                     <c:choose>

@@ -94,7 +94,33 @@
             </div>
         </main>
     </div>
+                <div id="grid-modal" class="modal-overlay" style="display: none;">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2>Choose a lesson</h2>
+    <div id="modal-grid-container" class="modal-grid-container"></div>
+  </div>
+</div>
     <script>
+        const courseData = [
+    <c:forEach var="section" items="${sectionList}" varStatus="s">
+      {
+        title: "${section.sectionTitle}",
+        modules: [
+          <c:forEach var="module" items="${section.modules}" varStatus="m">
+            {
+              title: "${module.moduleTitle}",
+              lessons: [
+                <c:forEach var="lesson" items="${module.lessons}" varStatus="l">
+                  "${lesson.lessonTitle}"<c:if test="${!l.last}">,</c:if>
+                </c:forEach>
+              ]
+            }<c:if test="${!m.last}">,</c:if>
+          </c:forEach>
+        ]
+      }<c:if test="${!s.last}">,</c:if>
+    </c:forEach>
+  ];
         function selectLesson(title, url) {
         const lessonDisplay = document.querySelector('.lesson-content');
         if (lessonDisplay) {
@@ -226,6 +252,82 @@
         document.addEventListener('DOMContentLoaded', () => {
           renderListLayout(courseData);
         });
+          document.addEventListener('DOMContentLoaded', () => {
+  const listBtn = document.getElementById('list-view');
+  const gridBtn = document.getElementById('grid-view');
+  const listContainer = document.getElementById('list-container');
+  const modal = document.getElementById('grid-modal');
+  const modalGrid = document.getElementById('modal-grid-container');
+  const closeModal = document.querySelector('.close-modal');
+
+  // Hiện list view
+  listBtn.addEventListener('click', () => {
+    listContainer.style.display = 'block';
+    modal.style.display = 'none';
+    listBtn.classList.add('active');
+    gridBtn.classList.remove('active');
+  });
+
+  // Hiện modal grid
+  gridBtn.addEventListener('click', () => {
+    listContainer.style.display = 'none';
+    modal.style.display = 'flex';
+    listBtn.classList.remove('active');
+    gridBtn.classList.add('active');
+    renderModalGrid();
+  });
+
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  function renderModalGrid() {
+    modalGrid.innerHTML = '';
+    <%-- Render từ Java JSP object ra JS --%>
+    const courseData = [
+      <c:forEach var="section" items="${sectionList}">
+        {
+          title: "${section.sectionTitle}",
+          modules: [
+            <c:forEach var="module" items="${section.modules}">
+              {
+                title: "${module.moduleTitle}",
+                lessons: [
+                  <c:forEach var="lesson" items="${module.lessons}">
+                    {
+                      title: "${lesson.lessonTitle}",
+                      url: "${lesson.URLLesson}"
+                    },
+                  </c:forEach>
+                ]
+              },
+            </c:forEach>
+          ]
+        },
+      </c:forEach>
+    ];
+
+    courseData.forEach(section => {
+      section.modules.forEach(module => {
+        module.lessons.forEach(lesson => {
+          const card = document.createElement('div');
+          card.className = 'grid-card';
+          card.innerHTML = `
+            <div class="grid-icon"><i class="fas fa-play-circle"></i></div>
+            <h4 class="grid-title">${lesson.title}</h4>
+          `;
+          card.onclick = () => {
+            selectLesson(lesson.title, lesson.url);
+            modal.style.display = 'none';
+          };
+          modalGrid.appendChild(card);
+        });
+      });
+    });
+  }
+});
+
+
         </script>
 </body>
 </html>
