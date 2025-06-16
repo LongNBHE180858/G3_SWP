@@ -21,6 +21,17 @@ public class PricePackage {
     public PricePackage() {
     }
 
+    public PricePackage(int PackageID, int CourseID, String Name, int AccessDuration, int ListPrice, int SalePrice, int Status, String Description) {
+        this.PackageID = PackageID;
+        this.CourseID = CourseID;
+        this.Name = Name;
+        this.AccessDuration = AccessDuration;
+        this.ListPrice = ListPrice;
+        this.SalePrice = SalePrice;
+        this.Status = Status;
+        this.Description = Description;
+    }
+
     public int getPackageID() {
         return PackageID;
     }

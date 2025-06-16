@@ -157,9 +157,15 @@
                     <label for="package">Choose Price Package</label>
                     <select id="package" name="package" required>
                         <option value="">-- Select Package --</option>
-                        <option value="basic">Basic - $50</option>
-                        <option value="standard">Standard - $100</option>
-                        <option value="premium">Premium - $150</option>
+                        <c:forEach items="${pricePackages}" var="pkg">
+                            <option value="${pkg.packageID}">
+                                <c:out value="${pkg.name}"/> - $${pkg.salePrice}
+                                <c:if test="${pkg.listPrice > pkg.salePrice}">
+                                    (was $${pkg.listPrice})
+                                </c:if>
+                                - ${pkg.accessDuration} months access
+                            </option>
+                        </c:forEach>
                     </select>
                 </div>
 

@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dao.PricePackageDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,7 +13,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
 import model.Account;
+import model.PricePackage;
 
 /**
  *
@@ -20,6 +23,13 @@ import model.Account;
  */
 @WebServlet(name = "CourseRegisterServlet", urlPatterns = {"/CourseRegisterServlet"})
 public class CourseRegisterServlet extends HttpServlet {
+    private PricePackageDAO pricePackageDAO;
+    
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        pricePackageDAO = new PricePackageDAO();
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -50,6 +60,20 @@ public class CourseRegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Get courseId from request parameter
+        String courseIdStr = request.getParameter("courseID");
+        if (courseIdStr != null && !courseIdStr.isEmpty()) {
+            try {
+                int courseId = Integer.parseInt(courseIdStr);
+                List<PricePackage> pricePackages = pricePackageDAO.getPricePackagesByCourseId(courseId);
+                
+                // Set the pricePackages as request attribute
+                request.setAttribute("pricePackages", pricePackages);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        
         HttpSession session = request.getSession();
         Account user = (Account) session.getAttribute("fullAccount");
 
