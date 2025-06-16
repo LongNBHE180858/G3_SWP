@@ -9,7 +9,8 @@ import java.sql.Date;
 public class Slider {
     private int sliderId;
     private String title;
-    private String imageUrl; // Sửa tên biến
+    private String imageUrl; 
+    private int courseID;
     private String backLink;
     private int status;
     private String notes;
@@ -17,6 +18,26 @@ public class Slider {
     private Date validFrom;
 
     public Slider() {
+    }
+
+    public Slider(int sliderId, String title, String imageUrl, int courseID, String backLink, int status, String notes, int displayOrder, Date validFrom) {
+        this.sliderId = sliderId;
+        this.title = title;
+        this.imageUrl = imageUrl;
+        this.courseID = courseID;
+        this.backLink = backLink;
+        this.status = status;
+        this.notes = notes;
+        this.displayOrder = displayOrder;
+        this.validFrom = validFrom;
+    }
+
+    public int getCourseID() {
+        return courseID;
+    }
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
     }
 
     public int getSliderId() {
