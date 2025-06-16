@@ -160,7 +160,25 @@
             color: #007bff;
             text-decoration: underline;
         }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
 
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+        .alert-error {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
     </style>
 </head>
 <body>
@@ -168,6 +186,12 @@
 <div class="container">
     <!-- MAIN -->
     <div class="main">
+        
+            <c:if test="${not empty message}">
+                <div class="alert alert-${messageType}">
+                    ${message}
+                </div>
+            </c:if>
         <div class="title">${course.courseTitle}</div>
         <p><em>Start your coding journey with hands-on practice.</em></p>
         <p><strong>Overview:</strong> ${course.courseDetail}</p>
