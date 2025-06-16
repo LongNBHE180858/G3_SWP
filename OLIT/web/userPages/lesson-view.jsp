@@ -103,20 +103,23 @@
         function selectLesson(title, url) {
         const lessonDisplay = document.querySelector('.lesson-content');
         if (lessonDisplay) {
-          lessonDisplay.innerHTML = `
-            <div class="selected-lesson">
-              <h3>${title}</h3>
-              <video controls width="100%" style="margin-top: 10px;">
-                <source src="${url}" type="video/mp4" />
-                Your browser does not support HTML video.
-              </video>
-            </div>
-          `;
+                const youtubeId = extractYouTubeId(url);
+          lessonDisplay.innerHTML = 
+                    '<div class="selected-lesson">' +
+                    '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + youtubeId + '" ' +
+                    'title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; ' +
+                    'encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         }
 
         document.querySelectorAll('.lesson').forEach(el => el.classList.remove('active'));
         event.currentTarget.classList.add('active');
       }
+
+    function extractYouTubeId(url) {
+        const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[7].length === 11) ? match[7] : null;
+    }
 
       document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.section-header').forEach(header => {

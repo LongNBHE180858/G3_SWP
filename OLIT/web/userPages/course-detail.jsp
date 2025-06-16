@@ -328,7 +328,6 @@
         sliderData.forEach((slide, index) => {
             const slideElement = document.createElement('div');
             slideElement.className = 'slide ' + (index === 0 ? 'active' : '');
-            console.log(slide.url);
             if (slide.type === 'image') {
                 slideElement.innerHTML =
                     '<img src="' + slide.url + '" alt="' + slide.title + '" class="slide-media">' +
