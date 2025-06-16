@@ -61,7 +61,11 @@ public class CourseDetailServlet extends HttpServlet {
         int courseId = Integer.parseInt(request.getParameter("id"));
         CourseDAO courseDAO = new CourseDAO();
         SubjectDAO subjectDAO = new SubjectDAO();
-
+        SliderDAO sliderDAO = new SliderDAO();
+        LessonDAO lessonDAO = new LessonDAO();
+        
+        Lesson firstLesson = lessonDAO.getFirstLessonByCourseId(courseId);
+        List<Slider> sliders = sliderDAO.getSliderByCourseID(courseId);
         Course course = courseDAO.getCourseById(courseId);
         List<Subject> allSubjects = subjectDAO.getAllSubjects();
         List<Course> featuredCourses = courseDAO.getTopCourses(2); 
@@ -69,6 +73,8 @@ public class CourseDetailServlet extends HttpServlet {
         request.setAttribute("course", course);
         request.setAttribute("subjects", allSubjects);
         request.setAttribute("featuredCourses", featuredCourses);
+        request.setAttribute("sliders", sliders);
+        request.setAttribute("firstLesson", firstLesson);
 
         request.getRequestDispatcher("/userPages/course-detail.jsp").forward(request, response);
     }

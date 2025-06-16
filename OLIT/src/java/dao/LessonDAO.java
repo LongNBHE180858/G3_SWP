@@ -37,4 +37,32 @@ public class LessonDAO {
 
         return list;
     }
+    
+    public Lesson getFirstLessonByCourseId(int courseId) {
+        String sql = "SELECT TOP 1 l.* FROM Lesson l " +
+                     "JOIN SectionModule sm ON l.ModuleID = sm.ModuleID " +
+                     "JOIN CourseSection cs ON sm.SectionID = cs.SectionID " +
+                     "WHERE cs.CourseID = ? " +
+                     "ORDER BY cs.SectionID, sm.ModuleID, l.[Order]";
+
+        try (PreparedStatement ps = DBContext.getInstance().getConnection().prepareStatement(sql)) {
+            ps.setInt(1, courseId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    Lesson lesson = new Lesson();
+                    lesson.setLessonID(rs.getInt("LessonID"));
+                    lesson.setModuleID(rs.getInt("ModuleID"));
+                    lesson.setLessonTitle(rs.getString("LessonTitle"));
+                    lesson.setLessonDetail(rs.getString("LessonDetails"));
+                    lesson.setStatus(rs.getBoolean("Status"));
+                    lesson.setURLLesson(rs.getString("URLLesson"));
+                    lesson.setOrder(rs.getInt("Order"));
+                    return lesson;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

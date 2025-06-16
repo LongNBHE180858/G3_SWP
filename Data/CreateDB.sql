@@ -157,10 +157,6 @@ CREATE TABLE QuizAttempt (
     TotalScore DECIMAL(5,2)
 );
 
-
-
-
-
 CREATE TABLE Question (
     QuestionID INT PRIMARY KEY,
     QuestionContent NVARCHAR(MAX) NOT NULL,
