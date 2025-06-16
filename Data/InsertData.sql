@@ -160,7 +160,7 @@ INSERT INTO SectionModule (ModuleID, SectionID, ModuleTitle) VALUES
 
 INSERT INTO Lesson (LessonID, ModuleID, LessonTitle, LessonDetails, Status, URLLesson, [Order]) VALUES
 -- Module 1: Giới thiệu & Mở đầu (Course 1)
-(1, 1, N'Bài 1: Giới thiệu khóa học', N'Giới thiệu tổng quan về khóa học Java', 1, 'https://lesson.com/java/1', 1),
+(1, 1, N'Bài 1: Giới thiệu khóa học', N'Giới thiệu tổng quan về khóa học Java', 1, 'https://www.youtube.com/watch?v=3gtOAlcovoQ&list=PL33lvabfss1yGrOutFR03OZoqm91TSsvs', 1),
 (2, 1, N'Bài 2: Mục tiêu học tập', N'Những điều bạn sẽ học được sau khóa học', 1, 'https://lesson.com/java/2', 2),
 
 -- Module 2: Mục tiêu học tập (Course 1)
@@ -256,27 +256,22 @@ INSERT INTO Lesson (LessonID, ModuleID, LessonTitle, LessonDetails, Status, URLL
 -- Module 29: Công cụ hỗ trợ
 (39, 29, N'Bài 1: Sử dụng Jira', N'Theo dõi tiến độ trong Agile', 1, 'https://lesson.com/agile/7', 1);
 
-INSERT INTO Quiz (QuizID, CourseID, QuizName, PassRate, QuizType, QuizDuration, QuizLevel, Status) VALUES
+INSERT INTO Quiz (QuizID, SectionID, QuizName, PassRate, QuizType, QuizDuration, QuizLevel, Status) VALUES
 (1, 1, N'Kiểm tra Java cơ bản', 70.00, N'Multiple Choice', 30, N'Beginner', 1),
 (2, 2, N'Quiz thiết kế Database', 75.00, N'Mixed', 45, N'Intermediate', 1),
 (3, 3, N'React Fundamentals Test', 65.00, N'Multiple Choice', 25, N'Beginner', 1),
 (4, 4, N'Digital Marketing Quiz', 80.00, N'True/False', 20, N'Intermediate', 1),
 (5, 5, N'Agile Methodology Test', 85.00, N'Mixed', 40, N'Advanced', 1),
-(6, 1, N'Python Data Science Quiz', 75.00, N'Multiple Choice', 35, N'Intermediate', 1),
-(7, 2, N'Node.js API Test', 70.00, N'Mixed', 40, N'Intermediate', 1),
-(8, 3, N'Flutter Basics Quiz', 65.00, N'Multiple Choice', 25, N'Beginner', 1),
-(9, 4, N'DevOps Tools Test', 80.00, N'Mixed', 45, N'Advanced', 1),
-(10, 5, N'UI/UX Design Quiz', 60.00, N'Multiple Choice', 20, N'Beginner', 1),
-(11, 5, N'Cybersecurity Test', 85.00, N'Mixed', 50, N'Intermediate', 1),
-(12, 4, N'Machine Learning Quiz', 90.00, N'Multiple Choice', 60, N'Advanced', 1),
-(13, 3, N'WordPress Dev Test', 65.00, N'Multiple Choice', 25, N'Beginner', 1),
-(14, 2, N'Unity Game Dev Quiz', 75.00, N'Mixed', 40, N'Intermediate', 1),
-(15, 1, N'Blockchain Fundamentals', 80.00, N'Multiple Choice', 35, N'Advanced', 1),
-(16, 5, N'Excel Business Quiz', 60.00, N'Multiple Choice', 20, N'Beginner', 1),
-(17, 4, N'Social Marketing Test', 70.00, N'Mixed', 30, N'Beginner', 1),
-(18, 3, N'E-commerce Quiz', 65.00, N'Multiple Choice', 25, N'Beginner', 1),
-(19, 2, N'Video Editing Test', 75.00, N'Mixed', 35, N'Intermediate', 1),
-(20, 1, N'Photography Quiz', 60.00, N'Multiple Choice', 20, N'Beginner', 1);
+(6, 6, N'Python Data Science Quiz', 75.00, N'Multiple Choice', 35, N'Intermediate', 1),
+(7, 7, N'Node.js API Test', 70.00, N'Mixed', 40, N'Intermediate', 1),
+(8, 8, N'Flutter Basics Quiz', 65.00, N'Multiple Choice', 25, N'Beginner', 1),
+(9, 9, N'DevOps Tools Test', 80.00, N'Mixed', 45, N'Advanced', 1),
+(10, 10, N'UI/UX Design Quiz', 60.00, N'Multiple Choice', 20, N'Beginner', 1),
+(11, 11, N'Cybersecurity Test', 85.00, N'Mixed', 50, N'Intermediate', 1),
+(12, 12, N'Machine Learning Quiz', 90.00, N'Multiple Choice', 60, N'Advanced', 1),
+(13, 13, N'WordPress Dev Test', 65.00, N'Multiple Choice', 25, N'Beginner', 1),
+(14, 14, N'Unity Game Dev Quiz', 75.00, N'Mixed', 40, N'Intermediate', 1),
+(15, 15, N'Blockchain Fundamentals', 80.00, N'Multiple Choice', 35, N'Advanced', 1);
 
 -- Thêm dữ liệu vào bảng Question
 INSERT INTO Question (QuestionID, QuestionContent, Answer1, Answer2, Answer3, Answer4, Solution, QuestionType, Status, QuestionLevel, MediaURL) VALUES
@@ -452,11 +447,7 @@ INSERT INTO QuizQuestion (QuizQuestionID, QuizID, QuestionID, QuestionOrder, Poi
 (15, 12, 14, 1, 4.0),
 (16, 13, 15, 1, 2.0),
 (17, 14, 16, 1, 2.5),
-(18, 15, 17, 1, 3.5),
-(19, 16, 18, 1, 2.0),
-(20, 17, 19, 1, 2.0),
-(21, 18, 20, 1, 2.0),
-(22, 19, 21, 1, 2.5);
+(18, 15, 17, 1, 3.5);
 
 -- Thêm dữ liệu vào bảng QuizAttempt
 INSERT INTO QuizAttempt (AttemptID, UserID, QuizID, StartTime, EndTime, TotalScore) VALUES
@@ -505,11 +496,6 @@ INSERT INTO UserAnswer (AnswerID, QuestionID, AttemptID, UserAnswerContent, IsCo
 (20, 20, 16, N'React Hooks', 1),
 (21, 21, 17, N'API RESTful', 1),
 (22, 22, 18, N'SQL Injection', 0);
--- Thêm dữ liệu vào bảng Slider
-INSERT INTO Slider (SliderID, UserID, Title, ImageURL, Backlink, Status, Notes, DisplayOrder, ValidFrom) VALUES
-(1, 1, N'Khóa học Java mới', 'https://aptech.fpt.edu.vn/wp-content/uploads/2022/06/java-la-ngon-ngu-lap-trinh-rat-da-dung.jpg', '/course/java-basic', 1, N'Slider quảng cáo khóa Java', 1, '2024-05-01'),
-(2, 1, N'Ưu đãi 50% khóa Database', 'https://vtiacademy.edu.vn/upload/images/data-analyst-26.png', '/course/database-design', 1, N'Slider khuyến mãi', 2, '2024-05-05'),
-(3, 1, N'Khai giảng React Course', 'https://vtiacademy.edu.vn/upload/images/artboard-1-copy-16-100.jpg', '/course/react-beginners', 1, N'Thông báo khai giảng', 3, '2024-05-10');
 
 -- Thêm dữ liệu vào bảng Setting
 INSERT INTO Setting (SettingID, UserID, SettingType, SettingValue, SettingOrder, SettingDecription, SettingStatus) VALUES
@@ -518,4 +504,10 @@ INSERT INTO Setting (SettingID, UserID, SettingType, SettingValue, SettingOrder,
 (3, 1, N'Theme', N'Blue', 3, N'Màu chủ đạo giao diện', 1),
 (4, 1, N'Language', N'Vietnamese', 4, N'Ngôn ngữ mặc định', 1),
 (5, 1, N'Timezone', N'Asia/Ho_Chi_Minh', 5, N'Múi giờ hệ thống', 1);
+
+-- Thêm dữ liệu vào bảng Slider
+INSERT INTO Slider (SliderID, CourseID, UserID, Title, ImageURL, Backlink, Status, Notes, DisplayOrder, ValidFrom) VALUES
+(1, 1, 1, N'Khóa học Java mới', 'https://aptech.fpt.edu.vn/wp-content/uploads/2022/06/java-la-ngon-ngu-lap-trinh-rat-da-dung.jpg', '/course/java-basic', 1, N'Slider quảng cáo khóa Java', 1, '2024-05-01'),
+(2, 1, 1, N'Ưu đãi 50% khóa Database', 'https://vtiacademy.edu.vn/upload/images/data-analyst-26.png', '/course/database-design', 1, N'Slider khuyến mãi', 2, '2024-05-05'),
+(3, 1, 1, N'Khai giảng React Course', 'https://vtiacademy.edu.vn/upload/images/artboard-1-copy-16-100.jpg', '/course/react-beginners', 1, N'Thông báo khai giảng', 3, '2024-05-10');
 

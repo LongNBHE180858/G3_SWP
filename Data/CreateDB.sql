@@ -45,18 +45,6 @@ CREATE TABLE Account (
     Birthday DATE
 );
 
-CREATE TABLE Slider (
-    SliderID INT PRIMARY KEY,
-    UserID INT FOREIGN KEY REFERENCES Account(UserID),
-    Title NVARCHAR(255) NOT NULL,
-    ImageURL NVARCHAR(255),
-    Backlink NVARCHAR(255),
-    Status BIT NOT NULL DEFAULT 0,
-    Notes NVARCHAR(MAX),
-    DisplayOrder INT,
-    ValidFrom DATE
-);
-
 CREATE TABLE Setting (
     SettingID INT PRIMARY KEY,
     UserID INT FOREIGN KEY REFERENCES Account(UserID),
@@ -151,7 +139,7 @@ CREATE TABLE Lesson (
 
 CREATE TABLE Quiz (
     QuizID INT PRIMARY KEY,
-    CourseID INT FOREIGN KEY REFERENCES Course(CourseID),
+    SectionID INT FOREIGN KEY REFERENCES CourseSection(SectionID),
     QuizName NVARCHAR(100) NOT NULL,
     PassRate DECIMAL(5,2),
     QuizType NVARCHAR(50),
@@ -204,3 +192,16 @@ CREATE TABLE UserAnswer (
 );
 
 ALTER TABLE Subject ADD CONSTRAINT FK_Subject_Owner FOREIGN KEY (OwnerID) REFERENCES Account(UserID);
+
+CREATE TABLE Slider (
+    SliderID INT PRIMARY KEY,
+    UserID INT FOREIGN KEY REFERENCES Account(UserID),
+    CourseID INT FOREIGN KEY REFERENCES Course(CourseID),
+    Title NVARCHAR(255) NOT NULL,
+    ImageURL NVARCHAR(255),
+    Backlink NVARCHAR(255),
+    Status BIT NOT NULL DEFAULT 0,
+    Notes NVARCHAR(MAX),
+    DisplayOrder INT,
+    ValidFrom DATE
+);
