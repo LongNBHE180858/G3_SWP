@@ -179,6 +179,57 @@
             background-color: #f2dede;
             border-color: #ebccd1;
         }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-media {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px;
+        }
+
+        .slide-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+        }
+
+        .slide-info p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        video.slide-media {
+            background-color: #000;
+        }
     </style>
 </head>
 <body>
@@ -203,16 +254,7 @@
                 It is perfect for beginners and provides a strong foundation to explore any programming language.</p>
         </div>
 
-        <div class="media-row">
-            <div class="course-image">
-                <img src="https://vtiacademy.edu.vn/upload/images/artboard-1-copy-7-100.jpg" alt="Course Image">
-            </div>
-            <div class="course-video">
-                <video controls>
-                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                    Your browser does not support HTML video.
-                </video>
-            </div>
+        <div class="slider-container">
         </div>
 
         <a class="btn" href="CourseRegisterServlet?courseID=${course.courseID}">Register Now</a>
@@ -258,6 +300,95 @@
             li[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
         }
     }
+    
+    const sliderData = [
+        <c:forEach items="${sliders}" var="slider" varStatus="loop">
+        {
+            type: 'image',
+            url: '${slider.imageUrl}',
+            title: '${slider.title}',
+            description: '${slider.notes}'
+        }${!loop.last ? ',' : ''}
+        </c:forEach>
+        <c:if test="${not empty firstLesson}">
+        ,{
+            type: 'video',
+            url: '${firstLesson.URLLesson}',
+            title: '${firstLesson.lessonTitle}',
+            description: 'Bắt đầu bài học'
+        }
+        </c:if>
+    ];
+
+    // Khởi tạo slider
+    function initSlider() {
+        const container = document.querySelector('.slider-container');
+        
+        // Tạo các slide
+        sliderData.forEach((slide, index) => {
+            const slideElement = document.createElement('div');
+            slideElement.className = 'slide ' + (index === 0 ? 'active' : '');
+            console.log(slide.url);
+            if (slide.type === 'image') {
+                slideElement.innerHTML =
+                    '<img src="' + slide.url + '" alt="' + slide.title + '" class="slide-media">' +
+                    '<div class="slide-info">' +
+                        '<h3>' + slide.title + '</h3>' +
+                        '<p>' + slide.description + '</p>' +
+                    '</div>';
+            } else if (slide.type === 'video' && isYouTubeUrl(slide.url)) {
+                const youtubeId = extractYouTubeId(slide.url);
+                slideElement.innerHTML =
+                    '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + youtubeId + '" ' +
+                    'title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; ' +
+                    'encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
+                    '<div class="slide-info">' +
+                        '<h3>' + slide.title + '</h3>' +
+                        '<p>' + slide.description + '</p>' +
+                    '</div>';
+            } else {
+                slideElement.innerHTML =
+                    '<video controls class="slide-media">' +
+                        '<source src="' + slide.url + '" type="video/mp4">' +
+                        'Trình duyệt không hỗ trợ video' +
+                    '</video>' +
+                    '<div class="slide-info">' +
+                        '<h3>' + slide.title + '</h3>' +
+                        '<p>' + slide.description + '</p>' +
+                    '</div>';
+            }
+
+            container.appendChild(slideElement);
+        });
+
+        // Tự động chuyển slide
+        let currentIndex = 0;
+        setInterval(() => {
+            const slides = document.querySelectorAll('.slide');
+            slides[currentIndex].classList.remove('active');
+            
+            currentIndex = (currentIndex + 1) % sliderData.length;
+            slides[currentIndex].classList.add('active');
+            
+            const activeVideo = slides[currentIndex].querySelector('video');
+            if (activeVideo) {
+                activeVideo.currentTime = 0;
+                activeVideo.pause();
+            }
+        }, 5000);
+    }
+    
+    function isYouTubeUrl(url) {
+        return url.includes('youtube.com') || url.includes('youtu.be');
+    }
+
+    function extractYouTubeId(url) {
+        const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[7].length === 11) ? match[7] : null;
+    }
+
+    window.addEventListener('DOMContentLoaded', initSlider);
 </script>
 
 </body>
