@@ -36,6 +36,7 @@
   align-items: center;
   gap: 6px;
   line-height: 1.3;
+  
 }
 
 .quiz-section p {
