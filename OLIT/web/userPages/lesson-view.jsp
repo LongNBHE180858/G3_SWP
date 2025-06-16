@@ -10,6 +10,57 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="${pageContext.request.contextPath}/userPages/assets/css/lesson-view.css" rel="stylesheet">
+    <style>
+        .quiz-section {
+  background-color: #1a1a2e;
+  border: 1px solid #2e2e42;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  color: #f0f0f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  font-size: 14px;
+}
+
+.quiz-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.quiz-section h4 {
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.3;
+}
+
+.quiz-section p {
+  font-size: 13px;
+  color: #ccc;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.quiz-section button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quiz-section button:hover {
+  background-color: #ff6b81;
+}
+
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -72,6 +123,13 @@
                         </div>
                       </c:forEach>
                     </div>
+                      <c:if test="${section.quiz != null}">
+                        <div class="quiz-section">
+                          <h4><i class="fas fa-question-circle"></i> Quiz: ${section.quiz.quizName}</h4>
+                          <p>Type: ${section.quiz.quizType} | Duration: ${section.quiz.quizDuration} mins | Level: ${section.quiz.quizLevel}</p>
+                          <button onclick="startQuiz(${section.quiz.quizID})">Start Quiz</button>
+                        </div>
+                      </c:if>
                   </div>
                 </c:forEach>
               </div>
@@ -93,12 +151,12 @@
         </main>
     </div>
                 <div id="grid-modal" class="modal-overlay" style="display: none;">
-  <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    <h2>Choose a lesson</h2>
-    <div id="modal-grid-container" class="modal-grid-container"></div>
-  </div>
-</div>
+                <div class="modal-content">
+                  <span class="close-modal">&times;</span>
+                  <h2>Choose a lesson</h2>
+                  <div id="modal-grid-container" class="modal-grid-container"></div>
+                </div>
+              </div>
     <script>
         function selectLesson(title, url) {
         const lessonDisplay = document.querySelector('.lesson-content');

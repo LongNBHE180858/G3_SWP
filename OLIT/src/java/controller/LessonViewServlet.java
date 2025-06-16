@@ -63,6 +63,7 @@ public class LessonViewServlet extends HttpServlet {
         SectionModelDAO moduleDAO = new SectionModelDAO();
         LessonDAO lessonDAO = new LessonDAO();
         CourseDAO courseDAO = new CourseDAO();
+        QuizDAO quizDAO = new QuizDAO();
 
         List<CourseSection> sectionList = sectionDAO.getSectionsByCourseId(courseId);
         for (CourseSection section : sectionList) {
@@ -72,8 +73,12 @@ public class LessonViewServlet extends HttpServlet {
                 module.setLessons(lessons);
             }
             section.setModules(modules);
+
+            // Gắn quiz vào từng section
+            Quiz quiz = quizDAO.getQuizBySectionId(section.getSectionID());
+            section.setQuiz(quiz);
         }
-        
+
         Course course = courseDAO.getCourseById(courseId);
 
         request.setAttribute("course", course);

@@ -10,6 +10,11 @@ public class CourseSection {
     private int sectionID;
     private int courseID;
     private String sectionTitle;
+    private Quiz quiz;
+    
+    public Quiz getQuiz() { return quiz; }
+    
+    public void setQuiz(Quiz quiz) { this.quiz = quiz; }
     
     private List<SectionModule> modules;
 
