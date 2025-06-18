@@ -52,7 +52,7 @@ public class SignupServlet extends HttpServlet {
         }
 
         // Gửi link xác nhận
-        String link = "http://localhost:8080/OLIT/userPages/ResetPassword.jsp?email=" + email;
+        String link = "http://localhost:9999/OLIT/userPages/ResetPassword.jsp?email=" + email;
 
         sendVerificationEmail(email, link);
 
@@ -90,9 +90,19 @@ public class SignupServlet extends HttpServlet {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            message.setSubject("Xác nhận đăng ký tài khoản");
-            message.setText("Click vào link để thiết lập mật khẩu:\n" + link);
+            message.setSubject("Confirm account registration");
+
+            // Thay setText bằng setContent với nội dung HTML
+            String htmlContent = "<html><body style='font-family: Arial, sans-serif; text-align: center;'>"
+                    + "<h1>Login to the System</h1>"
+                    + "<p style='color: red;'>Click the link below to login</p>"
+                    + "<a href='" + link + "' style='text-decoration: none;'><button style='background-color: #007BFF; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;'>Login</button></a>"
+                    + "</body></html>";
+            message.setContent(htmlContent, "text/html; charset=utf-8");
+
             Transport.send(message);
+            Transport.send(message);
+
         } catch (MessagingException e) {
             e.printStackTrace();
         }
