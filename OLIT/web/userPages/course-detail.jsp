@@ -4,267 +4,523 @@
     <head>
         <title>Course Detail</title>
         <style>
+            :root {
+                --primary: #4361ee;
+                --primary-dark: #3a56d4;
+                --secondary: #3f37c9;
+                --accent: #4895ef;
+                --danger: #f72585;
+                --success: #4cc9f0;
+                --warning: #f8961e;
+                --light: #f8f9fa;
+                --dark: #212529;
+                --gray: #6c757d;
+                --light-gray: #e9ecef;
+                --white: #ffffff;
+                --border-radius: 8px;
+                --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+
             body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                line-height: 1.6;
+                color: var(--dark);
+                background-color: #f5f7ff;
                 margin: 0;
                 padding: 0;
-                background-color: #f4f6f9;
-                color: #333;
             }
 
             .container {
                 display: flex;
-                padding: 40px;
-                max-width: 1200px;
-                margin: auto;
-                gap: 30px;
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 2rem;
+                gap: 2rem;
+            }
+            
+            header {
+                background: linear-gradient(to right, #4a90e2, #0077cc);
+                color: white;
+                padding: 15px 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+
+            .logo {
+                font-size: 24px;
+                font-weight: bold;
+            }
+
+            .nav-links a {
+                color: white;
+                margin-left: 20px;
+                text-decoration: none;
+                font-weight: 500;
+                transition: opacity 0.2s ease;
+            }
+
+            .nav-links a:hover {
+                opacity: 0.8;
             }
 
             .main {
                 flex: 3;
-                padding: 20px;
-                background-color: #fff;
-                border-radius: 10px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                background: var(--white);
+                border-radius: var(--border-radius);
+                box-shadow: var(--box-shadow);
+                padding: 2.5rem;
+                transition: var(--transition);
             }
 
             .sidebar {
                 flex: 1;
-                background: #fff;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                background: var(--white);
+                border-radius: var(--border-radius);
+                box-shadow: var(--box-shadow);
+                padding: 2rem;
+                align-self: flex-start;
+                position: sticky;
+                top: 1rem;
             }
 
             .title {
-                font-size: 28px;
+                font-size: 2.25rem;
                 font-weight: 700;
-                margin-bottom: 10px;
+                margin-bottom: 1rem;
+                color: var(--dark);
+                line-height: 1.2;
             }
 
             .price {
-                color: #e74c3c;
-                font-weight: bold;
-                font-size: 18px;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--danger);
+                display: inline-block;
+                margin: 0.5rem 0;
+            }
+
+            .price del {
+                color: var(--gray);
+                font-size: 1rem;
+                margin-right: 0.5rem;
+                opacity: 0.7;
             }
 
             .btn {
-                background: #007bff;
-                color: white;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--primary);
+                color: var(--white);
                 border: none;
-                padding: 12px 25px;
-                font-size: 15px;
-                border-radius: 5px;
+                padding: 0.8rem 1.75rem;
+                font-size: 1rem;
+                font-weight: 600;
+                border-radius: var(--border-radius);
                 text-decoration: none;
-                display: inline-block;
-                margin-top: 20px;
-                transition: background 0.3s ease;
+                cursor: pointer;
+                transition: var(--transition);
+                box-shadow: 0 4px 12px rgba(67, 97, 238, 0.25);
+                margin: 1.5rem 0;
             }
 
             .btn:hover {
-                background: #0056b3;
+                background-color: var(--primary-dark);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(67, 97, 238, 0.3);
             }
 
-            .media-row {
-                display: flex;
-                gap: 20px;
-                margin-top: 25px;
+            .btn:active {
+                transform: translateY(0);
             }
 
-            .media-row > div {
-                flex: 1;
-                background-color: #f0f0f0;
-                border-radius: 8px;
-                overflow: hidden;
+            h2, h3, h4 {
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+                color: var(--dark);
+                font-weight: 600;
             }
 
-            .media-row img, .media-row video {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+            h2 {
+                font-size: 1.75rem;
+                border-bottom: 2px solid var(--light-gray);
+                padding-bottom: 0.5rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            h4 {
+                font-size: 1.25rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+                color: var(--gray);
+            }
+
+            /* Slider Container Fixes */
+.slider-wrapper {
+    position: relative;
+    margin: 2.5rem 0 0 0; /* Top margin only */
+    border-radius: 8px;
+    /*overflow: hidden;*/
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    /*overflow: hidden;*/
+    margin: 0;
+    padding: 0;
+}
+
+/* Slider Controls Fix */
+.slider-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+}
+
+.slider-controls button {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.slider-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+/* Ensure slider content fills container */
+.slide-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+            /* Review Slider */
+            .review-slider-container {
+                background: var(--white);
+                border-radius: var(--border-radius);
+                padding: 2rem;
+                margin: 3rem 0;
+                box-shadow: var(--box-shadow);
+                position: relative;
+            }
+
+            .review-slide {
+                display: none;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .review-slide.active {
                 display: block;
+                animation: fadeIn 0.5s ease;
             }
 
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+
+            .review-content {
+                font-style: italic;
+                font-size: 1.1rem;
+                line-height: 1.7;
+                color: var(--dark);
+                margin-bottom: 1.5rem;
+                position: relative;
+            }
+
+            .review-content::before,
+            .review-content::after {
+                content: '"';
+                font-size: 2rem;
+                color: var(--primary);
+                opacity: 0.3;
+                position: absolute;
+            }
+
+            .review-content::before {
+                top: -1rem;
+                left: -1rem;
+            }
+
+            .review-content::after {
+                bottom: -2rem;
+                right: -1rem;
+            }
+
+            .review-meta {
+                font-size: 0.9rem;
+                color: var(--gray);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .review-meta .stars {
+                color: #ffc107;
+                font-size: 1.1rem;
+            }
+
+            .review-slider-controls {
+                margin-top: 1.5rem;
+                text-align: center;
+            }
+
+            .review-slider-controls button {
+                background-color: transparent;
+                border: 2px solid var(--light-gray);
+                color: var(--gray);
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+                margin: 0 0.5rem;
+                border-radius: var(--border-radius);
+                cursor: pointer;
+                transition: var(--transition);
+            }
+
+            .review-slider-controls button:hover {
+                background-color: var(--primary);
+                color: var(--white);
+                border-color: var(--primary);
+            }
+
+            /* Search and Subjects */
             input[type="text"] {
                 width: 100%;
-                padding: 10px;
-                margin-bottom: 15px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                box-sizing: border-box;
+                padding: 0.75rem 1rem;
+                margin-bottom: 1.5rem;
+                border: 1px solid var(--light-gray);
+                border-radius: var(--border-radius);
+                font-size: 1rem;
+                transition: var(--transition);
+            }
+
+            input[type="text"]:focus {
+                outline: none;
+                border-color: var(--primary);
+                box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            }
+
+            .subjects {
+                margin: 2rem 0;
+            }
+
+            #subjectList {
+                list-style: none;
+                padding: 0;
+                margin: 0;
             }
 
             .subject-item {
-                margin: 5px 0;
-                list-style: none;
+                padding: 0.75rem 1rem;
+                margin: 0.25rem 0;
+                border-radius: var(--border-radius);
+                transition: var(--transition);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+
+            .subject-item::before {
+                content: "•";
+                color: var(--primary);
+                margin-right: 0.75rem;
+                font-size: 1.5rem;
             }
 
             .subject-item:hover {
-                color: #007bff;
-                cursor: pointer;
+                background-color: rgba(67, 97, 238, 0.1);
+                color: var(--primary);
+                transform: translateX(5px);
             }
 
-            .featured, .subjects {
-                margin-top: 30px;
-            }
-
-            h3, h4 {
-                color: #222;
-                margin-bottom: 10px;
-            }
-
-            ul {
-                padding-left: 0;
-            }
-
-            a {
-                color: #007bff;
-                text-decoration: none;
-            }
-
-            a:hover {
-                text-decoration: underline;
-            }
-
+            /* Featured Courses */
             .featured {
-                margin-top: 30px;
+                margin: 2rem 0;
             }
 
             .featured ul {
                 list-style: none;
-                padding-left: 0;
+                padding: 0;
                 margin: 0;
             }
 
             .featured li {
-                padding: 10px;
-                background-color: #f5f7fa;
-                margin-bottom: 10px;
-                border-radius: 6px;
-                transition: background 0.2s ease, transform 0.2s ease;
+                padding: 0.75rem 1rem;
+                margin: 0.5rem 0;
+                background-color: var(--light);
+                border-radius: var(--border-radius);
+                transition: var(--transition);
             }
 
             .featured li:hover {
-                background-color: #e8f0fe;
-                transform: translateX(3px);
+                background-color: rgba(67, 97, 238, 0.1);
+                transform: translateX(5px);
             }
 
             .featured a {
-                font-weight: 500;
-                font-size: 15px;
-                color: #333;
+                color: var(--dark);
                 text-decoration: none;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .featured a::before {
+                content: "→";
+                color: var(--primary);
+                transition: var(--transition);
+            }
+
+            .featured li:hover a::before {
+                transform: translateX(3px);
             }
 
             .featured a:hover {
-                color: #007bff;
-                text-decoration: underline;
+                color: var(--primary);
+                text-decoration: none;
             }
 
+            /* Alerts */
             .alert {
-                padding: 15px;
-                margin-bottom: 20px;
-                border: 1px solid transparent;
-                border-radius: 4px;
+                padding: 1rem;
+                margin-bottom: 1.5rem;
+                border-radius: var(--border-radius);
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
             }
 
             .alert-success {
-                color: #3c763d;
-                background-color: #dff0d8;
-                border-color: #d6e9c6;
+                background-color: rgba(76, 201, 240, 0.15);
+                color: #0a9396;
+                border-left: 4px solid var(--success);
             }
 
             .alert-error {
-                color: #a94442;
-                background-color: #f2dede;
-                border-color: #ebccd1;
-            }
-            .slider-container {
-                position: relative;
-                width: 100%;
-                height: 500px;
-                overflow: hidden;
-                margin: 20px 0;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                background-color: rgba(247, 37, 133, 0.15);
+                color: var(--danger);
+                border-left: 4px solid var(--danger);
             }
 
-            .slide {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                opacity: 0;
-                transition: opacity 0.8s ease;
-                
+            /* Responsive Design */
+            @media (max-width: 992px) {
+                .container {
+                    flex-direction: column;
+                }
+
+                .sidebar {
+                    position: static;
+                    width: 100%;
+                }
+
+                .slider-container {
+                    height: 400px;
+                }
             }
 
-            .slide.active {
-                opacity: 1;
+            @media (max-width: 768px) {
+                .container {
+                    padding: 1rem;
+                }
+
+                .main, .sidebar {
+                    padding: 1.5rem;
+                }
+
+                .title {
+                    font-size: 1.75rem;
+                }
+
+                .slider-container {
+                    height: 300px;
+                }
+
+                .slide-info {
+                    padding: 1rem;
+                }
+
+                .slide-info h3 {
+                    font-size: 1.25rem;
+                }
             }
 
-            .slide-media {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+            /* Animation for interactive elements */
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
             }
 
-            .slide-info {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            .highlight {
+                animation: pulse 2s infinite;
+            }
+
+            /* Badge for featured items */
+            .badge {
+                display: inline-block;
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+                font-weight: 600;
+                border-radius: 50px;
+                background-color: var(--primary);
                 color: white;
-                padding: 20px;
+                margin-left: 0.5rem;
+                vertical-align: middle;
             }
-
-            .slide-info h3 {
-                margin: 0 0 10px 0;
-                font-size: 1.5em;
-            }
-
-            .slide-info p {
-                margin: 0;
-                font-size: 1em;
-            }
-
-            video.slide-media {
-                background-color: #000;
-            }
-            .slider-wrapper {
-    
-}
-    .slider-controls {
-    position: absolute;
-    bottom: -50px;
-    left: 0;
-    right: 330;
-    text-align: center;
-}
-
-
-.slider-controls button {
-    background-color: rgba(0,0,0,0.6);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin: 0 5px;
-    font-size: 24px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.slider-controls button:hover {
-    background-color: rgba(0,0,0,0.8);
-}
-
-
-
         </style>
         </head>
         <body>
 
+            <header>
+            <div class="logo">Online Learn</div>
+            <div class="nav-links">
+                <a href="${pageContext.request.contextPath}/HomeServlet">Home</a>
+                <a href="${pageContext.request.contextPath}/MyCourseServlet">Course List</a>
+                <a href="${pageContext.request.contextPath}/BlogListServlet">Blog List</a>
+                <a href="#">Quiz List</a>
+                <a href="#">Log out</a>
+            </div>
+        </header>
+            
             <div class="container">
                 <!-- MAIN -->
                 <div class="main">
@@ -284,17 +540,33 @@
                         <p>This course covers variables, data types, loops, functions, and basic problem-solving skills. 
                             It is perfect for beginners and provides a strong foundation to explore any programming language.</p>
                     </div>
-
-                    <div class="slider-container">
-                        
-                    </div>
                     <div class="slider-wrapper">
-    <div class="slider-container"></div>
-    <div class="slider-controls">
-        <button id="prevSlide">❮</button>
-        <button id="nextSlide">❯</button>
-    </div>
-</div>
+                        <div class="slider-container"></div>
+                        <div class="slider-controls">
+                            <button id="prevSlide">❮</button>
+                            <button id="nextSlide">❯</button>
+                        </div>
+                    </div>
+
+                    <c:if test="${not empty reviews}">
+                        <h3>Student Reviews</h3>
+                        <div class="review-slider-container">
+                            <c:forEach var="review" items="${reviews}" varStatus="loop">
+                                <div class="review-slide ${loop.index == 0 ? 'active' : ''}">
+                                    <div class="review-content">
+                                        <p>"${review.content}"</p>
+                                        <div class="review-meta">
+                                            ⭐ ${review.star} stars — ${review.createdAt}
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                            <div class="review-slider-controls">
+                                <button onclick="changeReview(-1)">❮</button>
+                                <button onclick="changeReview(1)">❯</button>
+                            </div>
+                        </div>
+                    </c:if>
 
 
                     <a class="btn" href="CourseRegisterServlet?courseID=${course.courseID}">Register Now</a>
@@ -371,31 +643,19 @@
                         slideElement.className = 'slide ' + (index === 0 ? 'active' : '');
                         if (slide.type === 'image') {
                             slideElement.innerHTML =
-                                    '<img src="' + slide.url + '" alt="' + slide.title + '" class="slide-media">' +
-                                    '<div class="slide-info">' +
-                                    '<h3>' + slide.title + '</h3>' +
-                                    '<p>' + slide.description + '</p>' +
-                                    '</div>';
+                                    '<img src="' + slide.url + '" alt="' + slide.title + '" class="slide-media">';
                         } else if (slide.type === 'video' && isYouTubeUrl(slide.url)) {
                             const youtubeId = extractYouTubeId(slide.url);
                             slideElement.innerHTML =
                                     '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + youtubeId + '" ' +
                                     'title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; ' +
-                                    'encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
-                                    '<div class="slide-info">' +
-                                    '<h3>' + slide.title + '</h3>' +
-                                    '<p>' + slide.description + '</p>' +
-                                    '</div>';
+                                    'encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                         } else {
                             slideElement.innerHTML =
                                     '<video controls class="slide-media">' +
                                     '<source src="' + slide.url + '" type="video/mp4">' +
                                     'Trình duyệt không hỗ trợ video' +
-                                    '</video>' +
-                                    '<div class="slide-info">' +
-                                    '<h3>' + slide.title + '</h3>' +
-                                    '<p>' + slide.description + '</p>' +
-                                    '</div>';
+                                    '</video>';
                         }
 
                         container.appendChild(slideElement);
@@ -452,6 +712,22 @@ document.getElementById('prevSlide').addEventListener('click', () => {
                     const match = url.match(regExp);
                     return (match && match[7].length === 11) ? match[7] : null;
                 }
+
+                let currentReview = 0;
+                function showReview(index) {
+                    const slides = document.querySelectorAll(".review-slide");
+                    slides.forEach((s, i) => {
+                        s.classList.remove("active");
+                        if (i === index) s.classList.add("active");
+                    });
+                }
+
+                function changeReview(offset) {
+                    const slides = document.querySelectorAll(".review-slide");
+                    currentReview = (currentReview + offset + slides.length) % slides.length;
+                    showReview(currentReview);
+                }
+
 
                 window.addEventListener('DOMContentLoaded', initSlider);
             </script>

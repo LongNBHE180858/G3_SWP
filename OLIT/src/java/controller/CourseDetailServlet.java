@@ -69,7 +69,10 @@ public class CourseDetailServlet extends HttpServlet {
         Course course = courseDAO.getCourseById(courseId);
         List<Subject> allSubjects = subjectDAO.getAllSubjects();
         List<Course> featuredCourses = courseDAO.getTopCourses(2); 
-
+        ReviewDAO reviewDAO = new ReviewDAO();
+        List<Review> reviews = reviewDAO.getReviewsByCourseId(courseId);
+        
+        request.setAttribute("reviews", reviews);
         request.setAttribute("course", course);
         request.setAttribute("subjects", allSubjects);
         request.setAttribute("featuredCourses", featuredCourses);
