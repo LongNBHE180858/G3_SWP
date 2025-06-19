@@ -236,7 +236,7 @@
 }
     .slider-controls {
     position: absolute;
-    bottom: -50px;
+    bottom: 170px;
     left: 0;
     right: 330;
     text-align: center;
@@ -416,6 +416,7 @@
 //                            activeVideo.pause();
 //                        }
 //                    }, 5000);
+// Chuyen slide thu cong
 function showSlide(index) {
     const slides = document.querySelectorAll('.slide');
     slides.forEach((slide, i) => {
