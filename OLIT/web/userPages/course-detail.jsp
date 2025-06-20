@@ -38,7 +38,7 @@
                 padding: 2rem;
                 gap: 2rem;
             }
-            
+
             header {
                 background: linear-gradient(to right, #4a90e2, #0077cc);
                 color: white;
@@ -167,67 +167,67 @@
             }
 
             /* Slider Container Fixes */
-.slider-wrapper {
-    position: relative;
-    margin: 2.5rem 0 0 0; /* Top margin only */
-    border-radius: 8px;
-    /*overflow: hidden;*/
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
+            .slider-wrapper {
+                position: relative;
+                margin: 2.5rem 0 0 0; /* Top margin only */
+                border-radius: 8px;
+                /*overflow: hidden;*/
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            }
 
-.slider-container {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    /*overflow: hidden;*/
-    margin: 0;
-    padding: 0;
-}
+            .slider-container {
+                position: relative;
+                width: 100%;
+                height: 500px;
+                /*overflow: hidden;*/
+                margin: 0;
+                padding: 0;
+            }
 
-/* Slider Controls Fix */
-.slider-controls {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    z-index: 100;
-    display: flex;
-    gap: 10px;
-}
+            /* Slider Controls Fix */
+            .slider-controls {
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+                z-index: 100;
+                display: flex;
+                gap: 10px;
+            }
 
-.slider-controls button {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
-}
+            .slider-controls button {
+                background-color: rgba(0, 0, 0, 0.7);
+                color: white;
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-size: 1.2rem;
+            }
 
-.slider-controls button:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-    transform: scale(1.1);
-}
+            .slider-controls button:hover {
+                background-color: rgba(0, 0, 0, 0.9);
+                transform: scale(1.1);
+            }
 
-/* Ensure slider content fills container */
-.slide-media {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+            /* Ensure slider content fills container */
+            .slide-media {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
 
-.slide {
-    display: none;
-}
+            .slide {
+                display: none;
+            }
 
-.slide.active {
-    display: block;
-}
+            .slide.active {
+                display: block;
+            }
 
             /* Review Slider */
             .review-slider-container {
@@ -251,8 +251,12 @@
             }
 
             @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
             }
 
             .review-content {
@@ -485,9 +489,15 @@
 
             /* Animation for interactive elements */
             @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.05); }
-                100% { transform: scale(1); }
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+                100% {
+                    transform: scale(1);
+                }
             }
 
             .highlight {
@@ -506,8 +516,6 @@
                 margin-left: 0.5rem;
                 vertical-align: middle;
             }
-<<<<<<< HEAD
-=======
 
             .slide-info h3 {
                 margin: 0 0 10px 0;
@@ -523,41 +531,39 @@
                 background-color: #000;
             }
             .slider-wrapper {
-    
-}
-    .slider-controls {
-    position: absolute;
-    bottom: 170px;
-    left: 0;
-    right: 330;
-    text-align: center;
-}
+
+            }
+            .slider-controls {
+                position: absolute;
+                bottom: 170px;
+                left: 0;
+                right: 330;
+                text-align: center;
+            }
 
 
-.slider-controls button {
-    background-color: rgba(0,0,0,0.6);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin: 0 5px;
-    font-size: 24px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
+            .slider-controls button {
+                background-color: rgba(0,0,0,0.6);
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                margin: 0 5px;
+                font-size: 24px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
 
-.slider-controls button:hover {
-    background-color: rgba(0,0,0,0.8);
-}
+            .slider-controls button:hover {
+                background-color: rgba(0,0,0,0.8);
+            }
 
 
-
->>>>>>> 836e51a31f250992f1aad3324ce9fd4bae5e732a
         </style>
-        </head>
-        <body>
+    </head>
+    <body>
 
-            <header>
+        <header>
             <div class="logo">Online Learn</div>
             <div class="nav-links">
                 <a href="${pageContext.request.contextPath}/HomeServlet">Home</a>
@@ -567,149 +573,149 @@
                 <a href="#">Log out</a>
             </div>
         </header>
-            
-            <div class="container">
-                <!-- MAIN -->
-                <div class="main">
 
-                    <c:if test="${not empty message}">
-                        <div class="alert alert-${messageType}">
-                            ${message}
-                        </div>
-                    </c:if>
-                    <div class="title">${course.courseTitle}</div>
-                    <p><em>Start your coding journey with hands-on practice.</em></p>
-                    <p><strong>Overview:</strong> ${course.courseDetail}</p>
-                    <p><strong>Lowest Price Package:</strong> <del>$99</del> <span class="price">$49</span></p>
+        <div class="container">
+            <!-- MAIN -->
+            <div class="main">
 
-                    <div>
-                        <h4>Course Description</h4>
-                        <p>This course covers variables, data types, loops, functions, and basic problem-solving skills. 
-                            It is perfect for beginners and provides a strong foundation to explore any programming language.</p>
+                <c:if test="${not empty message}">
+                    <div class="alert alert-${messageType}">
+                        ${message}
                     </div>
-                    <div class="slider-wrapper">
-                        <div class="slider-container"></div>
-                        <div class="slider-controls">
-                            <button id="prevSlide">❮</button>
-                            <button id="nextSlide">❯</button>
-                        </div>
-                    </div>
+                </c:if>
+                <div class="title">${course.courseTitle}</div>
+                <p><em>Start your coding journey with hands-on practice.</em></p>
+                <p><strong>Overview:</strong> ${course.courseDetail}</p>
+                <p><strong>Lowest Price Package:</strong> <del>$99</del> <span class="price">$49</span></p>
 
-                    <c:if test="${not empty reviews}">
-                        <h3>Student Reviews</h3>
-                        <div class="review-slider-container">
-                            <c:forEach var="review" items="${reviews}" varStatus="loop">
-                                <div class="review-slide ${loop.index == 0 ? 'active' : ''}">
-                                    <div class="review-content">
-                                        <p>"${review.content}"</p>
-                                        <div class="review-meta">
-                                            ⭐ ${review.star} stars — ${review.createdAt}
-                                        </div>
+                <div>
+                    <h4>Course Description</h4>
+                    <p>This course covers variables, data types, loops, functions, and basic problem-solving skills. 
+                        It is perfect for beginners and provides a strong foundation to explore any programming language.</p>
+                </div>
+                <div class="slider-wrapper">
+                    <div class="slider-container"></div>
+                    <div class="slider-controls">
+                        <button id="prevSlide">❮</button>
+                        <button id="nextSlide">❯</button>
+                    </div>
+                </div>
+
+                <c:if test="${not empty reviews}">
+                    <h3>Student Reviews</h3>
+                    <div class="review-slider-container">
+                        <c:forEach var="review" items="${reviews}" varStatus="loop">
+                            <div class="review-slide ${loop.index == 0 ? 'active' : ''}">
+                                <div class="review-content">
+                                    <p>"${review.content}"</p>
+                                    <div class="review-meta">
+                                        ⭐ ${review.star} stars — ${review.createdAt}
                                     </div>
                                 </div>
-                            </c:forEach>
-                            <div class="review-slider-controls">
-                                <button onclick="changeReview(-1)">❮</button>
-                                <button onclick="changeReview(1)">❯</button>
                             </div>
+                        </c:forEach>
+                        <div class="review-slider-controls">
+                            <button onclick="changeReview(-1)">❮</button>
+                            <button onclick="changeReview(1)">❯</button>
                         </div>
-                    </c:if>
+                    </div>
+                </c:if>
 
 
-                    <a class="btn" href="CourseRegisterServlet?courseID=${course.courseID}">Register Now</a>
+                <a class="btn" href="CourseRegisterServlet?courseID=${course.courseID}">Register Now</a>
 
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div>
+                    <h3>Search Subjects</h3>
+                    <input type="text" id="searchBox" onkeyup="filterSubjects()" placeholder="Search...">
                 </div>
 
-                <!-- SIDEBAR -->
-                <div class="sidebar">
-                    <div>
-                        <h3>Search Subjects</h3>
-                        <input type="text" id="searchBox" onkeyup="filterSubjects()" placeholder="Search...">
-                    </div>
+                <div class="subjects">
+                    <h4>Subject Categories</h4>
+                    <ul id="subjectList">
+                        <c:forEach var="s" items="${subjects}">
+                            <li class="subject-item">${s.subjectName}</li>
+                            </c:forEach>
+                    </ul>
+                </div>
 
-                    <div class="subjects">
-                        <h4>Subject Categories</h4>
-                        <ul id="subjectList">
-                            <c:forEach var="s" items="${subjects}">
-                                <li class="subject-item">${s.subjectName}</li>
-                                </c:forEach>
-                        </ul>
-                    </div>
-
-                    <div class="featured">
-                        <h4>Featured Courses</h4>
-                        <ul>
-                            <c:forEach var="c" items="${featuredCourses}">
-                                <li><a href="CourseDetail?id=${c.courseID}">${c.courseTitle}</a></li>
-                                </c:forEach>
-                        </ul>
-                    </div>
+                <div class="featured">
+                    <h4>Featured Courses</h4>
+                    <ul>
+                        <c:forEach var="c" items="${featuredCourses}">
+                            <li><a href="CourseDetail?id=${c.courseID}">${c.courseTitle}</a></li>
+                            </c:forEach>
+                    </ul>
                 </div>
             </div>
-            
+        </div>
 
-            <script>
-                function filterSubjects() {
-                    var input = document.getElementById("searchBox");
-                    var filter = input.value.toUpperCase();
-                    var ul = document.getElementById("subjectList");
-                    var li = ul.getElementsByTagName("li");
 
-                    for (let i = 0; i < li.length; i++) {
-                        let txtValue = li[i].textContent || li[i].innerText;
-                        li[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+        <script>
+            function filterSubjects() {
+                var input = document.getElementById("searchBox");
+                var filter = input.value.toUpperCase();
+                var ul = document.getElementById("subjectList");
+                var li = ul.getElementsByTagName("li");
+
+                for (let i = 0; i < li.length; i++) {
+                    let txtValue = li[i].textContent || li[i].innerText;
+                    li[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+                }
+            }
+
+            const sliderData = [
+            <c:forEach items="${sliders}" var="slider" varStatus="loop">
+            {
+            type: 'image',
+                    url: '${slider.imageUrl}',
+                    title: '${slider.title}',
+                    description: '${slider.notes}'
+            }${!loop.last ? ',' : ''}
+            </c:forEach>
+            <c:if test="${not empty firstLesson}">
+            , {
+                type: 'video',
+                url: '${firstLesson.URLLesson}',
+                title: '${firstLesson.lessonTitle}',
+                description: 'Bắt đầu bài học'
+            }
+            </c:if>
+            ];
+
+            // Khởi tạo slider
+            function initSlider() {
+                const container = document.querySelector('.slider-container');
+
+                // Tạo các slide
+                sliderData.forEach((slide, index) => {
+                    const slideElement = document.createElement('div');
+                    slideElement.className = 'slide ' + (index === 0 ? 'active' : '');
+                    if (slide.type === 'image') {
+                        slideElement.innerHTML =
+                                '<img src="' + slide.url + '" alt="' + slide.title + '" class="slide-media">';
+                    } else if (slide.type === 'video' && isYouTubeUrl(slide.url)) {
+                        const youtubeId = extractYouTubeId(slide.url);
+                        slideElement.innerHTML =
+                                '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + youtubeId + '" ' +
+                                'title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; ' +
+                                'encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    } else {
+                        slideElement.innerHTML =
+                                '<video controls class="slide-media">' +
+                                '<source src="' + slide.url + '" type="video/mp4">' +
+                                'Trình duyệt không hỗ trợ video' +
+                                '</video>';
                     }
-                }
 
-                const sliderData = [
-                <c:forEach items="${sliders}" var="slider" varStatus="loop">
-                {
-                type: 'image',
-                        url: '${slider.imageUrl}',
-                        title: '${slider.title}',
-                        description: '${slider.notes}'
-                }${!loop.last ? ',' : ''}
-                </c:forEach>
-                <c:if test="${not empty firstLesson}">
-                , {
-                    type: 'video',
-                    url: '${firstLesson.URLLesson}',
-                    title: '${firstLesson.lessonTitle}',
-                    description: 'Bắt đầu bài học'
-                }
-                </c:if>
-                ];
+                    container.appendChild(slideElement);
+                });
 
-                // Khởi tạo slider
-                function initSlider() {
-                    const container = document.querySelector('.slider-container');
-
-                    // Tạo các slide
-                    sliderData.forEach((slide, index) => {
-                        const slideElement = document.createElement('div');
-                        slideElement.className = 'slide ' + (index === 0 ? 'active' : '');
-                        if (slide.type === 'image') {
-                            slideElement.innerHTML =
-                                    '<img src="' + slide.url + '" alt="' + slide.title + '" class="slide-media">';
-                        } else if (slide.type === 'video' && isYouTubeUrl(slide.url)) {
-                            const youtubeId = extractYouTubeId(slide.url);
-                            slideElement.innerHTML =
-                                    '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + youtubeId + '" ' +
-                                    'title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; ' +
-                                    'encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-                        } else {
-                            slideElement.innerHTML =
-                                    '<video controls class="slide-media">' +
-                                    '<source src="' + slide.url + '" type="video/mp4">' +
-                                    'Trình duyệt không hỗ trợ video' +
-                                    '</video>';
-                        }
-
-                        container.appendChild(slideElement);
-                    });
-
-                    // Tự động chuyển slide
-                    let currentIndex = 0;
+                // Tự động chuyển slide
+                let currentIndex = 0;
 //                    setInterval(() => {
 //                        const slides = document.querySelectorAll('.slide');
 //                        slides[currentIndex].classList.remove('active');
@@ -724,61 +730,62 @@
 //                        }
 //                    }, 5000);
 // Chuyen slide thu cong
-function showSlide(index) {
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        if (i === index) {
-            slide.classList.add('active');
-        }
+                function showSlide(index) {
+                    const slides = document.querySelectorAll('.slide');
+                    slides.forEach((slide, i) => {
+                        slide.classList.remove('active');
+                        if (i === index) {
+                            slide.classList.add('active');
+                        }
 
-        const video = slide.querySelector('video');
-        if (video) {
-            video.pause();
-            video.currentTime = 0;
-        }
-    });
-}
-
-document.getElementById('nextSlide').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % sliderData.length;
-    showSlide(currentIndex);
-});
-
-document.getElementById('prevSlide').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + sliderData.length) % sliderData.length;
-    showSlide(currentIndex);
-});
-                }
-
-                function isYouTubeUrl(url) {
-                    return url.includes('youtube.com') || url.includes('youtu.be');
-                }
-
-                function extractYouTubeId(url) {
-                    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-                    const match = url.match(regExp);
-                    return (match && match[7].length === 11) ? match[7] : null;
-                }
-
-                let currentReview = 0;
-                function showReview(index) {
-                    const slides = document.querySelectorAll(".review-slide");
-                    slides.forEach((s, i) => {
-                        s.classList.remove("active");
-                        if (i === index) s.classList.add("active");
+                        const video = slide.querySelector('video');
+                        if (video) {
+                            video.pause();
+                            video.currentTime = 0;
+                        }
                     });
                 }
 
-                function changeReview(offset) {
-                    const slides = document.querySelectorAll(".review-slide");
-                    currentReview = (currentReview + offset + slides.length) % slides.length;
-                    showReview(currentReview);
-                }
+                document.getElementById('nextSlide').addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % sliderData.length;
+                    showSlide(currentIndex);
+                });
+
+                document.getElementById('prevSlide').addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + sliderData.length) % sliderData.length;
+                    showSlide(currentIndex);
+                });
+            }
+
+            function isYouTubeUrl(url) {
+                return url.includes('youtube.com') || url.includes('youtu.be');
+            }
+
+            function extractYouTubeId(url) {
+                const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+                const match = url.match(regExp);
+                return (match && match[7].length === 11) ? match[7] : null;
+            }
+
+            let currentReview = 0;
+            function showReview(index) {
+                const slides = document.querySelectorAll(".review-slide");
+                slides.forEach((s, i) => {
+                    s.classList.remove("active");
+                    if (i === index)
+                        s.classList.add("active");
+                });
+            }
+
+            function changeReview(offset) {
+                const slides = document.querySelectorAll(".review-slide");
+                currentReview = (currentReview + offset + slides.length) % slides.length;
+                showReview(currentReview);
+            }
 
 
-                window.addEventListener('DOMContentLoaded', initSlider);
-            </script>
+            window.addEventListener('DOMContentLoaded', initSlider);
+        </script>
 
-        </body>
-    </html>
+    </body>
+</html>
