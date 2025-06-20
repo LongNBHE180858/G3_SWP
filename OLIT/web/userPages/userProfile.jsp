@@ -163,28 +163,108 @@
                 cursor: pointer;
             }
             
+            /* Overlay nền mờ */
             .modal {
-                display: none;
-                position: fixed;
-                z-index: 1000;
-                left: 0; top: 0;
-                width: 100%; height: 100%;
-                background-color: rgba(0,0,0,0.5);
+              display: none;
+              position: fixed;
+              z-index: 1000;
+              inset: 0;
+              background-color: rgba(0, 0, 0, 0.4);
+              backdrop-filter: blur(2px); /* hiệu ứng mờ hiện đại */
+              animation: fadeIn 0.3s ease-in-out;
+            }
+
+            /* Nội dung hộp thoại */
+            .modal-content {
+              position: relative;
+              background-color: #fff;
+              margin: auto;
+              margin-top: 8vh;
+              width: 90%;
+              max-width: 550px;
+              border-radius: 16px;
+              box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+              padding: 30px;
+              animation: slideUp 0.4s ease;
+              transition: all 0.3s ease-in-out;
+            }
+
+            /* Nút đóng */
+            .close {
+              position: absolute;
+              top: 14px;
+              right: 18px;
+              font-size: 22px;
+              font-weight: bold;
+              color: #888;
+              cursor: pointer;
+              transition: color 0.2s;
+            }
+
+            .close:hover {
+              color: #000;
+            }
+
+            /* Nhóm form */
+            .modal-content .form-group {
+              margin-bottom: 18px;
+            }
+
+            .modal-content label {
+              display: block;
+              margin-bottom: 6px;
+              font-weight: 600;
+              color: #333;
+            }
+
+            .modal-content input,
+            .modal-content select {
+              width: 100%;
+              padding: 10px 14px;
+              border: 1.5px solid #ccc;
+              border-radius: 8px;
+              font-size: 15px;
+              transition: border-color 0.3s;
+            }
+
+            .modal-content input:focus,
+            .modal-content select:focus {
+              border-color: #3f77ff;
+              outline: none;
+            }
+
+            /* Nút lưu */
+            .modal-content .btn-change {
+              background: #3f77ff;
+              color: #fff;
+              border: none;
+              padding: 10px 20px;
+              font-weight: bold;
+              border-radius: 8px;
+              cursor: pointer;
+              transition: background 0.3s ease;
+            }
+
+            .modal-content .btn-change:hover {
+              background: #2f66e0;
+            }
+
+            /* Hiệu ứng */
+            @keyframes fadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+            }
+
+            @keyframes slideUp {
+              from {
+                opacity: 0;
+                transform: translateY(40px);
               }
-              .modal-content {
-                background-color: white;
-                margin: 10% auto;
-                padding: 20px;
-                border-radius: 8px;
-                width: 500px;
-                position: relative;
+              to {
+                opacity: 1;
+                transform: translateY(0);
               }
-              .close {
-                position: absolute;
-                top: 10px; right: 15px;
-                font-size: 20px;
-                cursor: pointer;
-              }
+            }
         </style>
     </head>
     <body>
