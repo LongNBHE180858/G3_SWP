@@ -252,7 +252,7 @@
                         </div>
 
                         <div style="margin-top: 20px;">
-                            <a href="ChangePassword.jsp" class="btn-change">Đổi mật khẩu</a>
+                            <a href="userPages/ResetPassword.jsp?email=${account.email}" class="btn-change">Đổi mật khẩu</a>
                         </div>
                     </div>
 
