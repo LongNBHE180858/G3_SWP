@@ -95,7 +95,7 @@
     <div class="login-container">
         <form action="/OLIT/ResetPasswordServlet" method="post">
             <h2>Set Your Password</h2>
-            <input type="hidden" name="email" value="<%= email != null ? email : "" %>">
+            <input readonly class="input-field" name="email" value="<%= email != null ? email : "" %>">
 
             <input type="password" name="password" class="input-field" placeholder="New Password" required>
             <div class="password-hint">
