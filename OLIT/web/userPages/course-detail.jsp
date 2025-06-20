@@ -506,6 +506,53 @@
                 margin-left: 0.5rem;
                 vertical-align: middle;
             }
+<<<<<<< HEAD
+=======
+
+            .slide-info h3 {
+                margin: 0 0 10px 0;
+                font-size: 1.5em;
+            }
+
+            .slide-info p {
+                margin: 0;
+                font-size: 1em;
+            }
+
+            video.slide-media {
+                background-color: #000;
+            }
+            .slider-wrapper {
+    
+}
+    .slider-controls {
+    position: absolute;
+    bottom: 170px;
+    left: 0;
+    right: 330;
+    text-align: center;
+}
+
+
+.slider-controls button {
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    font-size: 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.slider-controls button:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+
+
+>>>>>>> 836e51a31f250992f1aad3324ce9fd4bae5e732a
         </style>
         </head>
         <body>
@@ -676,6 +723,7 @@
 //                            activeVideo.pause();
 //                        }
 //                    }, 5000);
+// Chuyen slide thu cong
 function showSlide(index) {
     const slides = document.querySelectorAll('.slide');
     slides.forEach((slide, i) => {
