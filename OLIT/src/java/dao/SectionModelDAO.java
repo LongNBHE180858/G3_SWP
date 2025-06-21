@@ -14,7 +14,7 @@ import model.*;
 public class SectionModelDAO {
     public List<SectionModule> getModulesBySectionId(int sectionId) {
         List<SectionModule> list = new ArrayList<>();
-        String sql = "SELECT * FROM SectionModule WHERE SectionID = ?";
+            String sql = "SELECT * FROM SectionModule WHERE SectionID = ?";
 
         try {
             PreparedStatement ps = DBContext.getInstance().getConnection().prepareStatement(sql);
