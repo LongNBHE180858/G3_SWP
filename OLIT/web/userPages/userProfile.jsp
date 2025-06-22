@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="dao.AccountDAO"%>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -289,9 +290,8 @@
             </div>
         </div>
         <c:choose>
-            <c:when test="${not empty account}">
+            <c:when test="${not empty sessionScope.userEmail}">
                 
-                <!-- Hiển thị thông báo nếu có -->
                 <c:if test="${not empty sessionScope.message}">
                     <div class="${sessionScope.messageType == 'success' ? 'message-success' : 'message-error'}">
                         ${sessionScope.message}
@@ -300,39 +300,40 @@
                     <c:remove var="messageType" scope="session" />
                 </c:if> 
                 <div class="profile-container">
+                    <c:set var="userInfor" value="${AccountDAO.getAccountByMail(sessionScope.userEmail)}" scope="page"/>
                     <!-- Avatar và nút mở modal -->
                     <div class="left-panel">
-                        <img src="${empty account.urlAvatar ? 'https://i.pravatar.cc/150' : account.urlAvatar}" 
+                        <img src="${empty userInfor.urlAvatar ? 'https://i.pravatar.cc/150' : userInfor.urlAvatar}" 
                              alt="Avatar" class="avatar" id="avatarImg" />
                         <br />
-                        <button type="button" class="btn-change-1" onclick="openModal()">Chỉnh sửa thông tin</button>
+                        <button type="button" class="btn-change-1" onclick="openModal()">Edit information</button>
                     </div>
 
                     <!-- Right Panel - Hiển thị thông tin không chỉnh sửa -->
                     <div class="right-panel">
                         <div class="form-group">
-                            <label>Họ và tên</label>
-                            <input type="text" value="${account.fullName}" readonly />
+                            <label>Full Name</label>
+                            <input type="text" value="${userInfor.getFullName()}" readonly />
                         </div>
                         <div class="form-group">
-                            <label>Ngày sinh</label>
-                            <input type="date" value="${account.birthday}" readonly />
+                            <label>Birthday</label>
+                            <input type="date" value="${userInfor.getBirthday()}" readonly />
                         </div>
                         <div class="form-group">
-                            <label>Số điện thoại</label>
-                            <input type="tel" value="${account.phoneNumber}" readonly />
+                            <label>Phone Number</label>
+                            <input type="tel" value="${userInfor.getPhoneNumber()}" readonly />
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" value="${account.email}" readonly />
+                            <input type="email" value="${userInfor.getEmail()}" readonly />
                         </div>
                         <div class="form-group">
-                            <label>Giới tính</label>
-                            <input type="text" value="${account.gender}" readonly />
+                            <label>Gender</label>
+                            <input type="text" value="${userInfor.getGender()}" readonly />
                         </div>
 
                         <div style="margin-top: 20px;">
-                            <a href="userPages/ResetPassword.jsp?email=${account.email}" class="btn-change">Đổi mật khẩu</a>
+                            <a href="${pageContext.request.contextPath}/userPages/ChangePassword.jsp" class="btn-change">Change Password</a>
                         </div>
                     </div>
 

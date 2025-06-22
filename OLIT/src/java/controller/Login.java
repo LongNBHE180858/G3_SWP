@@ -74,48 +74,47 @@ public class Login extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    String action = request.getParameter("action");
-    String email = request.getParameter("email");
-    String password = request.getParameter("password");
-    String err = "";
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String err = "";
 
-    if (isBlank(email, password)) {
-        err = "Please input all fields";
-        request.setAttribute("err", err);
-        RequestDispatcher rs = request.getRequestDispatcher("/userPages/login.jsp");
-        rs.forward(request, response);
-        return;
-    }
+        if (isBlank(email, password)) {
+            err = "Please input all fields";
+            request.setAttribute("err", err);
+            RequestDispatcher rs = request.getRequestDispatcher("/userPages/login.jsp");
+            rs.forward(request, response);
+            return;
+        }
 
-    boolean loginSuccess = false;
-    Account loggedInAccount = null;
+        boolean loginSuccess = false;
+        Account loggedInAccount = null;
 
-    for (Account account : accounts) {
-        if (account.getEmail().equals(email) && account.getPassword().equals(password)) {
-            loginSuccess = true;
-            loggedInAccount = account;
-            break;
+        for (Account account : accounts) {
+            if (account.getEmail().equals(email) && account.getPassword().equals(password)) {
+                loginSuccess = true;
+                loggedInAccount = account;
+                break;
+            }
+        }
+
+        if (loginSuccess && loggedInAccount != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("userID", loggedInAccount.getUserID());
+            session.setAttribute("roleID", loggedInAccount.getRoleID());
+            session.setAttribute("userEmail", loggedInAccount.getEmail());
+            session.setAttribute("fullAccount", loggedInAccount);
+            response.sendRedirect(request.getContextPath() + "/HomeServlet");
+
+        } else {
+            err = "Wrong email or password";
+            request.setAttribute("err", err);
+            RequestDispatcher rs = request.getRequestDispatcher("/userPages/login.jsp");
+            rs.forward(request, response);
         }
     }
-
-    if (loginSuccess && loggedInAccount != null) {
-        HttpSession session = request.getSession();
-        session.setAttribute("userID", loggedInAccount.getUserID());
-        session.setAttribute("roleID", loggedInAccount.getRoleID());
-        session.setAttribute("userEmail", loggedInAccount.getEmail());
-        session.setAttribute("fullAccount", loggedInAccount);
-response.sendRedirect(request.getContextPath() + "/HomeServlet");
-
-    } else {
-        err = "Wrong email or password";
-        request.setAttribute("err", err);
-        RequestDispatcher rs = request.getRequestDispatcher("/userPages/login.jsp");
-        rs.forward(request, response);
-    }
-}
-
 
     /**
      * Returns a short description of the servlet.
