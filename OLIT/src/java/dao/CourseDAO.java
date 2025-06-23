@@ -99,5 +99,31 @@ public class CourseDAO {
     }
     return list;
 }
+public List<Course> getHotCourses() {
+        List<Course> list = new ArrayList<>();
+        String sql = "SELECT TOP 3 * FROM Course WHERE status = 1 ORDER BY CourseID DESC";
+        try {
+            PreparedStatement ps = DBContext.getInstance().getConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setCourseID(rs.getInt("CourseID"));
+                c.setCourseTitle(rs.getString("CourseTitle"));
+                c.setCourseTag(rs.getString("CourseTag"));
+                c.setUrlCourse(rs.getString("urlCourse"));
+                c.setCourseDetail(rs.getString("courseDetail"));
+                c.setCourseLevel(rs.getString("courseLevel"));
+                c.setFeatureFlag(rs.getString("featureFlag"));
+                c.setStatus(rs.getInt("status"));
+                c.setCourseraDuration(rs.getInt("courseraDuration"));
+                c.setSubjectID(rs.getInt("subjectID"));
+                list.add(c);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 
 }
