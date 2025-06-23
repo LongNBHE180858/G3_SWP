@@ -219,11 +219,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <%
-                                List<Registration> registrations = (List<Registration>) request.getAttribute("registrations");
-                                if (registrations != null) {
-                                    for (Registration r : registrations) {
-                            %>
+                                <%
+                                    List<Registration> registrations = (List<Registration>) request.getAttribute("registrations");
+                                    if (registrations != null) {
+                                        for (Registration r : registrations) {
+                                %>
                                 <tr>
                                     <td><%= r.getRegistrationID() %></td>
                                     <td><%= r.getCourse().getCourseTitle() %></td>
@@ -238,18 +238,44 @@
                                     <td><%= r.getValidFrom() %></td>
                                     <td><%= r.getValidTo() %></td>
                                     <td>
-<% if ("Pending".equals(r.getStatus())) { %>
-    <button class="btn btn-danger btn-sm cancel-btn">Cancel</button>
-<% } %>
-</td>
+                                        <% if ("Pending".equals(r.getStatus())) { %>
+                                        <button class="btn btn-danger btn-sm cancel-btn">Cancel</button>
+                                        <% } %>
+                                    </td>
                                 </tr>
-                            <%
+                                <%
+                                        }
                                     }
-                                }
-                            %>
+                                %>
                             </tbody>
 
                         </table>
+
+                        <!-- Pagination -->
+                        <div class="d-flex justify-content-center mt-4">
+                            <nav>
+                                <ul class="pagination">
+                                    <!-- Prev -->
+                                    <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                                        <a class="page-link" href="MyRegistration?page=${currentPage - 1}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <!-- Page numbers -->
+                                    <c:forEach begin="1" end="${totalPages}" var="i">
+                                        <li class="page-item ${i == currentPage ? 'active' : ''}">
+                                            <a class="page-link" href="MyRegistration?page=${currentPage}">${currentPage}</a>
+                                        </li>
+                                    </c:forEach>
+                                    <!-- Next -->
+                                    <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+                                        <a class="page-link" href="MyRegistration?page=${currentPage + 1}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
 
                     <!-- Right Section: Filter -->
@@ -282,33 +308,33 @@
             <p>📞 Contact: contact@onlinelearn.vn | ☎ 0123 456 789</p>
         </footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const searchInput = document.getElementById('search');
-        const subjectFilter = document.getElementById('subjectFilter');
-        const tableRows = document.querySelectorAll('tbody tr');
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const searchInput = document.getElementById('search');
+                const subjectFilter = document.getElementById('subjectFilter');
+                const tableRows = document.querySelectorAll('tbody tr');
 
-        function filterTable() {
-            const searchText = searchInput.value.toLowerCase().trim();
-            const selectedSubject = subjectFilter.value;
+                function filterTable() {
+                    const searchText = searchInput.value.toLowerCase().trim();
+                    const selectedSubject = subjectFilter.value;
 
-            tableRows.forEach(row => {
-                const subject = row.cells[1].textContent.trim();
-                const matchSearch = subject.toLowerCase().includes(searchText);
-                const matchFilter = !selectedSubject || subject === selectedSubject;
+                    tableRows.forEach(row => {
+                        const subject = row.cells[1].textContent.trim();
+                        const matchSearch = subject.toLowerCase().includes(searchText);
+                        const matchFilter = !selectedSubject || subject === selectedSubject;
 
-                if (matchSearch && matchFilter) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
+                        if (matchSearch && matchFilter) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
                 }
-            });
-        }
 
-        searchInput.addEventListener('input', filterTable);
-        subjectFilter.addEventListener('change', filterTable);
-    });
-</script>
+                searchInput.addEventListener('input', filterTable);
+                subjectFilter.addEventListener('change', filterTable);
+            });
+        </script>
     </body>
 
 </html>
