@@ -309,7 +309,6 @@
                         <button type="button" class="btn-change-1" onclick="openModal()">Edit information</button>
                     </div>
 
-                    <!-- Right Panel - Hiển thị thông tin không chỉnh sửa -->
                     <div class="right-panel">
                         <div class="form-group">
                             <label>Full Name</label>
@@ -333,7 +332,7 @@
                         </div>
 
                         <div style="margin-top: 20px;">
-                            <a href="${pageContext.request.contextPath}/userPages/ChangePassword.jsp" class="btn-change">Change Password</a>
+                            <a href="${pageContext.request.contextPath}/userPages/changePassword.jsp" class="btn-change">Change Password</a>
                         </div>
                     </div>
 

@@ -1,5 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String email = request.getParameter("email");
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,33 +13,32 @@
             * {
                 box-sizing: border-box;
                 font-family: 'Inter', sans-serif;
-                margin: 0;
-                padding: 0;
             }
 
             body {
+                margin: 0;
+                padding: 0;
                 background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
                 display: flex;
-                justify-content: center;
                 align-items: center;
-                min-height: 100vh;
+                justify-content: center;
+                height: 100vh;
             }
 
             .login-container {
-                background-color: #ffffff;
+                background-color: white;
                 padding: 40px 30px;
                 border-radius: 16px;
                 box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
                 width: 100%;
-                max-width: 420px;
-                text-align: center;
+                max-width: 400px;
             }
 
             .login-container h2 {
+                text-align: center;
                 margin-bottom: 24px;
-                color: #222;
-                font-size: 22px;
                 font-weight: 600;
+                color: #333;
             }
 
             .input-field {
@@ -46,26 +48,25 @@
                 border: 1px solid #ddd;
                 border-radius: 8px;
                 font-size: 14px;
-                transition: border-color 0.3s ease;
+                transition: border-color 0.3s;
             }
 
             .input-field:focus {
-                outline: none;
                 border-color: #4f8ef7;
-                box-shadow: 0 0 5px rgba(79, 142, 247, 0.4);
+                outline: none;
             }
 
             .button {
                 width: 100%;
-                padding: 13px;
+                padding: 12px;
                 background-color: #4f8ef7;
                 color: white;
-                font-size: 15px;
-                font-weight: 600;
                 border: none;
                 border-radius: 8px;
-                cursor: pointer;
+                font-size: 15px;
+                font-weight: 600;
                 margin-top: 16px;
+                cursor: pointer;
                 transition: background-color 0.3s;
             }
 
@@ -73,19 +74,6 @@
                 background-color: #3b74d7;
             }
 
-            .error-msg {
-                color: red;
-                font-size: 14px;
-                margin-top: 14px;
-            }
-
-            .password-hint {
-                font-size: 13px;
-                color: #555;
-                text-align: left;
-                margin-top: -6px;
-                margin-bottom: 10px;
-            }
             .links {
                 display: flex;
                 justify-content: space-between;
@@ -101,27 +89,29 @@
             .links a:hover {
                 text-decoration: underline;
             }
+
+            .err {
+                color: #e74c3c;
+                font-size: 14px;
+                margin-top: 8px;
+                text-align: center;
+            }
         </style>
     </head>
     <body>
         <div class="login-container">
-            <form action="${pageContext.request.contextPath}/ChangePasswordServlet" method="post">
-                <h2>Change Password</h2>
-                <input type="password" name="oldPassword" class="input-field" placeholder="Old Password" required>
-
-                <input type="password" name="newPassword" class="input-field" placeholder="New Password" required>
-                <div class="password-hint">
-                    • At least 8 characters<br>
-                    • Includes uppercase, lowercase, number and special character
-                </div>
-                <input type="password" name="confirmPassword" class="input-field" placeholder="Confirm Password" required>
-                <a href="${pageContext.request.contextPath}/forgotPassword.jsp">Forgot Password?</a>
-                <input type="hidden" name="action" value="changePassword">
-                <button type="submit" class="button">Save Change</button>
-
-                <c:if test="${not empty error}">
-                    <p class="error-msg">${error}</p>
+            <h2>Reset your password</h2>
+            <form action="${pageContext.request.contextPath}/ForgotPasswordServlet" method="post">
+                <p>Please enter the email address you’d like your password reset information sent to</p>
+                <input type="text" class="input-field" name="email" value="<%= email != null ? email : "" %>" placeholder="Enter Your Email" required>
+                <c:if test="${not empty err}">
+                    <p class="err">${err}</p>
                 </c:if>
+                <div class="links">
+                    <a href="${pageContext.request.contextPath}/login.jsp">Sign in</a>
+                </div>
+                <input type="hidden" name="action" value="resetPassword">
+                <button type="submit" class="button">Request reset link</button>
             </form>
         </div>
     </body>
