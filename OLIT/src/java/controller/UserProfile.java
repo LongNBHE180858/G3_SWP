@@ -33,7 +33,7 @@ public class UserProfile extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/userPages/login.jsp");
             return;
         }
-
+        //lấy dữ liệu từ DB
         int userId = (int) session.getAttribute("userID");
         Account account = accountDAO.getAccountByID(userId);
         System.out.println("Account from DB: " + account);

@@ -512,12 +512,12 @@ INSERT INTO Slider (SliderID, CourseID, UserID, Title, ImageURL, Backlink, Statu
 (3, 1, 1, N'Khai giảng React Course', 'https://vtiacademy.edu.vn/upload/images/artboard-1-copy-16-100.jpg', '/course/react-beginners', 1, N'Thông báo khai giảng', 3, '2024-05-10');
 
 
-INSERT INTO Review (ReviewID, UserID, CourseID, Content, Star) VALUES
-(1, 4, 1, N'Khóa học Java rất hay và dễ hiểu.', 5),
-(2, 5, 2, N'MySQL được giảng giải rõ ràng, dễ tiếp cận.', 4),
-(3, 6, 3, N'React còn hơi khó với người mới, cần ví dụ thực tế hơn.', 3),
-(4, 4, 4, N'Nội dung marketing khá thực tế, áp dụng được.', 4),
-(5, 5, 5, N'Mô hình Agile giúp tôi cải thiện quy trình làm việc rất nhiều.', 5),
-(6, 6, 1, N'Khóa Java quá cơ bản, nên mở rộng thêm.', 3),
-(7, 5, 3, N'Tôi thích cách truyền đạt của giảng viên React.', 4),
-(8, 6, 1, N'Khóa học khá ổn.', 5);
+INSERT INTO Review (ReviewID, UserID, CourseID, Content, Star, ImageURL) VALUES
+(1, 4, 1, N'Khóa học Java rất hay và dễ hiểu.', 5, 'review-images/java1.jpg'),
+(2, 5, 2, N'MySQL được giảng giải rõ ràng, dễ tiếp cận.', 4, 'review-images/mysql1.png'),
+(3, 6, 3, N'React còn hơi khó với người mới, cần ví dụ thực tế hơn.', 3, 'review-images/react-feedback.jpg'),
+(4, 4, 4, N'Nội dung marketing khá thực tế, áp dụng được.', 4, NULL),
+(5, 5, 5, N'Mô hình Agile giúp tôi cải thiện quy trình làm việc rất nhiều.', 5, 'review-images/agile-review.png'),
+(6, 6, 1, N'Khóa Java quá cơ bản, nên mở rộng thêm.', 3, NULL),
+(7, 5, 3, N'Tôi thích cách truyền đạt của giảng viên React.', 4, 'review-images/react-teacher.jpg'),
+(8, 6, 1, N'Khóa học khá ổn.', 5, NULL);

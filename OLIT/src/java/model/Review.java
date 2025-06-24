@@ -14,11 +14,12 @@ public class Review {
     private int star;
     private Date createdAt;
     private boolean status;
+    private String imageURL;
 
     public Review() {
     }
 
-    public Review(int reviewID, int userID, int courseID, String content, int star, Date createdAt, boolean status) {
+    public Review(int reviewID, int userID, int courseID, String content, int star, Date createdAt, boolean status, String imageURL) {
         this.reviewID = reviewID;
         this.userID = userID;
         this.courseID = courseID;
@@ -26,6 +27,7 @@ public class Review {
         this.star = star;
         this.createdAt = createdAt;
         this.status = status;
+        this.imageURL = imageURL;
     }
 
     public int getReviewID() {
@@ -83,6 +85,12 @@ public class Review {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
-    
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
 }

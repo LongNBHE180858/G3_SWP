@@ -352,7 +352,7 @@
                   </div>
                   <div class="form-group">
                       <label>Ngày sinh</label>
-                      <input type="date" name="birthday" value="${account.birthday}" required />
+                      <input type="date" name="birthday" value="${account.birthday}" max="<%= java.time.LocalDate.now() %>" required />
                   </div>
                   <div class="form-group">
                       <label>Số điện thoại</label>

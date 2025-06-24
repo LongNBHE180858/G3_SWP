@@ -209,5 +209,6 @@ CREATE TABLE Review (
     Content NVARCHAR(MAX),
     Star INT CHECK (Star BETWEEN 1 AND 5),
     CreatedAt DATETIME DEFAULT GETDATE(),
-    Status BIT NOT NULL DEFAULT 1 -- 1: Hiển thị, 0: Ẩn
+    Status BIT NOT NULL DEFAULT 1, -- 1: Hiển thị, 0: Ẩn
+	ImageURL NVARCHAR(255) NULL
 );
