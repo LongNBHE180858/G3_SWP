@@ -10,6 +10,11 @@ dist/
 nbproject/project.properties
 nbproject/build-impl.xml
 
+# Ignore NetBeans project files
+OLIT/nbproject/private/
+OLIT/nbproject/build-impl.xml
+OLIT/nbproject/project.properties
+
 # OLIT-specific
 OLIT/build/
 OLIT/dist/
