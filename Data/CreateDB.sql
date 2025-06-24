@@ -201,3 +201,13 @@ CREATE TABLE Slider (
     DisplayOrder INT,
     ValidFrom DATE
 );
+
+CREATE TABLE Review (
+    ReviewID INT PRIMARY KEY,
+    UserID INT FOREIGN KEY REFERENCES Account(UserID),
+    CourseID INT FOREIGN KEY REFERENCES Course(CourseID),
+    Content NVARCHAR(MAX),
+    Star INT CHECK (Star BETWEEN 1 AND 5),
+    CreatedAt DATETIME DEFAULT GETDATE(),
+    Status BIT NOT NULL DEFAULT 1 -- 1: Hiển thị, 0: Ẩn
+);
