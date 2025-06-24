@@ -6,6 +6,8 @@ nbproject/private/
 **/dist/
 *.class
 *.jar
+!OLIT/allowedlib/
+!OLIT/allowedlib/*.jar
 *.war
 
 # OLIT-specific build outputs (có thể bỏ thêm nếu muốn)

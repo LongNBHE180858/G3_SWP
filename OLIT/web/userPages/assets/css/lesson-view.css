@@ -338,7 +338,7 @@
             color: var(--success-color);
         }
 
-        /* Grid View Styles */
+        /* Grid View Styles*/ 
         .course-grid-container {
             width: 350px;
             background-color: white;
@@ -838,5 +838,36 @@
   width: 80%;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  
+  
 }
+/* make the HTML iframe fill the entire lesson-content pane */
+.lesson-content {
+  position: relative; /* establish a positioning context */
+}
+
+.lesson-content .selected-lesson {
+  position: absolute;
+  inset: 0;           /* shorthand for top:0; right:0; bottom:0; left:0; */
+}
+
+
+/* 1) keep the positioning context for all lessons */
+.lesson-content {
+  position: relative;
+}
+
+/* 2) allow absolute‐fill only on the wrapper */
+.lesson-content .selected-lesson {
+  position: absolute;
+  inset: 0; /* shorthand for top/right/bottom/left = 0 */
+}
+
+/* 3) full‐pane sizing ONLY when the iframe’s src ends in “.html” */
+.lesson-content .selected-lesson iframe[src$=".html"] {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 

@@ -728,6 +728,7 @@
 //                            activeVideo.pause();
 //                        }
 //                    }, 5000);
+// Chuyen slide thu cong
                 function showSlide(index) {
                     const slides = document.querySelectorAll('.slide');
                     slides.forEach((slide, i) => {

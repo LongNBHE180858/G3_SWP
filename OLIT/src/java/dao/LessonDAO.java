@@ -22,7 +22,7 @@ public class LessonDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Lesson lesson = new Lesson();
-                lesson.setLessonID(rs.getInt("LessonID"));
+                lesson.setLessonID(rs.getInt("LessonID"));       
                 lesson.setModuleID(rs.getInt("ModuleID"));
                 lesson.setLessonTitle(rs.getString("LessonTitle"));
                 lesson.setLessonDetail(rs.getString("LessonDetails"));

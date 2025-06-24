@@ -18,6 +18,7 @@ public class Lesson {
 
     public Lesson(int lessonID, int moduleID, String lessonTitle, String lessonDetail, boolean status, String URLLesson, int order) {
         this.lessonID = lessonID;
+    
         this.moduleID = moduleID;
         this.lessonTitle = lessonTitle;
         this.lessonDetail = lessonDetail;
@@ -25,6 +26,7 @@ public class Lesson {
         this.URLLesson = URLLesson;
         this.order = order;
     }
+
 
     public int getLessonID() {
         return lessonID;
