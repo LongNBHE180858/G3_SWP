@@ -1,49 +1,43 @@
+# NetBeans-specific
 nbproject/private/
-# Ignore build outputs globally
-/build/
-/dist/
+nbproject/Makefile-*
+nbproject/configs/
+build/
+dist/
 **/build/
 **/dist/
-*.class
-*.jar
-!OLIT/allowedlib/
-!OLIT/allowedlib/*.jar
-*.war
 
-# OLIT-specific build outputs (có thể bỏ thêm nếu muốn)
+nbproject/project.properties
+nbproject/build-impl.xml
+
+# OLIT-specific
 OLIT/build/
 OLIT/dist/
+OLIT/web/WEB-INF/lib/
 OLIT/web/WEB-INF/classes/
+OLIT/allowedlib/
 
-# NetBeans-specific files
-**/nbproject/private/
-**/nbproject/Makefile-*
-**/nbproject/configs/
-**/nbproject/build-impl.xml
+# Java build files
+*.class
+*.jar
+*.war
+hs_err_pid*
 
-# IDEs and OS-specific files
+# IDEs & System
 *.iml
+*.ipr
+*.iws
+.idea/
 *.log
 *.tmp
 *.swp
 .DS_Store
 Thumbs.db
 
-# Java-specific crash/error logs
-hs_err_pid*
-
-# Eclipse/Recommenders
-.recommenders/
-
-# User-specific config files
-*.ipr
-*.iws
-*.idea/
-
-# Environment files
+# Env files
 .env
 *.env
 
-# Backup files
+# Backup
 *~
 *.bak
